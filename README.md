@@ -135,3 +135,25 @@ Featured Table |
 - FK droids_id REFERECES droids(id) ON DELETE CASCADE
 - start_date DATE
 - end_date DATE
+
+**_ ROUTES _**
+
+/users
+
+/droids
+/droids/:id
+
+get(api/droids)
+post(api/droids)
+get(api/droids/:id)
+put(api/droids/:id)
+delete(api/droids/:id)
+
+/favourites
+get(api/favourites)
+post(api/favourites)
+delete(api/favourites/:id)
+
+/register
+/login
+/logout
