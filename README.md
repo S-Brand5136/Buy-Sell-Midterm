@@ -95,7 +95,7 @@ Users |
 - email VARCHAR(255) NOT NULL
 - mobile_phone VARCHAR(255)
 - is_admin BOOLEAN DEFAULT FALSE
-- created_at DATE NOT NULL
+- created_at DATE NOT NULL DEFAULT NOW()
 
 Droids |
 
