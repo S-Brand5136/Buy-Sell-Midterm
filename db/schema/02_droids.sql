@@ -1,0 +1,11 @@
+DROP TABLE IF EXISTS droids CASCADE;
+
+CREATE TABLE droids (
+  id SERIAL NOT NULL PRIMARY KEY,
+  sellers_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  name VARCHAR(255) NOT NULL,
+  description text NOT NULL,
+  price INTEGER NOT NULL,
+  manufacturer VARCHAR(255) NOT NULL,
+  model VARCHAR(255) NOT NULL
+);
