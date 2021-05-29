@@ -3,7 +3,7 @@ require('dotenv').config();
 
 // Web server config
 const PORT       = process.env.PORT || 8080;
-const ENV        = process.env.ENV || "development";
+// const ENV        = process.env.ENV || "development";
 const express    = require("express");
 const bodyParser = require("body-parser");
 const sass       = require("node-sass-middleware");
@@ -34,13 +34,11 @@ app.use(express.static("public"));
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
-const widgetsRoutes = require("./routes/widgets");
+const featuredRoutes = require("./routes/featured");
 
-// Mount all resource routes
-// Note: Feel free to replace the example routes below with your own
-app.use("/api/users", usersRoutes(db));
-app.use("/api/widgets", widgetsRoutes(db));
-// Note: mount other resources here, using the same pattern above
+// Resource routes
+app.use('/api/users', usersRoutes(db));
+app.use('/api/droids/featured', featuredRoutes(db));
 
 
 // Home page
