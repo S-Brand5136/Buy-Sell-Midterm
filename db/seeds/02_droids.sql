@@ -6,4 +6,4 @@ VALUES
 
 (2, 'BB-8', "BB-8, sometimes spelled and pronounced Beebee-Ate and nicknamed BB, was a BB-series astromech droid who operated approximately thirty years after the Battle of Endor.", 20, 'Industrial Automaton', 'BB-series Astromech Droid'),
 
-(2, 'C-3PO protocol droid', "Fluent in over 6 million forms of communication, the 3PO droid excelled at human-cyborg relations. PO-series droid, was a model of protocol droid produced by Cybot Galactica sometime prior to the Invasion of Naboo.", 1150, 'Cybot Galactica', 'Protocol droid'),
+(2, 'C-3PO protocol droid', "Fluent in over 6 million forms of communication, the 3PO droid excelled at human-cyborg relations. PO-series droid, was a model of protocol droid produced by Cybot Galactica sometime prior to the Invasion of Naboo.", 1150, 'Cybot Galactica', 'Protocol droid');
