@@ -23,13 +23,13 @@ const featuredDroids = function({droids}) {
             <img src="${droids[i].image_url}" class="d-block" alt="A droid named ${droids[i].name}">
             <div class="card text-light m-0 border-0">
               <div class="card-body">
-                <h4 class="card-title"><span>${droids[i].name}</span> - $${droids[i].price}</h4>
+                <h4 class="card-title"><span>${droids[i].droid_name}</span> - $${droids[i].price}</h4>
                 <p class="card-text">${droids[i].description}</p>
                 <h5>Details</h5>
                 <ul>
                   <li>Manufacturer: ${droids[i].manufacturer}</li>
                   <li>Model: ${droids[i].model}</li>
-                  <li>Seller: ${droids[i].sellers_id}</li>
+                  <li>Seller: ${droids[i].seller}</li>
                 </ul>
               </div>
             </div>
@@ -44,13 +44,13 @@ const featuredDroids = function({droids}) {
             <img src="${droids[i].image_url}" class="d-block" alt="A droid named ${droids[i].name}">
             <div class="card text-light m-0 border-0">
               <div class="card-body">
-                <h4 class="card-title">${droids[i].name} - $${droids[i].price}</h4>
+                <h4 class="card-title"><span>${droids[i].droid_name}</span> - $${droids[i].price}</h4>
                 <p class="card-text">${droids[i].description}</p>
                 <h5>Details</h5>
                 <ul>
                   <li>Manufacturer: ${droids[i].manufacturer}</li>
                   <li>Model: ${droids[i].model}</li>
-                  <li>Seller: ${droids[i].sellers_id}</li>
+                  <li>Seller: ${droids[i].seller}</li>
                 </ul>
               </div>
             </div>
