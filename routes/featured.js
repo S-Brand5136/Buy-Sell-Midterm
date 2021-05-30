@@ -11,14 +11,16 @@ const router  = express.Router();
 module.exports = (db) => {
   router.get("/", (req, res) => {
     const queryString = `
-    SELECT droids.*, sellers_id, start_date, end_date
+    SELECT droids.id, droids.name droid_name, description, price, manufacturer, model, start_date, end_date, image_url, users.name as seller
     FROM featured_droids
-    INNER JOIN droids ON droids.id = droid_id;
+    INNER JOIN droids ON droids.id = featured_droids.droid_id
+    INNER JOIN images ON droids.id = images.droids_id
+    INNER JOIN users ON users.id = sellers_id;
     `;
     db.query(queryString)
       .then(data => {
-        const featuredDroids = data.rows;
-        res.json({ featuredDroids });
+        const droids = data.rows;
+        res.json({ droids });
       })
       .catch(err => {
         res
