@@ -21,12 +21,10 @@ module.exports = (db) => {
   });
 
   router.get("/:id", (req, res) => {
-    console.log(req.params);
-    const queryParams = [req.params.id];
-    db.query(`SELECT * FROM users WHERE id = $1;`, queryParams)
+    db.query(`SELECT * FROM users WHERE id = $1;`, [req.params.id])
       .then((data) => {
-        console.log(data);
-        return res.status(200).json({ user: data.rows });
+        const user = data.rows;
+        return res.json({ user });
       })
       .catch((err) => {
         res.status(500).json({ error: err.message });
