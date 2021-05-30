@@ -144,7 +144,7 @@ Featured Table |
 | droids    | get       | /api/droids                   | Get all droids (paginated)                 | \* Route added, but no pagination        |
 | droids    | post      | /api/droids                   | Create new droid                           |
 | droids    | delete    | /api/droids                   | Delete all droids from site                |
-| featured  | get       | /api/droids/featured          | Get all featured droids                    |
+| featured  | get       | /api/droids/featured          | Get all featured droids                    | \* Done
 | featured  | post      | /api/droids/featured/:id      | Add a droid to featured list               |
 | featured  | delete    | /api/droids/featured/:id      | Remove droid from featured list            |
 | droids    | get       | /api/droids/:id               | Get droid with id                          |
