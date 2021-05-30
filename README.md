@@ -138,26 +138,26 @@ Featured Table |
 
 **_ ROUTES _**
 
-Resource | HTTP Verb | Path | Description
--------- | --------- | ---- | -----------
-none | get | / | Get home / index page
-droids |	get | /api/droids | Get all droids (paginated)
-droids |	post | /api/droids | Create new droid
-droids |	delete | /api/droids | Delete all droids from site
-featured |	get | /api/droids/featured | Get all featured droids
-featured |	post | /api/droids/featured/:id | Add a droid to featured list
-featured |	delete | /api/droids/featured/:id | Remove droid from featured list
-droids |	get | /api/droids/:id | Get droid with id
-droids |	put | /api/droids/:id | Edit droid with id
-droids |	delete | /api/droids/:id | Delete droid with id
-users |	get | /api/users | Get all users
-users |	get | /api/users/:id | Get user with id
-auth |	post | /api/register | Register new user
-auth |	post | /api/login | Login a user
-auth |	post | /api/logout | Logout current user
-images |	get | /api/droids/:id/images | Get all images for droid with id
-images |	get | /api/droids/:id/images/:imgid | Get image with imgid for droid with id
-images |	post | api/droids/:id/images | Add new image for droid with id
-images |	delete | api/droids/:id/images/:imgid | Delete image with imgid for droid with id
-purchased |	get | /api/droids/purchased | Get a list of all purchased droids
-purchased |	post | /api/droids/:id/purchased | Add a droid with id to the purchased table
+| Resource  | HTTP Verb | Path                          | Description                                |
+| --------- | --------- | ----------------------------- | ------------------------------------------ | --------------------------------- |
+| none      | get       | /                             | Get home / index page                      |
+| droids    | get       | /api/droids                   | Get all droids (paginated)                 | \* Route added, but no pagination |
+| droids    | post      | /api/droids                   | Create new droid                           |
+| droids    | delete    | /api/droids                   | Delete all droids from site                |
+| featured  | get       | /api/droids/featured          | Get all featured droids                    |
+| featured  | post      | /api/droids/featured/:id      | Add a droid to featured list               |
+| featured  | delete    | /api/droids/featured/:id      | Remove droid from featured list            |
+| droids    | get       | /api/droids/:id               | Get droid with id                          |
+| droids    | put       | /api/droids/:id               | Edit droid with id                         |
+| droids    | delete    | /api/droids/:id               | Delete droid with id                       |
+| users     | get       | /api/users                    | Get all users                              | \* Done                           |
+| users     | get       | /api/users/:id                | Get user with id                           | \* Done                           |
+| auth      | post      | /api/register                 | Register new user                          |
+| auth      | post      | /api/login                    | Login a user                               |
+| auth      | post      | /api/logout                   | Logout current user                        |
+| images    | get       | /api/droids/:id/images        | Get all images for droid with id           |
+| images    | get       | /api/droids/:id/images/:imgid | Get image with imgid for droid with id     |
+| images    | post      | api/droids/:id/images         | Add new image for droid with id            |
+| images    | delete    | api/droids/:id/images/:imgid  | Delete image with imgid for droid with id  |
+| purchased | get       | /api/droids/purchased         | Get a list of all purchased droids         |
+| purchased | post      | /api/droids/:id/purchased     | Add a droid with id to the purchased table |
