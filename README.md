@@ -138,10 +138,10 @@ Featured Table |
 
 **_ ROUTES _**
 
-| Resource  | HTTP Verb | Path                          | Description                                |
-| --------- | --------- | ----------------------------- | ------------------------------------------ | --------------------------------- |
+| Resource  | HTTP Verb | Path                          | Description                                | Notes
+| --------- | --------- | ----------------------------- | ------------------------------------------ | ---------------------------------------- |
 | none      | get       | /                             | Get home / index page                      |
-| droids    | get       | /api/droids                   | Get all droids (paginated)                 | \* Route added, but no pagination |
+| droids    | get       | /api/droids                   | Get all droids (paginated)                 | \* Route added, but no pagination        |
 | droids    | post      | /api/droids                   | Create new droid                           |
 | droids    | delete    | /api/droids                   | Delete all droids from site                |
 | featured  | get       | /api/droids/featured          | Get all featured droids                    |
@@ -150,8 +150,8 @@ Featured Table |
 | droids    | get       | /api/droids/:id               | Get droid with id                          |
 | droids    | put       | /api/droids/:id               | Edit droid with id                         |
 | droids    | delete    | /api/droids/:id               | Delete droid with id                       |
-| users     | get       | /api/users                    | Get all users                              | \* Done                           |
-| users     | get       | /api/users/:id                | Get user with id                           | \* Done                           |
+| users     | get       | /api/users                    | Get all users                              | \* Done                                 |
+| users     | get       | /api/users/:id                | Get user with id                           | \* Done                                 |
 | auth      | post      | /api/register                 | Register new user                          |
 | auth      | post      | /api/login                    | Login a user                               |
 | auth      | post      | /api/logout                   | Logout current user                        |
