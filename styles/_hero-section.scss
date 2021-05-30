@@ -5,18 +5,18 @@
   align-items: center;
   background-color: #00236d;
   height: 30rem;
-}
 
-#hero-section > div > .hero-message {
-  color: #fff;
-}
+  div > .hero-message {
+    color: #fff;
+  }
 
-#hero-section > div > form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 2rem;
+  div > form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+  }
 }
 
 .input-btn {
@@ -38,19 +38,19 @@
 @media screen and (min-width: 1024px) {
   #hero-section {
     flex-direction: row;
-  }
 
-  #hero-section > img {
-    display: block;
-    height: 90%;
-    margin-top: 3rem;
-    margin-left: 5rem;
-  }
+    img {
+      display: block;
+      height: 90%;
+      margin-top: 3rem;
+      margin-left: 5rem;
+    }
 
-  #hero-section > div > form {
-    flex-direction: row;
-    align-items: center;
-    justify-items: center;
+    div > form {
+      flex-direction: row;
+      align-items: center;
+      justify-items: center;
+    }
   }
 
   #search-bar {
