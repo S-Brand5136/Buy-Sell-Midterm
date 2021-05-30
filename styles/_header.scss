@@ -1,0 +1,37 @@
+/* Header styles */
+
+header#page-header {
+  background-color: #e5e5ec;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 8.75rem;
+  width: 100%;
+  position: sticky;
+  top: 0;
+}
+
+header#page-header > h3 {
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links {
+  width: 250px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#logout {
+  margin-left: 2rem;
+}
+
+@media screen and (min-width: 1024px) {
+  header#page-header {
+    flex-direction: row;
+    padding: 0 10rem 0 10rem;
+  }
+}

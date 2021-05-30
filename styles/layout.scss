@@ -1,9 +1,16 @@
 // See: https://sass-lang.com/
+@import "hero-section";
+@import "header";
 
 body {
-  background-color: #EEE;
+  background-color: #eee;
 
   h1 {
     color: #244751;
+  }
+
+  a {
+    color: black;
+    text-decoration: none;
   }
 }
