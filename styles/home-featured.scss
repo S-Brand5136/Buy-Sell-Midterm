@@ -5,6 +5,11 @@
 #featuredDroids {
   height: 100%;
   border: 3px solid black;
+
+  .card {
+    background-color: #353535;
+    font-size: 1.2rem;
+  }
 }
 
 .carousel-item {
@@ -30,9 +35,4 @@
       flex-basis: 1;
     }
   }
-}
-
-.card {
-  background-color: #353535;
-  font-size: 1.2rem;
 }
