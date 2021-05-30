@@ -26,7 +26,7 @@ module.exports = (db) => {
     db.query(`SELECT * FROM users WHERE id = $1;`, queryParams)
       .then((data) => {
         console.log(data);
-        return res.status(400).json({ user: data.rows });
+        return res.status(200).json({ user: data.rows });
       })
       .catch((err) => {
         res.status(500).json({ error: err.message });
