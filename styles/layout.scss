@@ -1,9 +1,12 @@
 // See: https://sass-lang.com/
 @import "hero-section";
 @import "header";
+@import "home-featured";
 
 body {
-  background-color: #eee;
+  background-color: #EEE;
+  padding: 0;
+  margin: 0;
 
   h1 {
     color: #244751;
