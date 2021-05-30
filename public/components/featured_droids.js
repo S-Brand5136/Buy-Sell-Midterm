@@ -1,15 +1,30 @@
 // Pass in and object where the key droids is an array of featured droids.
 const featuredDroids = function({droids}) {
+  let featuredString = `
+  <div class="container pb-3">
+    <h2>Featured Droids</h2>
+    <div id="featuredCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div id="featuredIndicators" class="carousel-indicators">
+  `;
+
   for (let i = 0; i < droids.length; i++) {
-    let inner = '';
     if (i === 0) {
-      $('#featuredIndicators').append(`<button type="button" data-bs-target="#featuredCarousel" data-bs-slide-to="${i}" class="active"></button>`)
-      inner += '<div class="carousel-item active">';
+      featuredString += `<button type="button" data-bs-target="#featuredCarousel" data-bs-slide-to="${i}" class="active"></button>`;
     } else {
-      $('#featuredIndicators').append(`<button type="button" data-bs-target="#featuredCarousel" data-bs-slide-to="${i}"></button>`);
-      inner += '`<div class="carousel-item">';
+      featuredString += `<button type="button" data-bs-target="#featuredCarousel" data-bs-slide-to="${i}"></button>`;
     }
-    inner += `
+  }
+
+  featuredString += `</div><div id="featuredDroids" class="carousel-inner">`;
+
+  for (let i = 0; i < droids.length; i++) {
+    if (i === 0) {
+      featuredString += '<div class="carousel-item active">';
+    } else  {
+      featuredString += '<div class="carousel-item">';
+    }
+
+    featuredString += `
       <div>
         <img src="${droids[i].image_url}" class="d-block" alt="A droid named ${droids[i].name}">
         <div class="card text-light m-0 border-0">
@@ -27,6 +42,21 @@ const featuredDroids = function({droids}) {
       </div>
     </div>
     `;
-    $('#featuredDroids').append(inner);
   }
+
+  featuredString += `
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#featuredCarousel" data-bs-slide="prev">
+  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+  <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#featuredCarousel" data-bs-slide="next">
+  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+  <span class="visually-hidden">Next</span>
+  </button>
+  </div>
+  </div>
+  `;
+
+  return featuredString;
 };
