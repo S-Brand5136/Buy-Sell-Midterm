@@ -1,14 +1,7 @@
-$(() => {
-  window.header = {};
-
-  const $pageHeader = $("page-header");
-  const currentUser = null;
-  function updateHeader(user) {
-    currentUser = user;
-    let userLinks;
-
-    if (!user) {
-      userLinks = `<div class="container-fluid flex-row justify-content-end">
+function updateHeader(user) {
+  return !user
+    ? `
+      <div class="container-fluid flex-row justify-content-end">
       <a class="me-3" href="">Log in</a>
       <a href="">Register</a>
     </div>
@@ -20,11 +13,10 @@ $(() => {
         <a href="">Purchased</a>
       </nav>
       <button class="btn btn-primary">Start selling</button>
-    </div>`;
-    } else {
-      userLinks = ` <div class="container-fluid flex-row justify-content-end">
+    </div>`
+    : ` <div class="container-fluid flex-row justify-content-end">
       <img alt="avatar">
-      <span>Logged in as: Yoda</span>
+      <span>Logged in as: ${user.name}</span>
       <a href="" id="logout">Log out</a>
     </div>
     <div class="container-fluid flex-row justify-content-between">
@@ -37,10 +29,4 @@ $(() => {
       <button class="btn btn-primary">Start selling</button>
     </div>
       `;
-    }
-
-    $pageHeader.append(userLinks);
-  }
-
-  window.header.update = updateHeader;
-});
+}

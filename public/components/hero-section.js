@@ -1,6 +1,5 @@
-$(() => {
-  const heroSection = `
-  <section id="hero-section">
+const heroSection = () => {
+  return `<section id="hero-section">
   <div>
     <div class="hero-message">
       <h2>#1 Market Place to Buy and Sell Droids</h2>
@@ -12,6 +11,5 @@ $(() => {
     </form>
   </div>
   <img src="./images/sandCrawler.png" class="img-fluid" alt="">
-</section>
-  `;
-});
+</section>`;
+};
