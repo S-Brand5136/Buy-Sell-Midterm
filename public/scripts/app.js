@@ -1,7 +1,6 @@
 $(() => {
   const path = location.pathname;
   $('#main-content').html('');
-  console.log('path', path);
 
   switch (path) {
     case '/':
