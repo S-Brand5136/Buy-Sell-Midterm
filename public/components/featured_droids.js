@@ -26,7 +26,7 @@ const featuredDroids = function({droids}) {
 
     featuredString += `
       <div>
-        <img src="${droids[i].image_url}" class="d-block" alt="A droid named ${droids[i].name}">
+        <img src="../${droids[i].image_url}" class="d-block" alt="A droid named ${droids[i].name}">
         <div class="card text-light m-0 border-0">
           <div class="card-body">
             <h4 class="card-title"><span>${droids[i].droid_name}</span> - $${droids[i].price}</h4>
