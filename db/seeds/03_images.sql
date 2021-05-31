@@ -4,4 +4,4 @@ VALUES
 (2, true, 'images/droid_images/p2_series.webp'),
 (3, true, 'images/droid_images/bb-8jpg'),
 (4, true, 'images/droid_images/c3po.jpg'),
-(4, true, 'images/droid_images/c3po-2.jpeg');
+(4, false, 'images/droid_images/c3po-2.jpeg');
