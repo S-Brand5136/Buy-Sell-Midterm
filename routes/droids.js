@@ -10,9 +10,10 @@ module.exports = (db) => {
     const offset = req.body.offset || 0;
     const queryParams = [limit, offset];
     let queryString = `
-    SELECT droids.* FROM droids
-    LEFT OUTER JOIN purchases ON droid_id = droids.id
-    WHERE droid_id IS NULL `;
+    SELECT droids.*, images.image_url FROM droids
+    JOIN images ON droids.id = images.droids_id
+    LEFT OUTER JOIN purchases ON purchases.droid_id = droids.id
+    WHERE purchases.droid_id IS NULL `;
 
     if(req.body.keyword) {
       queryParams.push(`%${req.body.keyword.toLowerCase()}%`);

@@ -5,6 +5,10 @@
   .card {
     max-width: 100%px;
 
+    img {
+      max-height: 250px;
+      width: 100%;
+    }
     span {
       width: auto;
       text-align: center;
