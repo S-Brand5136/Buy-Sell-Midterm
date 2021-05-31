@@ -28,7 +28,7 @@ const footerComponent = () => {
       <section class='social-links'>
         <h4>Source Files</h4>
         <ul>
-          <li><a>Github</a></li>
+          <li><a target='_blank' href='https://github.com/S-Brand5136/Buy-Sell-Midterm'>Github</a></li>
         </ul>
       </section>
     </div>
