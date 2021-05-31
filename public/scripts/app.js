@@ -10,7 +10,6 @@ $(() => {
   .then(() => {
     // Start carousel.
     const myCarousel = document.querySelector('#featuredCarousel');
-    console.log('myCarousel', myCarousel);
     const carousel = new bootstrap.Carousel(myCarousel);
 
     // Add about section below carousel.
