@@ -1,24 +1,58 @@
+@import "variables";
+
 #show-droid {
   h2 {
     text-align: center;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    font-size: 3rem;
+    color: $bg-primary-dark;
+    font-family: $header-font;
   }
 
-  div.jumbotron {
+  div.container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
+    font-family: $subHeader-font;
+    font-size: 1.2rem;
+
+    > div {
+      display:  flex;
+      justify-content: center;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      a {
+        color: $bg-primary-dark;
+        text-decoration: underline;
+      }
+    }
   }
 
-  .primaryImage {
-
-  }
-
-  .secondaryImages {
-    display: flex;
-    justify-content: space-between;
-
+  .droid-primary {
     img {
       object-fit: cover;
+      width: 30rem;
+      border: 2px solid black;
+    }
+  }
+
+  .droid-secondary {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    img {
+      width: 8rem;
+      height: 8rem;
+      object-fit: contain;
+      border: 1px solid black;
+      margin: 0 1.5rem;
+      cursor: pointer;
     }
   }
 }

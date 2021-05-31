@@ -51,7 +51,7 @@ module.exports = (db) => {
   router.get("/:id", (req, res) => {
     const id = req.params.id;
     const queryString1 = `
-    SELECT droids.*, users.name as sellers_name
+    SELECT droids.*, users.name as sellers_name, email
     FROM droids
     INNER JOIN users ON users.id = sellers_id
     WHERE droids.id = $1;
