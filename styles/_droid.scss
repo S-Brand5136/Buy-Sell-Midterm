@@ -13,7 +13,6 @@
   div.container {
     display: flex;
     justify-content: center;
-    font-family: $subHeader-font;
     font-size: 1.2rem;
 
     > div {
@@ -31,9 +30,14 @@
         text-decoration: underline;
       }
     }
+
+    h3, strong {
+      font-family: $subHeader-font;
+    }
   }
 
   .droid-primary {
+    margin-right: 1.5rem;
     img {
       object-fit: cover;
       width: 30rem;
@@ -45,6 +49,7 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    order: -1;
 
     img {
       width: 8rem;
@@ -53,6 +58,13 @@
       border: 1px solid black;
       margin: 0 1.5rem;
       cursor: pointer;
+      transition: all .2s;
+
+      &:hover {
+        border: 1px solid $bg-primary-light;
+        box-shadow: 3px 3px 5px $bg-primary-light;
+        transform: translate(-5px, -5px);
+      }
     }
   }
 }
