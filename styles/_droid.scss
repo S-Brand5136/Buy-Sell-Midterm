@@ -1,0 +1,24 @@
+#show-droid {
+  h2 {
+    text-align: center;
+  }
+
+  div.jumbotron {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .primaryImage {
+
+  }
+
+  .secondaryImages {
+    display: flex;
+    justify-content: space-between;
+
+    img {
+      object-fit: cover;
+    }
+  }
+}

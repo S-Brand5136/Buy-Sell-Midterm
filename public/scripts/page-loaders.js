@@ -65,6 +65,20 @@ const loadHomePage = function() {
 // Droid Page Functions
 //
 
+const loadMainContentDroid = function(droid) {
+  $('#main-content').append(individualDroid(droid));
+}
+
+const loadDroidPage = function(id) {
+  $.ajax({
+    method: 'GET',
+    url: `/api/droids/${id}`
+  })
+    .then((droid) => {
+      loadContent(() => loadMainContentDroid(droid));
+    })
+};
+
 const loadMainContentDroids = function() {
   $('#main-content').html('<h1>DROIDS!</h1>');
 };
