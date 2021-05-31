@@ -54,8 +54,8 @@ app.use("/api/images", imagesRoutes(db));
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
-app.get("/", (req, res) => {
-  res.render("index");
+app.get("*", (req, res) => {
+  res.sendFile(__dirname + "/public/index.html");
 });
 
 app.listen(PORT, () => {
