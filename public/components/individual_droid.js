@@ -1,6 +1,5 @@
 const individualDroid = function(droid) {
   const primaryImage = droid.images.filter(img => img.is_primary)[0].image_url;
-  console.log(primaryImage);
   const otherImages = droid.images.filter(img => !img.is_primary);
 
   let secondaryImages = '';
