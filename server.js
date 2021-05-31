@@ -39,11 +39,17 @@ app.use(express.static("public"));
 const usersRoutes = require("./routes/users");
 const featuredRoutes = require("./routes/featured");
 const droidsRoutes = require("./routes/droids");
+const authRoutes = require("./routes/auth");
+const purchasesRoutes = require("./routes/auth");
+const imagesRoutes = require("./routes/auth");
 
 // Resource routes
 app.use("/api/users", usersRoutes(db));
 app.use("/api/droids/featured", featuredRoutes(db));
 app.use("/api/droids", droidsRoutes(db));
+app.use("/api/auth", authRoutes(db));
+app.use("/api/purchases", purchasesRoutes(db));
+app.use("/api/images", imagesRoutes(db));
 
 // Home page
 // Warning: avoid creating more routes in this file!
