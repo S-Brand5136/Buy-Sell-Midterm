@@ -8,7 +8,6 @@ $(() => {
       loadHomePage();
       break;
     case '/droids':
-      console.log('in /droids case');
       loadDroidsPage();
       break;
     default:
