@@ -18,3 +18,11 @@ body {
     text-decoration: none;
   }
 }
+
+@media screen and (max-width: 560px) {
+  #main-content {
+    .container {
+      padding: 0;
+    }
+  }
+}

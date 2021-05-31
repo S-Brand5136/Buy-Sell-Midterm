@@ -9,13 +9,26 @@
   width: 100%;
   box-sizing: border-box;
   margin: 4rem 0;
-  height: 30vh;
 
   > div {
     border: 1px solid black;
     padding: .7rem;
-    max-width: 16rem;
-    height: 100%;
+    width: 16rem;
+    height: 16rem;
     background-color: $bg-general;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  #about-us {
+    flex-direction: column;
+    padding: 1rem;
+    margin-top: 1rem;
+
+    > div {
+      width: 100%;
+      height: auto;
+      margin: 1rem 0;
+    }
   }
 }
