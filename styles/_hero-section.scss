@@ -1,3 +1,5 @@
+@import "variables";
+
 #hero-section {
   display: flex;
   flex-direction: column;
@@ -8,7 +10,12 @@
   padding: 0 1.5rem 0 1.5rem;
 
   div > .hero-message {
-    color: #fff;
+    color: $bg-general;
+    font-family: $subHeader-font;
+
+    span {
+      letter-spacing: 1px;
+    }
   }
 
   div > form {
