@@ -3,7 +3,7 @@ const featuredDroids = function({droids}) {
   let featuredString = `
   <div class="container pb-3">
     <h2>Featured Droids</h2>
-    <div id="featuredCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div id="featuredCarousel" class="carousel slide">
     <div id="featuredIndicators" class="carousel-indicators">
   `;
 
