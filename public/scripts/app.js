@@ -2,12 +2,20 @@ $(() => {
   $.ajax({
     method: "GET",
     url: "/api/droids/featured",
-  }).done((droids) => {
+  })
+  .then((droids) => {
     getUserDetails(5);
     $("#main-content").append(heroSection());
     $("#main-content").append(featuredDroids(droids));
+    $('#main-content').append(aboutUs());
     $("#page-footer").append(footerComponent());
-  });
+  })
+  .then(() => {
+    // Start carousel.
+    const myCarousel = document.querySelector('#featuredCarousel');
+    const carousel = new bootstrap.Carousel(myCarousel);
+  })
+  .catch(err => console.error(err));
 });
 
 function getUserDetails(data) {
