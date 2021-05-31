@@ -6,6 +6,7 @@ $(() => {
     getUserDetails(1);
     $("#main-content").append(heroSection());
     $("#main-content").append(featuredDroids(droids));
+    $("#page-footer").append(footerComponent());
   });
 });
 
