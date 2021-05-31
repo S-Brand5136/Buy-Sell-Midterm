@@ -30,7 +30,7 @@ header#page-header {
   font-family: $subHeader-font;
   letter-spacing: 1px;
 
-  a {
+  a:not(:last-child) {
     padding-right: 1rem;
   }
 }

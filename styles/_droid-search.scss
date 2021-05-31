@@ -1,0 +1,47 @@
+@import 'variables';
+
+#droid-search {
+  display: grid;
+  grid-template-columns: 1 1fr;
+  justify-content: center;
+
+  h2 {
+    padding-left: 2rem;
+  }
+
+  span {
+    text-align: center;
+    width: 100%;
+    i {
+      color: $bg-primary-light;
+    }
+  }
+
+
+}
+
+@media screen and (min-width: 1024px) {
+  #droid-search {
+    grid-template-columns: .8fr 2fr;
+    padding: 0 1rem 0 1rem;
+    gap: 5rem;
+    #filter-btn {
+      display: none;
+    }
+
+    h2 {
+      position: absolute;
+      padding-left: 1rem;
+      top: 9rem;
+      left: 10rem;
+    }
+  }
+}
+
+@media screen and (min-width: 1400px) {
+
+  #droid-search {
+    padding: 0 10rem 0 10rem;
+  }
+}
+

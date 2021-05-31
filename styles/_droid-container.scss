@@ -1,0 +1,42 @@
+#droid-container {
+
+  padding: 0 1.5rem 0 1.5rem;
+
+  .card {
+    max-width: 100%px;
+
+    span {
+      width: auto;
+      text-align: center;
+    }
+
+    .button-group {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      margin-top: .5rem;
+
+      span {
+        font-size: 32px;
+        margin-right: 1rem;
+
+        i {
+          color: red;
+        }
+
+        i:hover {
+          cursor: pointer;
+        }
+      }
+    }
+
+  }
+
+}
+
+@media screen and (min-width: 1024px) {
+
+  #droid-container {
+    margin-top: 2.5rem;
+  }
+}

@@ -66,7 +66,23 @@ const loadHomePage = function() {
 //
 
 const loadMainContentDroids = function() {
-  $('#main-content').html('<h1>DROIDS!</h1>');
+  $('#main-content').append(droid_search());
+  $('#droid-search').prepend(filter_options());
+
+  $.ajax({
+    method: "GET",
+    url: "/api/droids",
+  })
+  .then((data) => {
+    const droids = data.droids
+    if(droids) {
+      for (const droid of droids) {
+        $('#droid-container').append(droid_card(droid));
+      }
+    }
+  })
+  .catch(err => console.error(err));
+
 };
 
 const loadDroidsPage = function() {

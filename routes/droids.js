@@ -14,6 +14,11 @@ module.exports = (db) => {
     LEFT OUTER JOIN purchases ON droid_id = droids.id
     WHERE droid_id IS NULL `;
 
+    if(req.body.keyword) {
+      queryParams.push(`%${req.body.keyword.toLowerCase()}%`);
+      queryString += `AND LOWER(description) LIKE $${queryParams.length} `;
+    }
+
     if (req.body.manufacturer) {
       queryParams.push(`%${req.body.manufacturer.toLowerCase()}%`);
       queryString += `AND LOWER(manufacturer) LIKE $${queryParams.length} `;
