@@ -48,6 +48,24 @@ module.exports = (db) => {
       });
   });
 
+  router.get("/:id", (req, res) => {
+    const id = req.params.id;
+    const queryString = `
+    SELECT droids.*, users.name as sellers_name
+    FROM droids
+    INNER JOIN users ON users.id = sellers_id
+    WHERE droids.id = $1`;
+    db.query(queryString, [id])
+      .then((data) => {
+        if (data.rows.length === 0) {
+          return res.status(404).json({error: `id ${id} was not found`})
+        }
+        const droid = data.rows[0];
+        return res.json(droid);
+      })
+      .catch(err => console.error(err.message));
+  });
+
   // GET: droid by manufacturer
   // RETURN: json object
   // ACCESS: public
