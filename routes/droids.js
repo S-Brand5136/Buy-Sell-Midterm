@@ -57,7 +57,7 @@ module.exports = (db) => {
     WHERE droids.id = $1;
     `;
     const queryString2 = `
-    SELECT image_url, is_primary
+    SELECT image_url, is_primary, images.id
     FROM images
     INNER JOIN droids ON droids.id = droids_id
     WHERE droids.id = $1;
@@ -73,7 +73,8 @@ module.exports = (db) => {
         const result = { ...data[0].rows[0] }
         result.images = data[1].rows
         res.json(result);
-      });
+      })
+      .catch(err => console.error(err));
   });
 
   // GET: droid by manufacturer
