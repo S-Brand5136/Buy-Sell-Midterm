@@ -8,6 +8,7 @@
     font-size: 3rem;
     color: $bg-primary-dark;
     font-family: $header-font;
+    text-shadow: 2px 2px 5px $bg-primary-light;
   }
 
   div.container {
@@ -33,6 +34,12 @@
 
     h3, strong {
       font-family: $subHeader-font;
+    }
+
+    h4 {
+      color: $price;
+      font-weight: 800;
+      font-size: 2rem;
     }
   }
 

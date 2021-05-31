@@ -21,6 +21,7 @@ const individualDroid = function(droid) {
         </div>
       </div>
       <article>
+        <h4>$ ${droid.price}</h4>
         <h3>Description</h3>
         <p>${droid.description}</p>
         <ul>
