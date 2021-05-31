@@ -1,5 +1,5 @@
 // See: https://sass-lang.com/
-@import "hero-section";
+@import "about-us";
 @import "header";
 @import "footer";
 @import "home-featured";
@@ -16,5 +16,13 @@ body {
   a {
     color: black;
     text-decoration: none;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  #main-content {
+    .container {
+      padding: 0;
+    }
   }
 }
