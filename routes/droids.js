@@ -44,7 +44,7 @@ module.exports = (db) => {
       })
       .catch((err) => {
         console.log(err);
-        res.status(500).json({ error: "Droids not found" });
+        res.status(404).json({ error: "Droids not found" });
       });
   });
 
@@ -101,5 +101,18 @@ module.exports = (db) => {
         res.status(404).json({ error: "Droids not found" });
       });
   });
+
+  // POST: droid to page if admin
+  // RETURN: droid json object
+  // ACCESS: private
+
+  // PUT: update droid if owner
+  // RETURN: updated droid json object
+  // ACCESS: private
+
+  // DELETE: droid if owner
+  // RETURN: JSON success message
+  // ACCESS: private
+
   return router;
 };
