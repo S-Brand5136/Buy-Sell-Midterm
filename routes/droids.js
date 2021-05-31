@@ -2,20 +2,41 @@ const express = require("express");
 const router = express.Router();
 
 module.exports = (db) => {
-  // GET: all droids
+  // GET: all droids w/ params if needed
   // RETURN: json object
   // ACCCESS: public
   router.get("/", (req, res) => {
-    let limit = req.body.limit || 10;
-    let offset = req.body.offset || 0;
+    const limit = req.body.limit || 10;
+    const offset = req.body.offset || 0;
     const queryParams = [limit, offset];
-    const queryString = `
+    let queryString = `
     SELECT droids.* FROM droids
     LEFT OUTER JOIN purchases ON droid_id = droids.id
-    WHERE droid_id IS NULL
-    LIMIT $1
-    OFFSET $2;
-    `;
+    WHERE droid_id IS NULL `;
+
+    if (req.body.manufacturer) {
+      queryParams.push(`%${req.body.manufacturer.toLowerCase()}%`);
+      queryString += `AND LOWER(manufacturer) LIKE $${queryParams.length} `;
+    }
+
+    if (req.body.model) {
+      queryParams.push(`%${req.body.model.toLowerCase()}%`);
+      queryString += `AND LOWER(model) LIKE $${queryParams.length} `;
+    }
+
+    if (req.body.minimum_price) {
+      queryParams.push(req.body.minimum_price);
+      queryString += `AND price >= $${queryParams.length} `;
+    }
+
+    if (req.body.maximum_price) {
+      queryParams.push(req.body.maximum_price);
+      queryString += `AND price <= $${queryParams.length} `;
+    }
+
+    queryString += `LIMIT $1
+    OFFSET $2;`;
+
     db.query(queryString, queryParams)
       .then((data) => {
         const droids = data.rows;
@@ -80,11 +101,5 @@ module.exports = (db) => {
         res.status(404).json({ error: "Droids not found" });
       });
   });
-
-  // GET: droid by price
-  // RETURN: json object
-  // ACCESS: public
-
-  
   return router;
 };
