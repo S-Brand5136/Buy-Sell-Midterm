@@ -50,20 +50,30 @@ module.exports = (db) => {
 
   router.get("/:id", (req, res) => {
     const id = req.params.id;
-    const queryString = `
+    const queryString1 = `
     SELECT droids.*, users.name as sellers_name
     FROM droids
     INNER JOIN users ON users.id = sellers_id
-    WHERE droids.id = $1`;
-    db.query(queryString, [id])
+    WHERE droids.id = $1;
+    `;
+    const queryString2 = `
+    SELECT image_url, is_primary
+    FROM images
+    INNER JOIN droids ON droids.id = droids_id
+    WHERE droids.id = $1;
+    `;
+    const droid = db.query(queryString1, [id]);
+    const images = db.query(queryString2, [id]);
+
+    Promise.all([droid, images])
       .then((data) => {
-        if (data.rows.length === 0) {
-          return res.status(404).json({error: `id ${id} was not found`})
+        if (!data || !data[0] || data[0].rows.length === 0) {
+          return res.json({ error: `There is no droid with id ${id}`});
         }
-        const droid = data.rows[0];
-        return res.json(droid);
-      })
-      .catch(err => console.error(err.message));
+        const result = { ...data[0].rows[0] }
+        result.images = data[1].rows
+        res.json(result);
+      });
   });
 
   // GET: droid by manufacturer
