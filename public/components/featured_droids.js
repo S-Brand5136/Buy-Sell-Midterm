@@ -1,7 +1,7 @@
 // Pass in and object where the key droids is an array of featured droids.
 const featuredDroids = function({droids}) {
   let featuredString = `
-  <div class="container pb-3">
+  <section class="container pb-3">
     <h2>Featured Droids</h2>
     <div id="featuredCarousel" class="carousel slide">
     <div id="featuredIndicators" class="carousel-indicators">
@@ -55,7 +55,7 @@ const featuredDroids = function({droids}) {
   <span class="visually-hidden">Next</span>
   </button>
   </div>
-  </div>
+  </section>
   `;
 
   return featuredString;
