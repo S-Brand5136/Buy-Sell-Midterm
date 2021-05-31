@@ -12,7 +12,6 @@ function updateHeader(user) {
         <a href="">Droids</a>
         <a href="">Purchased</a>
       </nav>
-      <button class="btn btn-primary">Start selling</button>
     </div>`
     : ` <div class="container-fluid flex-row justify-content-end">
       <img alt="avatar">
@@ -26,7 +25,7 @@ function updateHeader(user) {
         <a href="">Droids</a>
         <a href="">Purchased</a>
       </nav>
-      <button class="btn btn-primary">Start selling</button>
+      <button class="btn btn-primary" id="selling-btn">Start selling</button>
     </div>
       `;
 }

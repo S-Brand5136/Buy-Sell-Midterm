@@ -14,8 +14,14 @@ function getUserDetails(data) {
   return $.ajax({
     method: "GET",
     url: `/api/users/${data}`,
-  }).done((data) => {
-    const user = data.user[0];
-    $("#page-header").append(updateHeader(user));
-  });
+  })
+    .done((data) => {
+      const user = data.user[0];
+      if (user) {
+        return $("#page-header").append(updateHeader(user));
+      }
+    })
+    .catch((err) => {
+      return $("#page-header").append(updateHeader());
+    });
 }
