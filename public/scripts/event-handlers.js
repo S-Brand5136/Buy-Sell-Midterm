@@ -26,7 +26,7 @@ const getFavouriteDroidsEventHandler = function(userId) {
     url: `/api/users/${userId}/favourites`
   })
     .then((result) => {
-      // TODO: Handl the return value, result.
+      // TODO: Handle result / update UI.
       console.log(result);
     })
     .catch(err => console.error(err));
@@ -40,13 +40,13 @@ const addToFavouritesEventHandler = function(userId, droidId) {
     data: { droidId }
   })
     .then((result) => {
-      // TODO: Update page to show that droid has been added to favourites.
+      // TODO: Update UI to show that droid has been added to favourites.
       console.log(result);
     })
     .catch(err => console.error(err));
 };
 
-// Remove a droid from user's favourites
+// Remove a droid from user's favourites.
 const removeDroidFromFavouritesEventHandler = function(userId, droidId) {
   $.ajax({
     method: 'DELETE',
