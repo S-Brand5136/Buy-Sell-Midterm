@@ -79,6 +79,10 @@ const loadDroidPage = function(id) {
     url: `/api/droids/${id}`
   })
     .then((droid) => {
+      // If droid not found direct to 404 not found page.
+      if (droid.error) {
+        return changePage({id, error: 404}, '/404');
+      }
       loadContent(() => loadMainContentDroid(droid));
     })
 };

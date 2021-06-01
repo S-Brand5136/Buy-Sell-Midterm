@@ -1,8 +1,11 @@
 const routing = () => {
   const path = location.pathname;
+  // Clear existing content
   $('#main-content').html('');
   $('#page-header').html('');
   $('#page-footer').html('');
+
+  // Split path on '/' to get array of url segments
   const pathArr = path.split('/')
 
   switch (path) {
