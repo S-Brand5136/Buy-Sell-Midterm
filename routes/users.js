@@ -41,6 +41,7 @@ module.exports = (db) => {
       droids.price,
       manufacturer,
       model,
+      image_url,
       date_posted,
       favourites.id as fav_id,
       sold_price,
@@ -50,6 +51,7 @@ module.exports = (db) => {
     LEFT JOIN purchases ON droids.id = purchases.droid_id
     INNER JOIN favourites ON droids.id = favourites.droid_id
     INNER JOIN users ON users.id = droids.sellers_id
+    INNER JOIN images ON droids.id = images.droids_id AND images.is_primary = true
     WHERE favourites.user_id = $1;
     `;
     db.query(queryString, [userId])
