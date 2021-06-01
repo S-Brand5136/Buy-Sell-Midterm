@@ -2,8 +2,7 @@ function updateHeader(user) {
   return !user
     ? `
       <div class="container-fluid flex-row justify-content-end">
-      <a class="me-3" href="">Log in</a>
-      <a href="">Register</a>
+      <a class="me-3" id='login-btn'>Log in</a>
     </div>
     <div class="container-fluid flex-row justify-content-between">
       <h3><a href='/'>Droid Reclaimers</a></h3>
@@ -16,7 +15,7 @@ function updateHeader(user) {
     : ` <div class="container-fluid flex-row justify-content-end">
       <img alt="avatar">
       <span>Logged in as: ${user.name}</span>
-      <a href="" id="logout">Log out</a>
+      <a id="logout">Log out</a>
     </div>
     <div class="container-fluid flex-row justify-content-between">
     <h3><a href='/'>Droid Reclaimers</a></h3>
@@ -29,3 +28,16 @@ function updateHeader(user) {
     </div>
       `;
 }
+
+$('body').on('click', '#login-btn', function(event) {
+  $.ajax({
+    type: 'GET',
+    url: '/api/auth/4'
+  }).then((data) => {
+    const newUrl = `/users/${data.id}`;
+    changePage({}, '', newUrl);
+  })
+  .catch ((err) => {
+    alert(err.message)
+  })
+})

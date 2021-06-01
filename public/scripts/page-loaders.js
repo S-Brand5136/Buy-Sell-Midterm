@@ -10,25 +10,29 @@ const loadContent = function(main) {
 };
 
 const getUserDetails = function(data) {
-  return $.ajax({
-    method: "GET",
-    url: `/api/users/${data}`,
-  })
-  .done((data) => {
-    const user = data.user[0];
-    if (user) {
-      return $("#page-header").append(updateHeader(user));
-    }
+  if(data) {
+    return $.ajax({
+      method: "GET",
+      url: `/api/users/${data['userId']}`,
+    })
+    .done((data) => {
+      const user = data.user[0];
+      if (user) {
+        return $("#page-header").append(updateHeader(user));
+      }
+    })
+      .catch((err) => {
+        return $("#page-header").append(updateHeader());
+      });
+  }
     return $("#page-header").append(updateHeader());
-  })
-  .catch((err) => {
-    return $("#page-header").append(updateHeader());
-  });
 };
 
 const loadHeader = function() {
-  // TODO: Load user from cookie
-  getUserDetails(5);
+  const cookies = {};
+  cookies['userId'] = Cookies.get('userId');
+  cookies['isAdmin'] = Cookies.get('isAdmin') || false;
+  getUserDetails(cookies);
 };
 
 const loadFooter = function() {
