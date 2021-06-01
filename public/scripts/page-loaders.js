@@ -132,17 +132,12 @@ const loadMainContentUser = function(user) {
 };
 
 const loadUserPage = function(userId) {
-  $.ajax({
-    method: 'GET',
-    url: `/api/users/${userId}`
-  })
-    .then((result) => {
-      if (!result.user || result.user.length < 1) {
-        return changePage({userId}, '/');
-      }
-      loadContent(() => loadMainContentUser(result.user[0]));
-    })
-    .catch((err) => console.error(err));
+  const userString = localStorage.getItem('user');
+  if (!userString) {
+    return changePage({userId}, '/');
+  }
+  const user = JSON.parse(userString);
+  loadContent(() => loadMainContentUser(user));
 };
 
 //

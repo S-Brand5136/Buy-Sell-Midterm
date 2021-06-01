@@ -1,7 +1,6 @@
 const userPage = function(user) {
-  console.log(user);
   let userString = `
-  <div>
+  <div id="user-content">
     <section>
       <h2>${user.name}</h2>
       <img src="../${user.avatar_url}">
