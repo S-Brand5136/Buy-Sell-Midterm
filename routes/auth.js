@@ -7,8 +7,6 @@ module.exports = (db) => {
   // ACCESS: Public
   // RETURNS: user object
   router.get("/:id", (req, res) => {
-    // clear cookies
-    res.clearCookie('userId');
     //grab userId from params and set query string
       const userId = req.params.id
       const queryString = 'SELECT * FROM users WHERE id = $1';
@@ -16,9 +14,7 @@ module.exports = (db) => {
       db.query(queryString, [userId])
         .then((data) => {
           const user = data.rows[0];
-          // check for user and set cookies
           if(user) {
-            res.cookie('userId', userId);
             return (res.status(200).json(user));
           } else {
             // if user not found
@@ -29,14 +25,6 @@ module.exports = (db) => {
           console.log(err);
           return res.status(500).json({Error: err.message});
         })
-  });
-
-  // POST: clear cookies and logout user
-  // ACCESS: public
-  // RETURNS: json message
-  router.post("/logout", (req, res) => {
-    res.clearCookie('userId');
-    return res.status(200).json({msg: 'User succesfully logged out'});
   });
 
   return router;

@@ -9,29 +9,9 @@ const loadContent = function(main) {
   loadFooter();
 };
 
-const getUserDetails = function(data) {
-  if(data['userId']) {
-    return $.ajax({
-      method: "GET",
-      url: `/api/users/${data['userId']}`,
-    })
-    .done((data) => {
-      const user = data.user[0];
-      if (user) {
-        return $("#page-header").append(updateHeader(user));
-      }
-    })
-      .catch((err) => {
-        return $("#page-header").append(updateHeader());
-      });
-  }
-    return $("#page-header").append(updateHeader());
-};
-
 const loadHeader = function() {
-  const cookies = {};
-  cookies['userId'] = Cookies.get('userId');
-  getUserDetails(cookies);
+  const user = getUserFromStorage();
+  return $("#page-header").append(updateHeader(user));
 };
 
 const loadFooter = function() {
@@ -76,24 +56,17 @@ const loadMainContentDroid = function(droid) {
   $('#delete-droid').click(() => deleteDroidEventHandler(droid.id));
 }
 
-const loadDroidPage = function(id) {
-  $.ajax({
-    method: 'GET',
-    url: `/api/droids/${id}`
-  })
-    .then((droid) => {
-      // If droid not found direct to 404 not found page.
-      if (droid.error) {
-        return changePage({id, error: 404}, '/404');
-      }
-      loadContent(() => loadMainContentDroid(droid));
-    })
-};
 
-const loadMainContentDroids = function() {
-  $('#main-content').append(droid_search());
-  $('#droid-search').prepend(filter_options());
-  appendDroids();
+//
+// Droids page functions
+//
+
+const loadDroidsPage = function(id) {
+  return loadContent(() => {
+    $('#main-content').append(droid_search())
+    $('#droid-search').prepend(filter_options())
+    appendDroids()
+  });
 };
 
 // Helper function
@@ -118,10 +91,6 @@ const appendDroids = (data) => {
   })
   .catch(err => console.error(err));
 }
-
-const loadDroidsPage = function() {
-  loadContent(loadMainContentDroids);
-};
 
 //
 // User Detail Page Functions
