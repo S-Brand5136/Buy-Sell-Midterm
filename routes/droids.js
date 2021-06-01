@@ -78,7 +78,7 @@ module.exports = (db) => {
         }
         const result = { ...data[0].rows[0] }
         result.images = data[1].rows
-        res.json(result);
+        return res.json(result);
       })
       .catch(err => console.error(err));
   });
@@ -86,12 +86,8 @@ module.exports = (db) => {
   router.delete("/:id", (req, res) => {
     const id = req.params.id;
     const queryString = 'DELETE FROM droids WHERE id = $1';
-    db.query(queryString, [id])
-      .then(result => {
-        console.log(result);
-        return res.status(204);
-      })
-      .catch(err => console.error(err));
+    db.query(queryString, [id]);
+    return res.status(204).json();
   });
 
   // GET: droid by manufacturer
