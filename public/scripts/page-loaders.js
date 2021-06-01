@@ -65,6 +65,29 @@ const loadHomePage = function() {
 // Droid Page Functions
 //
 
+const loadMainContentDroid = function(droid) {
+  $('#main-content').append(individualDroid(droid));
+
+  // Add event listeners to small pictures
+  $('.droid-secondary img').click(function() {
+    let primaryImageSrc = $('.droid-primary img').attr('src');
+
+    // swap images
+    $('.droid-primary img').attr('src', $(this).attr('src'));
+    $(this).attr('src', primaryImageSrc);
+  });
+}
+
+const loadDroidPage = function(id) {
+  $.ajax({
+    method: 'GET',
+    url: `/api/droids/${id}`
+  })
+    .then((droid) => {
+      loadContent(() => loadMainContentDroid(droid));
+    })
+};
+
 const loadMainContentDroids = function() {
   $('#main-content').append(droid_search());
   $('#droid-search').prepend(filter_options());

@@ -10,6 +10,6 @@ const heroSection = () => {
       <input class="btn btn-outline-info input-btn" type="submit" value="Search">
     </form>
   </div>
-  <img src="./images/sandCrawler.png" class="img-fluid" alt="">
+  <img src="../images/sandCrawler.png" class="img-fluid" alt="">
 </section>`;
 };

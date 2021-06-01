@@ -1,0 +1,83 @@
+@import "variables";
+
+#show-droid {
+  h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    font-size: 3rem;
+    color: $bg-primary-dark;
+    font-family: $header-font;
+    text-shadow: 2px 2px 5px $bg-primary-light;
+  }
+
+  div.container {
+    display: flex;
+    justify-content: center;
+    font-size: 1.2rem;
+
+    > div {
+      display:  flex;
+      justify-content: center;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      a {
+        color: $bg-primary-dark;
+        text-decoration: underline;
+      }
+    }
+
+    h3, strong {
+      font-family: $subHeader-font;
+    }
+
+    h4 {
+      color: $price;
+      font-weight: 800;
+      font-size: 2rem;
+    }
+  }
+
+  .droid-primary {
+    margin-right: 1.5rem;
+    img {
+      object-fit: contain;
+      width: 30rem;
+      height: 30rem;
+      border: 2px solid black;
+    }
+  }
+
+  .droid-secondary {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    order: -1;
+
+    img {
+      width: 8rem;
+      height: 8rem;
+      object-fit: contain;
+      border: 1px solid black;
+      margin: 0 1.5rem;
+      cursor: pointer;
+      transition: all .2s;
+
+      &:hover {
+        border: 1px solid $bg-primary-light;
+        box-shadow: 3px 3px 5px $bg-primary-light;
+        transform: translate(-5px, -5px);
+      }
+
+      &:active {
+        transform: none;
+        box-shadow: 1px 1px 2px $bg-primary-dark;
+      }
+    }
+  }
+}

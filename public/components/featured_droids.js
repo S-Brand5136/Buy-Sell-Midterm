@@ -2,7 +2,7 @@
 const featuredDroids = function({droids}) {
   let featuredString = `
   <section class="container pb-3">
-    <h2>Featured Droids</h2>
+    <h2 class="main-content-title">Featured Droids</h2>
     <div id="featuredCarousel" class="carousel slide">
     <div id="featuredIndicators" class="carousel-indicators">
   `;
@@ -26,7 +26,7 @@ const featuredDroids = function({droids}) {
 
     featuredString += `
       <div>
-        <img src="${droids[i].image_url}" class="d-block" alt="A droid named ${droids[i].name}">
+        <img src="../${droids[i].image_url}" class="d-block" alt="A droid named ${droids[i].name}">
         <div class="card text-light m-0 border-0">
           <div class="card-body">
             <h4 class="card-title"><span>${droids[i].droid_name}</span> - $${droids[i].price}</h4>

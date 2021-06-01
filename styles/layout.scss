@@ -1,5 +1,6 @@
 // See: https://sass-lang.com/
 @import "about-us";
+@import "droid";
 @import "header";
 @import "footer";
 @import "hero-section";
@@ -20,6 +21,13 @@ body {
   a {
     color: black;
     text-decoration: none;
+  }
+}
+
+#main-content {
+  .container {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
   }
 }
 
