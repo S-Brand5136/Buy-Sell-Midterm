@@ -2,15 +2,14 @@
 - Auth
   - [ ] Auth route to switch between users
     - [X] add cookie parser middleware
-    - [ ] Add auth route
-      - [ ] Get user based on ID passed in
-      - [ ] Checks if cookie already set
-          - [ ] If not set cookie, if it is return 204
-          - [ ] If user is admin create another cookie
+    - [X] Add auth route
+      - [X] Get user based on ID passed in
+      - [x] Removes clears cookies for ease of switching users
+          - [X] set userId cookie to userid
+          - [X] If user is admin create another cookie
+    - [ ] Connect log in button to route
           - [ ] On success redirect to userpage
           - [ ] On fail redirect to access denied page
-    - [ ] Connect log in button to route
-    - [ ] Connect log out button to route
   - [ ] auth/logout route
     - [ ] removes all cookies
     - [ ] on return redirect to homepage
