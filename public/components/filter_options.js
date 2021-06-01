@@ -35,7 +35,6 @@ $('body').on('click', '#filter-btn', () => {
 
 $('body').on('submit', '#filter-form', function(event) {
   event.preventDefault();
-
   const data = $(this).serialize();
   appendDroids(data);
 })

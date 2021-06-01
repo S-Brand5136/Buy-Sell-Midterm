@@ -1,6 +1,20 @@
 # TODO
-- General
+- Auth
   - [ ] Auth route to switch between users
+    - [X] add cookie parser middleware
+    - [ ] Add auth route
+      - [ ] Get user based on ID passed in
+      - [ ] Checks if cookie already set
+          - [ ] If not set cookie, if it is return 204
+          - [ ] If user is admin create another cookie
+          - [ ] On success redirect to userpage
+          - [ ] On fail redirect to access denied page
+    - [ ] Connect log in button to route
+    - [ ] Connect log out button to route
+  - [ ] auth/logout route
+    - [ ] removes all cookies
+    - [ ] on return redirect to homepage
+    - [ ] on fail return to access denied page
 
 - Home Page
   - [X] Page created
@@ -10,6 +24,8 @@
 
 - Droids page
   - [X] Page created
+  - [ ] Add to favourites button
+    - [ ] Link to favourites click handler
   - [ ] Fix bug when going from small to large screen, display settings
 
 - User / Admin page
@@ -35,9 +51,7 @@
   - [X] See featued
   - [X] Filter droids by price
   - [ ] Favourite Droid
-  - [ ] User See listings responded to
-  - [ ] See listings I've responded too
-
+  - [X] As a user I want to send messages to owner
 // Users
 
 - [X] As a user I want to be able to see featured droids on the homepage
@@ -48,19 +62,17 @@
 
 - As a user I want to send messages to the user that is listing that item
 
-- As a user I want to be able to see listings I've responded too
-
 Admin
   - [ ] Modal to add droid
   - [X] Remove Droid
   - [ ] Mark droids as sold
-  - [ ] Message back
+  - [X] Message back
 
 // Admins
 
 - As an Admin I want to be able to list droids to be seen by users
   
-- As an Admin I want to be able to remove droids from the site
+- [X] As an Admin I want to be able to remove droids from the site
 
 - as an Admin I want to be able to mark droids as sold
 
