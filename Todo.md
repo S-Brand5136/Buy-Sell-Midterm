@@ -10,6 +10,7 @@
 
 - Droids page
   - [X] Page created
+  - [ ] Fix bug when going from small to large screen, display settings
 
 - User / Admin page
   - [ ] Page created
@@ -17,13 +18,16 @@
 - Modal to add Droid
   - [ ] Created
 
-
 **_ Stretch _**
 
 - Components
   - [ ] Homepage categories
   - [ ] Header style
+        - [ ] Add Avatar
+        - [ ] Take a look back into responsivness
+        - [ ] links for logged in or not
   - [ ] More filter options
+  - [ ] Edit user details on user page
 
 **_ USER STORIES _**
 
@@ -48,7 +52,7 @@
 
 Admin
   - [ ] Modal to add droid
-  - [ ] Remove Droid
+  - [X] Remove Droid
   - [ ] Mark droids as sold
   - [ ] Message back
 
