@@ -127,7 +127,7 @@ Featured Table |
 | users     | get       | /api/users                    | Get all users                              | \* Done                                 |
 | users     | get       | /api/users/:id                | Get user with id                           | \* Done                                 |
 | users     | get       | /api/users/:id/favourites     | Get favourites favourites list             |
-| users     | post      | /api/users/:id/favourites/:did | Add droid to favourites list               |
+| users     | post      | /api/users/:id/favourites     | Add droid to favourites list               |
 | users     | post      | /api/users/:id/favourites/:did | Remove droid to favourites list               |
 | auth      | post      | /api/register                 | Register new user                          |
 | auth      | post      | /api/login                    | Login a user                               |
