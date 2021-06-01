@@ -83,6 +83,17 @@ module.exports = (db) => {
       .catch(err => console.error(err));
   });
 
+  router.post("/:id", (req, res) => {
+    const id = req.params.id;
+    const queryString = 'DELETE FROM droids WHERE id = $1';
+    db.query(queryString, [id])
+      .then(result => {
+        console.log(result);
+        return res.status(204);
+      })
+      .catch(err => console.error(err));
+  });
+
   // GET: droid by manufacturer
   // RETURN: json object
   // ACCESS: public

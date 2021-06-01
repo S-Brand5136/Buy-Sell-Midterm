@@ -28,6 +28,7 @@ const individualDroid = function(droid) {
           <li><strong>Model:</strong> ${droid.model}</li>
           <li><strong>Seller:</strong> ${droid.sellers_name}.  Email: <a href="mailto:${droid.email}">${droid.email}</a></li>
         </ul>
+        <button id="delete-droid" class="btn btn-danger">Delete Droid</button>
       </article>
     </div>
   </section>
