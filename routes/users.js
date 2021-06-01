@@ -32,7 +32,6 @@ module.exports = (db) => {
 
   // GET all favourites for user with id
   router.get('/:id/favourites', (req, res) => {
-    // TODO: Implement Me
     const userId = req.params.id;
     const queryString = `
     SELECT
@@ -64,9 +63,18 @@ module.exports = (db) => {
   });
 
   // Add droid with did (droid id) to user with id's favourites list
-  router.post('/:id/favourites/:did', (req, res) => {
-    // TODO: Implement Me
-    res.status(204).json();
+  router.post('/:id/favourites/', (req, res) => {
+    const { droidId } = req.body;
+    const userId = req.params.id;
+    const queryString = 'INSERT INTO favourites (droid_id, user_id) VALUES ($1, $2) RETURNING *;';
+    db.query(queryString, [droidId, userId])
+    .then((result) => {
+      return res.status(201).json(result.rows[0]);
+    })
+    .catch((err) => {
+      console.error(err);
+      return res.status(500).json({error: 'Internal server error'});
+    });
   });
 
   // Remove the droid with did from favourites list for user with id

@@ -37,10 +37,11 @@ const getFavouriteDroidsEventHandler = function(userId) {
 const addToFavouritesEventHandler = function(userId, droidId) {
   $.ajax({
     method: 'POST',
-    url: `/api/users/${userId}/favourites/${droidId}`
+    url: `/api/users/${userId}/favourites/`,
+    data: { droidId }
   })
     .then((result) => {
-      // TODO: Handl the return value, result.
+      // TODO: Update page to show that droid has been added to favourites.
       console.log(result);
     })
     .catch(err => console.error(err));
