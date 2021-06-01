@@ -1,4 +1,5 @@
 function updateHeader(user) {
+
   return !user
     ? `
       <div class="container-fluid flex-row justify-content-end">
@@ -34,9 +35,10 @@ $('body').on('click', '#login-btn', function(event) {
     type: 'GET',
     url: '/api/auth/2'
   }).then((data) => {
+    // Stringify user and add it to localstorage
     const userJson = JSON.stringify(data);
     localStorage.setItem('user', userJson);
-    const newUrl = `/users/${data.id}`;
+    const newUrl = `/user/${data.id}`;
     changePage(data, newUrl);
   })
   .catch ((err) => {
@@ -45,16 +47,7 @@ $('body').on('click', '#login-btn', function(event) {
 })
 
 $('body').on('click', '#logout', function(event) {
-  $.ajax({
-    type: 'POST',
-    url: '/api/auth/logout'
-  }).then((data) => {
-    localStorage.removeItem('user');
-    const newUrl = `/`;
-    changePage({}, newUrl);
-  })
-  .catch ((err) => {
-    alert(err.message)
-  })
+  localStorage.removeItem('user');
+  changePage({}, '/');
 })
 

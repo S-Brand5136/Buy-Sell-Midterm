@@ -37,3 +37,8 @@ const changePage = (state, newUrl) => {
 window.onload = () => {
   routing();
 }
+
+const getUserFromStorage = () => {
+  userDetails = localStorage.getItem('user') || {};
+  return JSON.parse(userDetails)
+}
