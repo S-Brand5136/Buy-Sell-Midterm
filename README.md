@@ -58,32 +58,6 @@ The following steps are only for _one_ of the group members to perform.
 - Premise
 - An app where you can put different types of things up for sale. You can pick a specific niche of items to sell for the app (a cars site, a shoes site, etc). This lets buyers find the items they are looking for quickly, and easily contact sellers.
 
-**_ USER STORIES _**
-
-// Users
-
-- As a user I want to be able to see featured droids on the homepage
-
-- As a user I want to filter possible droids by price
-
-- As a user I want to be able to favourite droids to check up on them later
-
-- As a user I want to send messages to the user that is listing that item
-
-- As a user I want to be able to see listings I've responded too
-
-// Admins
-
-- As an Admin I want to be able to list droids to be seen by users
-
-- As an Admin I want to be able to remove droids from the site
-
-- as an Admin I want to be able to mark droids as sold
-
-- As an Admin I want to be able to message via app, email or text back on negotiations in buying the bounty
-
-**_ ERD _**
-
 - _Tables_
 
 Users |
