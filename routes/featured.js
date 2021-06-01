@@ -14,7 +14,7 @@ module.exports = (db) => {
     SELECT droids.id, droids.name droid_name, description, price, manufacturer, model, start_date, end_date, image_url, users.name as seller
     FROM featured_droids
     INNER JOIN droids ON droids.id = featured_droids.droid_id
-    INNER JOIN images ON droids.id = images.droids_id
+    INNER JOIN images ON droids.id = images.droids_id AND images.is_primary = true
     INNER JOIN users ON users.id = sellers_id;
     `;
     db.query(queryString)

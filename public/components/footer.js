@@ -1,5 +1,5 @@
 const footerComponent = () => {
-  return `  <h2><img src='./images/r2d2-icon.svg' /> Droid Reclaimer Inc.</h2>
+  return `  <h2><img src='../images/r2d2-icon.svg' /> Droid Reclaimer Inc.</h2>
   <div id="footer-info-block">
     <section>
       <h4>Created By:</h4>

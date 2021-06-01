@@ -54,6 +54,35 @@ module.exports = (db) => {
       });
   });
 
+  router.get("/:id", (req, res) => {
+    const id = req.params.id;
+    const queryString1 = `
+    SELECT droids.*, users.name as sellers_name, email
+    FROM droids
+    INNER JOIN users ON users.id = sellers_id
+    WHERE droids.id = $1;
+    `;
+    const queryString2 = `
+    SELECT image_url, is_primary, images.id
+    FROM images
+    INNER JOIN droids ON droids.id = droids_id
+    WHERE droids.id = $1;
+    `;
+    const droid = db.query(queryString1, [id]);
+    const images = db.query(queryString2, [id]);
+
+    Promise.all([droid, images])
+      .then((data) => {
+        if (!data || !data[0] || data[0].rows.length === 0) {
+          return res.json({ error: `There is no droid with id ${id}`});
+        }
+        const result = { ...data[0].rows[0] }
+        result.images = data[1].rows
+        res.json(result);
+      })
+      .catch(err => console.error(err));
+  });
+
   // GET: droid by manufacturer
   // RETURN: json object
   // ACCESS: public
