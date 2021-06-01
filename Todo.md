@@ -40,7 +40,7 @@
   - [ ] Homepage categories
   - [ ] Header style
         - [ ] Add Avatar
-        - [ ] Take a look back into responsivness
+        - [ ] Take a look back into responsiveness
         - [ ] links for logged in or not
   - [ ] More filter options
   - [ ] Edit user details on user page
@@ -48,7 +48,7 @@
 **_ USER STORIES _**
 
 - User
-  - [X] See featued
+  - [X] See featured
   - [X] Filter droids by price
   - [ ] Favourite Droid
   - [X] As a user I want to send messages to owner
