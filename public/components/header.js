@@ -24,7 +24,7 @@ function updateHeader(user) {
         <a href="/droids">Droids</a>
         <a href="">Purchased</a>
       </nav>
-      ${user.is_admin ? `<button class="btn btn-primary" id="selling-btn">Start selling</button>` : ''}
+      ${user.is_admin ? `<button class="btn btn-primary" id="selling-btn">Create Listing</button>` : ''}
     </div>
       `;
 }
@@ -32,7 +32,7 @@ function updateHeader(user) {
 $('body').on('click', '#login-btn', function(event) {
   $.ajax({
     type: 'GET',
-    url: '/api/auth/4'
+    url: '/api/auth/2'
   }).then((data) => {
     const newUrl = `/users/${data.id}`;
     changePage({}, newUrl);
