@@ -56,6 +56,19 @@ const loadMainContentDroid = function(droid) {
   $('#delete-droid').click(() => deleteDroidEventHandler(droid.id));
 }
 
+const loadDroidPage = function(id) {
+  $.ajax({
+    method: 'GET',
+    url: `/api/droids/${id}`
+  })
+    .then((droid) => {
+      // If droid not found direct to 404 not found page.
+      if (droid.error) {
+        return changePage({id, error: 404}, '/404');
+      }
+      loadContent(() => loadMainContentDroid(droid));
+    })
+};
 
 //
 // Droids page functions
@@ -70,26 +83,31 @@ const loadDroidsPage = function(id) {
 };
 
 // Helper function
-// Clears droid-container
 // Appends droids to droid-container
 const appendDroids = (data) => {
-  $('#droid-container').html('');
-  $.ajax({
+  const user = getUserFromStorage();
+  const userId = user ? user.id : -1;
+
+  Promise.all([$.ajax({
     type: 'GET',
     url: `/api/droids`,
     data
-  })
-  .then((data) => {
-    const droids = data.droids
+  }), getFavouriteDroidsEventHandler(userId)])
+  .then(data => {
+    $('#droid-container').html('');
+    const droids = data[0].droids;
+    const favourites = data[1];
+
     if(droids.length > 0) {
-      for (const droid of droids) {
-        $('#droid-container').append(droid_card(droid));
+      for (const index in droids) {
+        const favouriteIndex = favourites[index] ? favourites[index].id : -1;
+        const favourite = droids[index].id === favouriteIndex ? true : false;
+        $('#droid-container').append(droid_card(droids[index], favourite))
       }
     } else {
       $('#droid-container').append('<h1>These are not the droids you are looking for.</h1>')
     }
   })
-  .catch(err => console.error(err));
 }
 
 //

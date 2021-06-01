@@ -32,7 +32,20 @@
     span {
       font-size: 32px;
       margin-right: 1rem;
+    }
 
+    .un-favourite {
+      i {
+        color: $bg-primary-dark;
+      }
+
+      i:hover {
+        color: $heart-highlight;
+        cursor: pointer;
+      }
+    }
+
+    .favourite {
       i {
         color: $bg-primary-dark;
       }
