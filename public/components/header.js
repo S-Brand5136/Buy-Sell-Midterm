@@ -34,8 +34,10 @@ $('body').on('click', '#login-btn', function(event) {
     type: 'GET',
     url: '/api/auth/2'
   }).then((data) => {
+    const userJson = JSON.stringify(data);
+    localStorage.setItem('user', userJson);
     const newUrl = `/users/${data.id}`;
-    changePage({}, newUrl);
+    changePage(data, newUrl);
   })
   .catch ((err) => {
     alert(err.message)
@@ -47,6 +49,7 @@ $('body').on('click', '#logout', function(event) {
     type: 'POST',
     url: '/api/auth/logout'
   }).then((data) => {
+    localStorage.removeItem('user');
     const newUrl = `/`;
     changePage({}, newUrl);
   })
