@@ -35,8 +35,17 @@ header#page-header {
   }
 }
 
+#login-btn{
+  cursor: pointer;
+}
+
 #logout {
   margin-left: 2rem;
+}
+
+#logout:hover {
+  color: $bg-primary-light;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 1024px) {

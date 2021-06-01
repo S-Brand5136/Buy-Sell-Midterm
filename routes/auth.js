@@ -9,7 +9,6 @@ module.exports = (db) => {
   router.get("/:id", (req, res) => {
     // clear cookies
     res.clearCookie('userId');
-    res.clearCookie('isAdmin');
     //grab userId from params and set query string
       const userId = req.params.id
       const queryString = 'SELECT * FROM users WHERE id = $1';
@@ -20,11 +19,6 @@ module.exports = (db) => {
           // check for user and set cookies
           if(user) {
             res.cookie('userId', userId);
-
-            if(user.is_admin) {
-              res.cookie('isAdmin', true);
-            }
-
             return (res.status(200).json(user));
           } else {
             // if user not found
@@ -42,7 +36,6 @@ module.exports = (db) => {
   // RETURNS: json message
   router.post("/logout", (req, res) => {
     res.clearCookie('userId');
-    res.clearCookie('isAdmin');
     return res.status(200).json({msg: 'User succesfully logged out'});
   });
 

@@ -8,14 +8,14 @@
           - [X] set userId cookie to userid
           - [X] If user is admin create another cookie
     Front end
-    - [ ] Connect log in button to route
-          - [ ] On success redirect to userpage
-          - [ ] On fail redirect to access denied page
+    - [X] Connect log in button to route
+          - [X] On success redirect to userpage
+          - [X] On fail redirect to access denied page
   - [x] auth/logout route
     - [x] removes all cookies
     - Front end
-      - [ ] on return redirect to homepage
-      - [ ] on fail return to access denied page
+      - [X] on return redirect to homepage
+      - [X] on fail return to access denied page
 
 - Home Page
   - [X] Page created
