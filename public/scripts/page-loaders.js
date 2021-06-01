@@ -124,6 +124,23 @@ const loadDroidsPage = function() {
 };
 
 //
+// User Detail Page Functions
+//
+
+const loadMainContentUser = function(user) {
+  $('#main-content').append(userPage(user));
+};
+
+const loadUserPage = function(userId) {
+  const userString = localStorage.getItem('user');
+  if (!userString) {
+    return changePage({userId}, '/');
+  }
+  const user = JSON.parse(userString);
+  loadContent(() => loadMainContentUser(user));
+};
+
+//
 // Page Not Found Function
 //
 
