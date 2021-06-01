@@ -1,5 +1,4 @@
 const droid_card = (droid) => {
-  console.log(droid);
   return `
   <div class="card mb-3">
     <div class="row g-0">
@@ -21,7 +20,7 @@ const droid_card = (droid) => {
         </div>
         <div class="d-flex justify-content-center align-items-center flex-row button-group">
           <span id="#favourite"><i class="far fa-heart"></i></span>
-          <button class="btn btn-primary">View <i class="fas fa-robot"></i></button>
+          <a href='/droids/${droid.id}' class="btn btn-primary">View <i class="fas fa-robot"></i><a>
         </div>
       </div>
     </div>

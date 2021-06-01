@@ -91,22 +91,31 @@ const loadDroidPage = function(id) {
 const loadMainContentDroids = function() {
   $('#main-content').append(droid_search());
   $('#droid-search').prepend(filter_options());
+  appendDroids();
+};
 
+// Helper function
+// Clears droid-container
+// Appends droids to droid-container
+const appendDroids = (data) => {
+  $('#droid-container').html('');
   $.ajax({
-    method: "GET",
-    url: "/api/droids",
+    type: 'GET',
+    url: `/api/droids`,
+    data
   })
   .then((data) => {
     const droids = data.droids
-    if(droids) {
+    if(droids.length > 0) {
       for (const droid of droids) {
         $('#droid-container').append(droid_card(droid));
       }
+    } else {
+      $('#droid-container').append('<h1>These are not the droids you are looking for.</h1>')
     }
   })
   .catch(err => console.error(err));
-
-};
+}
 
 const loadDroidsPage = function() {
   loadContent(loadMainContentDroids);

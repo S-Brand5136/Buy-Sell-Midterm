@@ -1,7 +1,7 @@
 const filter_options = () => {
   return `
   <h2>Browse Droids for sale</h2>
-  <span id="filter-btn">Filter Options <i class="fas fa-angle-double-down btn" id="filter-btn"></i></span>
+  <span id='filter-btn'>Filter Options <i class="fas fa-angle-double-down btn" ></i></span>
   <div id="filter-options">
     <form action="/api/droids" method="get" id="filter-form">
       <label for="input-search" class="form-label">Keyword Search</label>
@@ -25,11 +25,17 @@ const filter_options = () => {
   </div>`;
 }
 
-$('#filter-btn').on('click', () => {
+$('body').on('click', '#filter-btn', () => {
   if($('#filter-options').is(":hidden")) {
-   $('#filter-options').slideDown();
+   return $('#filter-options').slideDown();
   } else {
-    console.log('here');
-    $('#filter-options').slideUp();
+    return $('#filter-options').slideUp();
   }
+})
+
+$('body').on('submit', '#filter-form', function(event) {
+  event.preventDefault();
+
+  const data = $(this).serialize();
+  appendDroids(data);
 })

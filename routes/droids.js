@@ -6,8 +6,8 @@ module.exports = (db) => {
   // RETURN: json object
   // ACCCESS: public
   router.get("/", (req, res) => {
-    const limit = req.body.limit || 10;
-    const offset = req.body.offset || 0;
+    const limit = req.query.limit || 10;
+    const offset = req.query.offset || 0;
     const queryParams = [limit, offset];
     let queryString = `
     SELECT droids.*, images.image_url FROM droids
@@ -15,28 +15,28 @@ module.exports = (db) => {
     LEFT OUTER JOIN purchases ON purchases.droid_id = droids.id
     WHERE purchases.droid_id IS NULL `;
 
-    if(req.body.keyword) {
-      queryParams.push(`%${req.body.keyword.toLowerCase()}%`);
+    if(req.query.keyword) {
+      queryParams.push(`%${req.query.keyword.toLowerCase()}%`);
       queryString += `AND LOWER(description) LIKE $${queryParams.length} `;
     }
 
-    if (req.body.manufacturer) {
-      queryParams.push(`%${req.body.manufacturer.toLowerCase()}%`);
+    if (req.query.manufacturer) {
+      queryParams.push(`%${req.query.manufacturer.toLowerCase()}%`);
       queryString += `AND LOWER(manufacturer) LIKE $${queryParams.length} `;
     }
 
-    if (req.body.model) {
-      queryParams.push(`%${req.body.model.toLowerCase()}%`);
+    if (req.query.model) {
+      queryParams.push(`%${req.query.model.toLowerCase()}%`);
       queryString += `AND LOWER(model) LIKE $${queryParams.length} `;
     }
 
-    if (req.body.minimum_price) {
-      queryParams.push(req.body.minimum_price);
+    if (req.query.minimum_price) {
+      queryParams.push(req.query.minimum_price);
       queryString += `AND price >= $${queryParams.length} `;
     }
 
-    if (req.body.maximum_price) {
-      queryParams.push(req.body.maximum_price);
+    if (req.query.maximum_price) {
+      queryParams.push(req.query.maximum_price);
       queryString += `AND price <= $${queryParams.length} `;
     }
 
