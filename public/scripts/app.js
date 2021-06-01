@@ -18,7 +18,7 @@ const routing = () => {
     case '/droids':
       loadDroidsPage();
       break;
-    case `/user/${pathArr[pathArr.length -1]}`:
+    case `/users/${pathArr[pathArr.length -1]}`:
       loadUserPage(Number(pathArr[pathArr.length -1]));
       break;
     case 404:

@@ -1,9 +1,11 @@
 const userPage = function(user) {
   let userString = `
-  <h2 class="user-page-title">${user.name}</h2>
   <div id="user-content">
     <section>
-      <img src="../${user.avatar_url}">
+      <div>
+        <h2 class="user-page-title">${user.name}</h2>
+        <img src="../${user.avatar_url}">
+      </div>
       <ul>
         <li><span>Email:</span> ${user.email}</li>
         <li><span>Phone:</span> ${user.mobile_phone}</li>
@@ -40,8 +42,8 @@ const userPage = function(user) {
           <button id="user-purchases-button" class="nav-link">Purchases</button>
         </li>
       </ul>
-    <nav>
-    <div id="user-content"></div>
+    </nav>
+    <ul id="user-droid-content"></ul>
   </section>
   </div>
   `;
@@ -49,15 +51,26 @@ const userPage = function(user) {
   return userString;
 };
 
-const userContentDroids = function(userId) {
-  $.ajax({
-    method: 'GET',
-    url: `/api/users/${userId}/favourites`
-  })
-    .then((droids) => {
-      $userContent = $('#user-content');
-      $userContent.html('');
-      console.log(droids);
-    })
-    .catch();
+const userFavouriteContent = (droid) => {
+  return `
+    <li>
+      <img src="../${droid.image_url}">
+      <div>
+        <h4>${droid.name}</h4>
+        <small>Date Posted: ${new Date(droid.created_at).toLocaleDateString()}</small>
+        <p>${droid.description}</P>
+        <ul>
+          <li>
+            <strong class="list-label">Manufacturer:</strong> ${droid.manufacurer}
+          </li>
+          <li>
+            <strong class="list-label">Model:</strong> ${droid.model}
+          </li>
+          <li>
+            <strong class="list-label">Price</strong> ${droid.price || 'SOLD'}
+          </li>
+        </ul>
+      </div>
+    </li>
+  `;
 };

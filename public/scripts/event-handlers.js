@@ -58,3 +58,19 @@ const removeDroidFromFavouritesEventHandler = function(userId, droidId) {
     })
     .catch(err => console.error(err));
 };
+
+// Load favourites on user page.
+const userContentDroids = function(userId) {
+  $.ajax({
+    method: 'GET',
+    url: `/api/users/${userId}/favourites`
+  })
+    .then((droids) => {
+      $userContent = $('#user-droid-content');
+      $userContent.html('');
+      for (const droid of droids) {
+        $userContent.append(userFavouriteContent(droid));
+      }
+    })
+    .catch();
+};
