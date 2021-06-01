@@ -31,7 +31,6 @@ const getUserDetails = function(data) {
 const loadHeader = function() {
   const cookies = {};
   cookies['userId'] = Cookies.get('userId');
-  cookies['isAdmin'] = Cookies.get('isAdmin') || false;
   getUserDetails(cookies);
 };
 
