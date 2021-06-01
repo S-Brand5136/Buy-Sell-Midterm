@@ -83,7 +83,7 @@ module.exports = (db) => {
       .catch(err => console.error(err));
   });
 
-  router.post("/:id", (req, res) => {
+  router.delete("/:id", (req, res) => {
     const id = req.params.id;
     const queryString = 'DELETE FROM droids WHERE id = $1';
     db.query(queryString, [id])

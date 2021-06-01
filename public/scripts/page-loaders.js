@@ -68,14 +68,9 @@ const loadHomePage = function() {
 const loadMainContentDroid = function(droid) {
   $('#main-content').append(individualDroid(droid));
 
-  // Add event listeners to small pictures
-  $('.droid-secondary img').click(function() {
-    let primaryImageSrc = $('.droid-primary img').attr('src');
-
-    // swap images
-    $('.droid-primary img').attr('src', $(this).attr('src'));
-    $(this).attr('src', primaryImageSrc);
-  });
+  // Add event listeners
+  $('.droid-secondary img').click(imageSwapClickHandler);
+  $('#delete-droid').click(() => deleteDroidEventHandler(droid.id));
 }
 
 const loadDroidPage = function(id) {
