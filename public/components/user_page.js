@@ -34,10 +34,10 @@ const userPage = function(user) {
     <nav>
       <ul class="nav nav-tabs">
         <li class="nav-item">
-          <button class="nav-link active" onClick="loadFavourites">Favourites</button>
+          <button id="user-favourites-button" class="nav-link active">Favourites</button>
         </li>
         <li class="nav-item">
-          <button class="nav-link" onClick="laodPurchases">Purchases</button>
+          <button id="user-purchases-button" class="nav-link">Purchases</button>
         </li>
       </ul>
     <nav>
@@ -47,4 +47,17 @@ const userPage = function(user) {
   `;
 
   return userString;
+};
+
+const userContentDroids = function(userId) {
+  $.ajax({
+    method: 'GET',
+    url: `/api/users/${userId}/favourites`
+  })
+    .then((droids) => {
+      $userContent = $('#user-content');
+      $userContent.html('');
+      console.log(droids);
+    })
+    .catch();
 };
