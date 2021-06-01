@@ -1,4 +1,5 @@
 const droid_card = (droid) => {
+  console.log(droid);
   return `
   <div class="card mb-3">
     <div class="row g-0">
@@ -8,7 +9,7 @@ const droid_card = (droid) => {
       <div class="col-xs-3 col-sm-5 col-md-4 col-lg-5">
         <div class="card-body">
           <h5 class="card-title">${droid.name}</h5>
-          <p class="card-text"><small class="text-muted">Date Posted: 2021-03-15</small></p>
+          <p class="card-text"><small class="text-muted">Date Posted: ${droid.date_posted.slice(0,10)}</small></p>
           <p class="card-text">${droid.description}</p>
         </div>
       </div>

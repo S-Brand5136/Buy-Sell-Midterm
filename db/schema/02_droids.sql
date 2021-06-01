@@ -7,5 +7,7 @@ CREATE TABLE droids (
   description text NOT NULL,
   price INTEGER NOT NULL,
   manufacturer VARCHAR(255) NOT NULL,
-  model VARCHAR(255) NOT NULL
+  model VARCHAR(255) NOT NULL,
+  date_posted DATE NOT NULL DEFAULT CURRENT_DATE
 );
+
