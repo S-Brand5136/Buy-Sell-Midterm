@@ -6,10 +6,10 @@ function updateHeader(user) {
       <a href="">Register</a>
     </div>
     <div class="container-fluid flex-row justify-content-between">
-      <h3>Droid Reclaimers</h3>
+      <h3><a href='/'>Droid Reclaimers</a></h3>
       <nav class="nav-links">
         <a href="">Favourites</a>
-        <a href="">Droids</a>
+        <a href="/droids">Droids</a>
         <a href="">Purchased</a>
       </nav>
     </div>`
