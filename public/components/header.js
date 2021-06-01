@@ -24,7 +24,7 @@ function updateHeader(user) {
         <a href="/droids">Droids</a>
         <a href="">Purchased</a>
       </nav>
-      <button class="btn btn-primary" id="selling-btn">Start selling</button>
+      ${user.is_admin ? `<button class="btn btn-primary" id="selling-btn">Start selling</button>` : ''}
     </div>
       `;
 }
@@ -35,9 +35,23 @@ $('body').on('click', '#login-btn', function(event) {
     url: '/api/auth/4'
   }).then((data) => {
     const newUrl = `/users/${data.id}`;
-    changePage({}, '', newUrl);
+    changePage({}, newUrl);
   })
   .catch ((err) => {
     alert(err.message)
   })
 })
+
+$('body').on('click', '#logout', function(event) {
+  $.ajax({
+    type: 'POST',
+    url: '/api/auth/logout'
+  }).then((data) => {
+    const newUrl = `/`;
+    changePage({}, newUrl);
+  })
+  .catch ((err) => {
+    alert(err.message)
+  })
+})
+

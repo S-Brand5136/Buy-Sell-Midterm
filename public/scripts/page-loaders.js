@@ -10,7 +10,7 @@ const loadContent = function(main) {
 };
 
 const getUserDetails = function(data) {
-  if(data) {
+  if(data['userId']) {
     return $.ajax({
       method: "GET",
       url: `/api/users/${data['userId']}`,
