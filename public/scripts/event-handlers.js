@@ -1,3 +1,4 @@
+// Make a secondary image the primary image on the /droids/:id client route
 const imageSwapClickHandler = function() {
   let primaryImageSrc = $('.droid-primary img').attr('src');
 
@@ -6,6 +7,7 @@ const imageSwapClickHandler = function() {
   $(this).attr('src', primaryImageSrc);
 };
 
+// Delete a droid with the passed in id.  This is permanent!
 const deleteDroidEventHandler = function(id) {
   $.ajax({
     method: 'DELETE',
@@ -18,6 +20,7 @@ const deleteDroidEventHandler = function(id) {
     .catch(err => console.error(err));
 };
 
+// Get all droids that a user has on their favourites
 const getFavouriteDroidsEventHandler = function(userId) {
   $.ajax({
     method: 'GET',
