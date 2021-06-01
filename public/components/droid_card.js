@@ -14,12 +14,12 @@ const droid_card = (droid) => {
       </div>
       <div class="col-xs-3 col-sm-2 col-md-4 col-lg-3 align-self-center">
         <div class="d-flex justify-content-center flex-column">
-          <span>Manufacturer: ${droid.manufacturer}</span>
-          <span>Model: ${droid.model}</span>
-          <span>Price: ${droid.price} credits</span>
+          <span><h6>Manufacturer:</h6> ${droid.manufacturer}</span>
+          <span><h6>Model:</h6> ${droid.model}</span>
+          <span><h6>Price:</h6> ${droid.price} credits</span>
         </div>
         <div class="d-flex justify-content-center align-items-center flex-row button-group">
-          <span id="#favourite"><i class="far fa-heart"></i></span>
+          <span id="#favourite"><i class="fas fa-heart"></i></span>
           <a href='/droids/${droid.id}' class="btn btn-primary">View <i class="fas fa-robot"></i><a>
         </div>
       </div>
