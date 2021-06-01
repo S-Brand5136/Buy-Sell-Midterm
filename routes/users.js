@@ -79,8 +79,16 @@ module.exports = (db) => {
 
   // Remove the droid with did from favourites list for user with id
   router.delete('/:id/favourites/:did', (req, res) => {
-    // TODO: Implement Me
-    res.status(204).json();
+    const { id: userId, did: droidId } = req.params;
+    const queryString = 'DELETE FROM favourites WHERE user_id = $1 AND droid_id = $2;';
+    db.query(queryString, [userId, droidId])
+      .then((result) => {
+        res.status(204).json();
+      })
+      .catch((err) => {
+        console.error(err);
+        return res.status(500).json({error: 'Internal server error'});
+      });
   });
 
   return router;

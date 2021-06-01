@@ -14,7 +14,6 @@ const deleteDroidEventHandler = function(id) {
     url: `/api/droids/${id}`
   })
     .then(result => {
-      console.log('ajax delete result', result);
       changePage({ droidId: id }, '/');
     })
     .catch(err => console.error(err));

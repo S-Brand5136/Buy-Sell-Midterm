@@ -86,8 +86,13 @@ module.exports = (db) => {
   router.delete("/:id", (req, res) => {
     const id = req.params.id;
     const queryString = 'DELETE FROM droids WHERE id = $1';
-    db.query(queryString, [id]);
-    return res.status(204).json();
+    db.query(queryString, [id])
+      .then((result) => {
+        return res.status(204).json();
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   });
 
   // GET: droid by manufacturer
