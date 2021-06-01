@@ -39,6 +39,6 @@ window.onload = () => {
 }
 
 const getUserFromStorage = () => {
-  userDetails = localStorage.getItem('user') || {};
+  const userDetails = localStorage.getItem('user');
   return JSON.parse(userDetails)
 }

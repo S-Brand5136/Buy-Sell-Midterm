@@ -9,29 +9,9 @@ const loadContent = function(main) {
   loadFooter();
 };
 
-const getUserDetails = function(data) {
-  if(data['userId']) {
-    return $.ajax({
-      method: "GET",
-      url: `/api/users/${data['userId']}`,
-    })
-    .done((data) => {
-      const user = data.user[0];
-      if (user) {
-        return $("#page-header").append(updateHeader(user));
-      }
-    })
-      .catch((err) => {
-        return $("#page-header").append(updateHeader());
-      });
-  }
-    return $("#page-header").append(updateHeader());
-};
-
 const loadHeader = function() {
-  const cookies = {};
-  cookies['userId'] = Cookies.get('userId');
-  getUserDetails(cookies);
+  const user = getUserFromStorage();
+  return $("#page-header").append(updateHeader(user));
 };
 
 const loadFooter = function() {

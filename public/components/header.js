@@ -1,5 +1,4 @@
 function updateHeader(user) {
-
   return !user
     ? `
       <div class="container-fluid flex-row justify-content-end">
