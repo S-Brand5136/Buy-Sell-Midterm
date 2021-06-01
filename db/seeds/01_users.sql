@@ -5,6 +5,8 @@ VALUES ('images/user_avatars/Star-wars-clip-art-free-download-yoda.gif', 'yoda@j
 ('images/users_avatars/watto-img.jpg', 'watto5@tatooine.com', false, '555-289-3764', 'Watto', 'Password!');
 
 INSERT INTO users (email, mobile_phone, name, password)
-VALUES ('anakin@jedi.force', '555-555-2222', 'Anakin Skywalker', 'Password!'),
-('cybotAdmin@cybotGalactica.com', '555-289-8754', 'Cybot Galactica', 'Password!'),
-('baktoid@combat.automata', '555-666-1598', 'Baktoid Combat Automata', 'Password!');
+VALUES ('anakin@jedi.force', '555-555-2222', 'Anakin Skywalker', 'Password!');
+
+INSERT INTO users (email, is_admin, mobile_phone, name, password)
+VALUES ('cybotAdmin@cybotGalactica.com', true, '555-289-8754', 'Cybot Galactica', 'Password!'),
+('baktoid@combat.automata', true, '555-666-1598', 'Baktoid Combat Automata', 'Password!');
