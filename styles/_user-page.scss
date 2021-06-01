@@ -1,3 +1,41 @@
-#user-content {
+h2.user-page-title {
+  font-family: $header-font;
+  color: $bg-primary-dark;
+  text-align: center;
+  margin: 2rem auto;
+}
 
+#user-content {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+
+  img {
+    height: 20rem;
+    width: 20rem;
+    object-fit: contain;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  section:first-child {
+    > div {
+      margin-top: 2rem;
+    }
+
+    ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      padding: 0;
+
+      > li {
+        flex-basis: 50%;
+      }
+    }
+  }
+
+  button i {
+    margin-right: .8rem;
+  }
 }
