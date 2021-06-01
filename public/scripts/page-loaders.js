@@ -129,13 +129,11 @@ const loadMainContentUser = function(user) {
 };
 
 const loadUserPage = function(userId) {
-  console.log('userId', userId);
   $.ajax({
     method: 'GET',
     url: `/api/users/${userId}`
   })
     .then((result) => {
-      console.log('get user result', result.user);
       if (!result.user || result.user.length < 1) {
         return changePage({userId}, '/');
       }
