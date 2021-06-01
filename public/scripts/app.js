@@ -9,7 +9,7 @@ $(() => {
     case '/':
       loadHomePage();
       break;
-    case `/droid/${pathArr[pathArr.length - 1]}`:
+    case `/droids/${pathArr[pathArr.length - 1]}`:
       loadDroidPage(Number(pathArr[pathArr.length - 1]));
       break;
     case '/droids':
