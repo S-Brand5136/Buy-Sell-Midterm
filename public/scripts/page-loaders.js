@@ -121,6 +121,30 @@ const loadDroidsPage = function() {
 };
 
 //
+// User Detail Page Functions
+//
+
+const loadMainContentUser = function(user) {
+  $('#main-content').append(userPage(user));
+};
+
+const loadUserPage = function(userId) {
+  console.log('userId', userId);
+  $.ajax({
+    method: 'GET',
+    url: `/api/users/${userId}`
+  })
+    .then((result) => {
+      console.log('get user result', result.user);
+      if (!result.user || result.user.length < 1) {
+        return changePage({userId}, '/');
+      }
+      loadContent(() => loadMainContentUser(result.user[0]));
+    })
+    .catch((err) => console.error(err));
+};
+
+//
 // Page Not Found Function
 //
 
