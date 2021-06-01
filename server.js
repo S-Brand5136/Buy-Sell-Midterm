@@ -43,8 +43,8 @@ const usersRoutes = require("./routes/users");
 const featuredRoutes = require("./routes/featured");
 const droidsRoutes = require("./routes/droids");
 const authRoutes = require("./routes/auth");
-const purchasesRoutes = require("./routes/auth");
-const imagesRoutes = require("./routes/auth");
+const purchasesRoutes = require("./routes/purchases");
+const imagesRoutes = require("./routes/images");
 
 // Resource routes
 app.use("/api/users", usersRoutes(db));

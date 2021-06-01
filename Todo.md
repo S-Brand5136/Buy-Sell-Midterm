@@ -1,19 +1,21 @@
 # TODO
 - Auth
-  - [ ] Auth route to switch between users
+  - [X] Auth route to switch between users
     - [X] add cookie parser middleware
     - [X] Add auth route
       - [X] Get user based on ID passed in
       - [x] Removes clears cookies for ease of switching users
           - [X] set userId cookie to userid
           - [X] If user is admin create another cookie
+    Front end
     - [ ] Connect log in button to route
           - [ ] On success redirect to userpage
           - [ ] On fail redirect to access denied page
-  - [ ] auth/logout route
-    - [ ] removes all cookies
-    - [ ] on return redirect to homepage
-    - [ ] on fail return to access denied page
+  - [x] auth/logout route
+    - [x] removes all cookies
+    - Front end
+      - [ ] on return redirect to homepage
+      - [ ] on fail return to access denied page
 
 - Home Page
   - [X] Page created

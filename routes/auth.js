@@ -3,10 +3,10 @@ const router = express.Router();
 
 module.exports = (db) => {
 
-  // POST: log in to an account via id
+  // GET: log in to an account via id
   // ACCESS: Public
   // RETURNS: user object
-  router.post("/:id", (req, res) => {
+  router.get("/:id", (req, res) => {
     // clear cookies
     res.clearCookie('userId');
     res.clearCookie('isAdmin');
@@ -35,9 +35,16 @@ module.exports = (db) => {
           console.log(err);
           return res.status(500).json({Error: err.message});
         })
-  })
+  });
 
-  router.post("/logout")
+  // POST: clear cookies and logout user
+  // ACCESS: public
+  // RETURNS: json message
+  router.post("/logout", (req, res) => {
+    res.clearCookie('userId');
+    res.clearCookie('isAdmin');
+    return res.status(200).json({msg: 'User succesfully logged out'});
+  });
 
   return router;
 };
