@@ -46,10 +46,11 @@
 
   .droid-primary {
     margin-right: 1.5rem;
+
     img {
       object-fit: contain;
-      width: 30rem;
-      height: 30rem;
+      max-width: 30rem;
+      max-height: 30rem;
       border: 2px solid black;
     }
   }
@@ -78,6 +79,72 @@
       &:active {
         transform: none;
         box-shadow: 1px 1px 2px $bg-primary-dark;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  #show-droid {
+    div.container {
+      > div {
+        flex-direction: column;
+      }
+    }
+
+    .droid-secondary {
+      order: 2;
+      margin: 1rem 0;
+
+      img {
+        margin: 0;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 999px) {
+  #show-droid {
+    div.container {
+      flex-direction: column;
+      align-items: center;
+
+      > div {
+        width: 100%;
+      }
+    }
+
+    .droid-primary {
+      width: 100%;
+      margin-right: 0;
+
+      img {
+        max-width: none;
+        max-height: 50rem;
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 620px) {
+  #show-droid {
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 0;
+    }
+
+    div.container {
+      box-sizing: border-box;
+      padding: .5rem;
+      margin: 1rem 0;
+      max-width: none;
+    }
+
+    .droid-primary {
+      img {
+        max-height: 30rem;
       }
     }
   }
