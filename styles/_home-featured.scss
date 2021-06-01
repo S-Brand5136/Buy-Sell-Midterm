@@ -1,9 +1,5 @@
 @import "variables";
 
-#main-content {
-  margin-top: 2rem;
-}
-
 // The carousel container
 #featuredCarousel {
   height: 40rem;
@@ -45,6 +41,13 @@
       }
     }
   }
+}
+
+.main-content-title {
+  font-family: $subHeader-font;
+  font-size: 2.7rem;
+  color: $bg-general-dark;
+  margin-bottom: 1.2rem;
 }
 
 
