@@ -59,3 +59,19 @@ const removeDroidFromFavouritesEventHandler = function(userId, droidId) {
     })
     .catch(err => console.error(err));
 };
+
+const addDroid = function(droid) {
+  console.log(droid);
+  const user = getUserFromStorage();
+  $.ajax({
+    method: "POST",
+    url: `/api/droids/create/${user.id}`,
+    data: droid,
+  })
+    .then((result) => {
+      console.log(result);
+      const newUrl = `/droids/${result.droid_id}`;
+      changePage({}, newUrl);
+    })
+    .catch(err => {console.log(err)})
+}

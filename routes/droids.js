@@ -153,9 +153,10 @@ module.exports = (db) => {
   // RETURN: droid json object
   // ACCESS: private
   router.post("/create/:id", (req, res) => {
-    const { name, description, price, manufacturer, model, image_url } = req.body;
+    console.log(req.body);
+    const { title, description, price, manufacturer, model, image_url } = req.body;
     const userId = req.params.id;
-    const queryParams = [userId, name, description, price, manufacturer, model];
+    const queryParams = [userId, title, description, price, manufacturer, model];
     const queryString = `
       INSERT INTO droids (sellers_id, name, description, price, manufacturer, model)
       VALUES ($1, $2, $3, $4, $5, $6) RETURNING *;`
@@ -168,10 +169,11 @@ module.exports = (db) => {
           const queryParams = [data.id, true, image_url]
           const queryString = `
           INSERT INTO images (droids_id, is_primary, image_url)
-          VALUES ($1, $2, $3)`;
+          VALUES ($1, $2, $3) RETURNING *;`;
           db.query(queryString, queryParams)
             .then((data) => {
-              return res.status(200).json({msg: 'Droid listing created'});
+              const droid_id = data.rows[0].droids_id;
+              return res.status(200).json({droid_id});
             })
         })
         .catch((err) => {

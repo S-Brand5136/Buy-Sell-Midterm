@@ -38,11 +38,30 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form action="/droids/"></form>
+          <form action="/droids/" id="create-listing" method="POST">
+            <label class="form-label" for="">Title</label>
+            <input class="form-control" type="text" id="droid-title" name="title">
+
+            <label class="form-label" for="">Description</label>
+            <input class="form-control" type="text" id="droid-description" name="description">
+
+            <label class="form-label" for="">Model</label>
+            <input class="form-control" type="text" id="droid-model" name="model">
+
+            <label class="form-label" for="">Manufacturer</label>
+            <input class="form-control" type="text" id="droid-manufacturer" name="manufacturer">
+
+            <label class="form-label" for="">Price</label>
+            <input class="form-control" type="number" id="droid-price" name="price">
+
+            <label class="form-label" for="">Image</label>
+            <input class="form-control" type="text" id="droid-image" name="image_url">
+            <br />
+            <input type="submit" class="btn btn-primary" value="submit" />
+          </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
         </div>
       </div>
     </div>
@@ -77,6 +96,7 @@
   <script src="../components/droid_card.js" type="text/javascript"></script>
   <script src="../components/individual_droid.js" type="text/javascript"></script>
   <script src="../components/user_page.js" type="text/javascript"></script>
+  <script src="../components/create_listing.js" type="text/javascript"></script>
 </body>
 
 </html>

@@ -24,7 +24,7 @@ function updateHeader(user) {
         <a href="">Purchased</a>
       </nav>
       ${user.is_admin ? `<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-      Launch demo modal
+      Create Listing
     </button>
   ` : ''}
     </div>
