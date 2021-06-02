@@ -107,3 +107,29 @@ const getUsersListings = (userId) => {
     }
   })
 }
+
+const submitNewListingEventHandler = function(event) {
+  event.preventDefault();
+  $.ajax({
+    method: 'POST',
+    url: '/api/droids',
+    data: new FormData($('#create-listing')[0]),
+    enctype: 'multipart/form-data',
+    processData: false,
+    contentType: false,
+    cache: false
+  })
+    .then((data) => {
+      // Clear the form in the modal
+      $(this)[0].reset();
+
+      // Hide modal after submitting the form.
+      $('#createDroidModal').modal('hide');
+
+      const id = $('#modal-userId-input').attr('value');
+      changePage({id: id}, `/droids/${data.droid_id}`);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+};
