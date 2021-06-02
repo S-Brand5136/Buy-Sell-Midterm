@@ -25,7 +25,7 @@ const create_listing = () => {
 
           <label class="form-label" for="">Image</label>
           <input class="form-control" type="file" id="droid-image" name="droid-image">
-          <input type="submit" class="btn btn-primary">Create Listing</input>
+          <button type="submit" class="btn btn-primary">Create Listing</button>
         </form>
       </div>
       <div class="modal-footer">
@@ -35,11 +35,4 @@ const create_listing = () => {
   </div>
 </div>
 `
-}
-
-// $('body').on('click', '#create-listing', function(event) {
-//   console.log('here');
-//   event.preventDefault();
-//   const data = $(this).serialize();
-//   addDroid(data)
-// });
+};
