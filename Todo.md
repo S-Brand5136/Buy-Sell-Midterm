@@ -25,8 +25,8 @@
 
 - Droids page
   - [X] Page created
-  - [ ] Add to favourites button
-    - [ ] Link to favourites click handler
+  - [X] Add to favourites button
+    - [X] Link to favourites click handler
   - [ ] Fix bug when going from small to large screen, display settings
 
 - User / Admin page
@@ -51,7 +51,7 @@
 - User
   - [X] See featured
   - [X] Filter droids by price
-  - [ ] Favourite Droid
+  - [X] Favourite Droid
   - [X] As a user I want to send messages to owner
 // Users
 
