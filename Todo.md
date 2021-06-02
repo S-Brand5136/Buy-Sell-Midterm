@@ -32,8 +32,21 @@
 - User / Admin page
   - [ ] Page created
 
-- Modal to add Droid
-  - [ ] Created
+- add Droid
+  - [X] Add backend route
+    - [ ] Adds droid + image to database
+      - Half working, adds image URL
+    - [ ] support images
+  - [] Created
+    - [X] Add modal component
+    - [X] Add Form
+      - [ ] Add more styling
+      - [ ] Look into popOvers
+    - [X] Style Form
+    - [X] Add Click listener
+    - [X] Add event Handler
+    - [ ] Figure out where to load in modal
+
 
 **_ Stretch _**
 
@@ -64,7 +77,7 @@
 - As a user I want to send messages to the user that is listing that item
 
 Admin
-  - [ ] Modal to add droid
+  - [Y] Modal to add droid
   - [X] Remove Droid
   - [ ] Mark droids as sold
   - [X] Message back
