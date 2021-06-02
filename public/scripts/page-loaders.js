@@ -120,8 +120,9 @@ const appendDroids = (data) => {
 
 const loadMainContentUser = function(user) {
   $('#main-content').append(userPage(user));
-  userContentDroids(user.id);
-  $('#user-favourites-button').click(() => userContentDroids(user.id));
+  console.log('user.id', user.id);
+  getFavouriteDroidsEventHandler(user.id);
+  $('#user-favourites-button').click(() => getFavouriteDroidsEventHandler(user.id));
 };
 
 const loadUserPage = function(userId) {

@@ -21,14 +21,17 @@ const deleteDroidEventHandler = function(id) {
 
 // Get all droids that a user has on their favourites
 const getFavouriteDroidsEventHandler = function(userId) {
-  return $.ajax({
+  $.ajax({
     method: 'GET',
     url: `/api/users/${userId}/favourites`
   })
-    .then((result) => {
-      // TODO: Handle result / update UI.
-      console.log(result);
-      return result
+    .then((droids) => {
+      console.log(droids);
+      $userContent = $('#user-droid-content');
+      $userContent.html('');
+      for (const droid of droids) {
+        $userContent.append(userFavouriteContent(droid));
+      }
     })
     .catch(err => console.error(err));
 };
@@ -58,20 +61,4 @@ const removeDroidFromFavouritesEventHandler = function(userId, droidId) {
       console.log(result);
     })
     .catch(err => console.error(err));
-};
-
-// Load favourites on user page.
-const userContentDroids = function(userId) {
-  $.ajax({
-    method: 'GET',
-    url: `/api/users/${userId}/favourites`
-  })
-    .then((droids) => {
-      $userContent = $('#user-droid-content');
-      $userContent.html('');
-      for (const droid of droids) {
-        $userContent.append(userFavouriteContent(droid));
-      }
-    })
-    .catch();
 };
