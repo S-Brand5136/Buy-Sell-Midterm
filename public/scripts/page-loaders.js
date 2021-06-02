@@ -96,6 +96,7 @@ const appendDroids = (data) => {
   .then(data => {
     $('#droid-container').html('');
     const droids = data[0].droids;
+    console.log(data);
     const favourites = data[1];
     if(droids.length > 0) {
       for (const droid of droids) {
@@ -117,10 +118,25 @@ const appendDroids = (data) => {
 // User Detail Page Functions
 //
 
+// Pulled out of event handler and then chained to it.
+const onClickFavourites = (userId) => {
+  getFavouriteDroidsEventHandler(userId)
+    .then((droids) => {
+      $userContent = $('#user-droid-content');
+      $userContent.html('');
+      $('#user-favourites-button').addClass('active');
+      $('#user-purchases-button').removeClass('active');
+      for (const droid of droids) {
+        $userContent.append(userFavouriteContent(droid));
+      }
+    })
+    .catch((err) => console.error(err));
+};
+
 const loadMainContentUser = function(user) {
   $('#main-content').append(userPage(user));
-  getFavouriteDroidsEventHandler(user.id);
-  $('#user-favourites-button').click(() => getFavouriteDroidsEventHandler(user.id));
+  onClickFavourites(user.id);
+  $('#user-favourites-button').click(() => onClickFavourites(user.id));
   $('#user-purchases-button').click(() => getUsersPurchasesEventHandler(user.id));
 };
 
