@@ -63,3 +63,22 @@ const removeDroidFromFavouritesEventHandler = function(userId, droidId) {
     })
     .catch(err => console.error(err));
 };
+
+const getUsersPurchasesEventHandler = function(userId) {
+  $.ajax({
+    method: 'GET',
+    url: `/api/purchases?buyer=${userId}`
+  })
+    .then((droids) => {
+      $userContent = $('#user-droid-content');
+      $userContent.html('');
+      $('#user-favourites-button').removeClass('active');
+      $('#user-purchases-button').addClass('active');
+      for (const droid of droids) {
+        $userContent.append(userPurchasedContent(droid));
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+};
