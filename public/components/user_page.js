@@ -55,7 +55,6 @@ const userPage = function(user) {
 };
 
 const userFavouriteContent = (droid) => {
-  console.log(droid);
   return `
     <li>
       <img src="../${droid.image_url}">
