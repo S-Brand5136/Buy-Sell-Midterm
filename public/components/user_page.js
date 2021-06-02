@@ -65,7 +65,8 @@ const userFavouriteContent = (droid) => {
             <strong class="text-primary list-label">Model:</strong> ${droid.model}
           </li>
           <li>
-            <strong class="text-primary list-label">Price</strong> ${droid.price && '$'}${droid.price || 'SOLD'}
+            <strong class="text-primary list-label">Price</strong>
+             ${droid.sold_out ? 'SOLD OUT' : '$' + droid.price}
           </li>
           <li>
             <strong class="text-primary list-label">Seller:</strong> ${droid.sellers_name}
@@ -81,6 +82,7 @@ const userFavouriteContent = (droid) => {
 };
 
 const userPurchasedContent = (droid) => {
+  console.log(droid);
   return `
     <li>
       <img src="../${droid.image_url}">
@@ -95,7 +97,8 @@ const userPurchasedContent = (droid) => {
             <strong class="text-primary list-label">Model:</strong> ${droid.model}
           </li>
           <li>
-            <strong class="text-primary list-label">Price</strong> ${droid.sold_price && '$'}${droid.sold_price || 'SOLD'}
+            <strong class="text-primary list-label">Price</strong>
+             ${droid.sold_out ? 'SOLD OUT' : '$' + droid.sold_price}
           </li>
           <li>
             <strong class="text-primary list-label">Seller:</strong> ${droid.sellers_name}
@@ -124,7 +127,9 @@ const userListings = (droid) => {
             <strong class="text-primary list-label">Model:</strong> ${droid.model}
           </li>
           <li>
-            <strong class="text-primary list-label">Price</strong> ${droid.price && '$'}${droid.price || 'SOLD'}
+            <strong class="text-primary list-label">Price</strong>
+            ${droid.sold_out ? 'SOLD OUT' : '$' + droid.price}
+
           </li>
           <li>
             <strong class="text-primary list-label">Seller:</strong> ${droid.sellers_name}
@@ -133,7 +138,7 @@ const userListings = (droid) => {
             <strong class="text-primary list-label">Seller's Email: </strong> ${droid.sellers_email}
           </li>
         </ul>
-        <button class="btn btn-primary" data-id='${droid.id}' id='listings-btn'>Mark as Sold</button>
+        <button class="btn btn-primary" data-sold='${droid.sold_out}' data-id='${droid.id}' id='listings-btn'>Mark as Sold</button>
       </div>
     </li>
   `;
@@ -142,15 +147,10 @@ const userListings = (droid) => {
 // to do: Add rest of funtion
 $('body').on('click', '#listings-btn', function() {
   const droidId = $(this).data('id');
+  const isSoldOut = !$(this).data('sold')
   const user = getUserFromStorage();
 
-  // if(!$(this).hasClass('un-favourite')) {
-  //   removeDroidFromFavouritesEventHandler(user.id, droidId)
-  //   $(this).removeClass('favourite').addClass("un-favourite");
-  // } else {
-  //   addToFavouritesEventHandler(user.id, droidId)
-  //   $(this).removeClass('un-favourite').addClass('favourite')
-  // }
+  markAsSold(droidId, isSoldOut, user.id)
 });
 
 $('body').on('click', '#remove-btn', function() {

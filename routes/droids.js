@@ -274,7 +274,7 @@ module.exports = (db) => {
   // RETURN: droid json Object
   // ACCESS: private
   router.put("/update/:id", (req, res) => {
-    const soldOutUpdate = req.body.sold_out;
+    const soldOutUpdate = req.body.isSoldOut;
     const droidId = req.params.id;
     const queryString = `
       UPDATE droids

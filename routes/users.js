@@ -39,6 +39,7 @@ module.exports = (db) => {
       droids.name,
       droids.description,
       droids.price,
+      droids.sold_out as sold_out,
       manufacturer,
       model,
       image_url,

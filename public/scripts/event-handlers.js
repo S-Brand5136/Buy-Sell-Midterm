@@ -109,6 +109,20 @@ const getUsersListings = (userId) => {
   });
 };
 
+const markAsSold = (droidId, isSoldOut, userId) => {
+  $.ajax({
+    method: 'PUT',
+    url: `/api/droids/update/${droidId}`,
+    data: { isSoldOut },
+  })
+  .then(() => {
+    getUsersListings(userId);
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+}
+
 const submitNewListingEventHandler = function(event) {
   event.preventDefault();
   $.ajax({

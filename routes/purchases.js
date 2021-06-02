@@ -6,7 +6,7 @@ module.exports = (db) => {
     const buyerId = req.query.buyer;
     const values = [];
     let queryString = `
-    SELECT purchases.*, droids.name, manufacturer, model, users.name as sellers_name, email, image_url
+    SELECT purchases.*, droids.name, droids.sold_out as sold_out, manufacturer, model, users.name as sellers_name, email, image_url
     FROM purchases
     INNER JOIN droids ON droid_id = droids.id
     INNER JOIN users ON users.id = purchases.seller_id
