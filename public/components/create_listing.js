@@ -1,5 +1,5 @@
 const create_listing = () => {
-  return `<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  return `<div class="modal fade" id="createDroidModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -7,25 +7,28 @@ const create_listing = () => {
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="/droids/" id="create-listing" method="POST">
-          <label class="form-label" for="">Title</label>
-          <input class="form-control" type="text" id="droid-title" name="droid-title">
+        <form id="create-listing" enctype="multipart/form-data" method="POST">
+          <label class="form-label" for="droid-title">Title</label>
+          <input class="form-control" type="text" id="droid-title" name="title" required>
 
-          <label class="form-label" for="">Description</label>
-          <input class="form-control" type="text" id="droid-description" name="droid-description">
+          <label class="form-label" for="droid-description">Description</label>
+          <textarea class="form-control" type="text" id="description" name="description"></textarea required>
 
-          <label class="form-label" for="">Model</label>
-          <input class="form-control" type="text" id="droid-model" name="droid-model">
+          <label class="form-label" for="droid-model">Model</label>
+          <input class="form-control" type="text" id="droid-model" name="model" required>
 
-          <label class="form-label" for="">Manufacturer</label>
-          <input class="form-control" type="text" id="droid-manufacturer" name="droid-manufacturer">
+          <label class="form-label" for="droid-manufacturer">Manufacturer</label>
+          <input class="form-control" type="text" id="droid-manufacturer" name="manufacturer" required>
 
-          <label class="form-label" for="">Price</label>
-          <input class="form-control" type="number" id="droid-price" name="droid-price">
+          <label class="form-label" for="droid-price">Price</label>
+          <input class="form-control" type="number" id="droid-price" name="price" required>
 
-          <label class="form-label" for="">Image</label>
-          <input class="form-control" type="file" id="droid-image" name="droid-image">
-          <input type="submit" class="btn btn-primary">Create Listing</input>
+          <label class="form-label" for="droid-image">Image</label>
+          <input class="form-control" type="file" id="droid-image" name="image_url" required>
+
+          <input id="modal-userId-input" type="hidden" name="userId" required></input>
+
+          <button type="submit" class="btn btn-primary">Create Listing</button>
         </form>
       </div>
       <div class="modal-footer">
@@ -35,11 +38,4 @@ const create_listing = () => {
   </div>
 </div>
 `
-}
-
-$('body').on('click', '#create-listing', function(event) {
-  console.log('here');
-  event.preventDefault();
-  const data = $(this).serialize();
-  addDroid(data)
-});
+};

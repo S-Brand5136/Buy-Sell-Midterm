@@ -1,5 +1,22 @@
 const express = require("express");
+const multer = require("multer");
+const { v4 } = require("uuid");
+
 const router = express.Router();
+
+// Set up multer for handling image uploads
+const fileStorageEngine = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, './public/images/droid_images');
+  },
+  filename: (req, file, cb) => {
+    const extension = file.originalname.split('.').splice(-1)[0];
+    const fileName = `${v4()}.${extension}`;
+    req.imageFileName = fileName;
+    cb(null, fileName);
+  }
+});
+const imgUpload = multer({storage: fileStorageEngine});
 
 module.exports = (db) => {
   // GET: all droids w/ params if needed
@@ -51,6 +68,45 @@ module.exports = (db) => {
       .catch((err) => {
         console.log(err);
         res.status(404).json({ error: "Droids not found" });
+      });
+  });
+
+  // POST: droid to page if admin
+  // RETURN: droid json object
+  // ACCESS: private
+  router.post("/", imgUpload.single('image_url'), (req, res) => {
+    console.log('req.body:', req.body);
+    const { title, description, price, manufacturer, model, userId } = req.body;
+    const image_url = `../images/droid_images/${req.imageFileName}`;
+
+    // Query for saving to droids table
+    const queryParamsDroid = [userId, title, description, price, manufacturer, model];
+    const queryStringDroid = `
+      INSERT INTO droids (sellers_id, name, description, price, manufacturer, model)
+      VALUES ($1, $2, $3, $4, $5, $6) RETURNING *;
+    `;
+
+    // Query for saving to images table
+    const queryParamsImage = [];
+    const queryStringImage = `
+      INSERT INTO images (droids_id, is_primary, image_url)
+      VALUES ($1, true, $2) RETURNING *;
+    `;
+
+    // Insert droid into DB
+    db.query(queryStringDroid, queryParamsDroid)
+      .then((data) => {
+        // Need droid id from inserting droid before inserting image.
+        queryParamsImage.push(data.rows[0].id, image_url);
+        return db.query(queryStringImage, queryParamsImage);
+      })
+      .then((data) => {
+        const droid_id = data.rows[0].droids_id;
+        return res.status(201).json({droid_id});
+      })
+      .catch((err) => {
+        console.log(err);
+        return res.status(403).json({Error: 'Failed to create new Droid'})
       });
   });
 
@@ -176,37 +232,6 @@ module.exports = (db) => {
 // takes in a url from online and serves it back
 //
 
-  // POST: droid to page if admin
-  // RETURN: droid json object
-  // ACCESS: private
-  router.post("/create/:id", (req, res) => {
-    console.log(req.body);
-    const { title, description, price, manufacturer, model, image_url } = req.body;
-    const userId = req.params.id;
-    const queryParams = [userId, title, description, price, manufacturer, model];
-    const queryString = `
-      INSERT INTO droids (sellers_id, name, description, price, manufacturer, model)
-      VALUES ($1, $2, $3, $4, $5, $6) RETURNING *;`
-      db.query(queryString, queryParams)
-        .then((data) => {
-          const newDroid = data.rows[0]
-          return newDroid;
-        })
-        .then((data) => {
-          const queryParams = [data.id, true, image_url]
-          const queryString = `
-          INSERT INTO images (droids_id, is_primary, image_url)
-          VALUES ($1, $2, $3) RETURNING *;`;
-          db.query(queryString, queryParams)
-            .then((data) => {
-              const droid_id = data.rows[0].droids_id;
-              return res.status(200).json({droid_id});
-            })
-        })
-        .catch((err) => {
-          console.log(err);
-          return res.status(403).json({Error: 'Failed to create new Droid'})
-        })
-  })
+
   return router;
 };

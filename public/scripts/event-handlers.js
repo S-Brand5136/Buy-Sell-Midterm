@@ -55,6 +55,7 @@ const removeDroidFromFavouritesEventHandler = function(userId, droidId) {
     .catch(err => console.error(err));
 };
 
+// Get a list of droids purchased by user and load into user page.
 const getUsersPurchasesEventHandler = function(userId) {
   $.ajax({
     method: 'GET',

@@ -4,10 +4,18 @@
 
 // main is the function to run for loading main conent
 const loadContent = function(main) {
+  loadCreateModal();
   loadHeader();
   main();
   loadFooter();
 };
+
+const loadCreateModal = function() {
+  const user = JSON.parse(localStorage.getItem('user'));
+  $('body').prepend(create_listing());
+  $('#modal-userId-input').attr('value', user.id);
+  $('#create-listing').submit(submitNewListingEventHandler);
+}
 
 const loadHeader = function() {
   const user = getUserFromStorage();
