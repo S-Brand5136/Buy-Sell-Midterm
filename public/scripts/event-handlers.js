@@ -25,11 +25,7 @@ const getFavouriteDroidsEventHandler = function(userId) {
     method: 'GET',
     url: `/api/users/${userId}/favourites`
   })
-    .then((result) => {
-      // TODO: Handle result / update UI.
-      return result
-    })
-    .catch(err => console.error(err));
+    .then((result) => result);
 };
 
 // Add a droid to a user's favourites
@@ -59,17 +55,21 @@ const removeDroidFromFavouritesEventHandler = function(userId, droidId) {
     .catch(err => console.error(err));
 };
 
-const addDroid = function(droid) {
-  console.log(droid);
-  const user = getUserFromStorage();
+const getUsersPurchasesEventHandler = function(userId) {
   $.ajax({
-    method: "POST",
-    url: `/api/droids/create/${user.id}`,
-    data: droid,
+    method: 'GET',
+    url: `/api/purchases?buyer=${userId}`
   })
-    .then((result) => {
-      const newUrl = `/droids/${result.droid_id}`;
-      changePage({}, newUrl);
+    .then((droids) => {
+      $userContent = $('#user-droid-content');
+      $userContent.html('');
+      $('#user-favourites-button').removeClass('active');
+      $('#user-purchases-button').addClass('active');
+      for (const droid of droids) {
+        $userContent.append(userPurchasedContent(droid));
+      }
     })
-    .catch(err => {console.log(err)})
-}
+    .catch((err) => {
+      console.error(err);
+    });
+};

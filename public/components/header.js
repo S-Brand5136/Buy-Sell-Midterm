@@ -13,7 +13,7 @@ function updateHeader(user) {
       </nav>
     </div>`
     : ` <div class="container-fluid flex-row justify-content-end">
-      <span>Welcome: <a href='user/${user.id}'>${user.name}</a></span>
+      <span>Welcome: <a href='/user/${user.id}'>${user.name}</a></span>
       <a id="logout">Log out</a>
     </div>
     <div class="container-fluid flex-row justify-content-between">
@@ -51,4 +51,3 @@ $('body').on('click', '#logout', function(event) {
   localStorage.removeItem('user');
   changePage({}, '/');
 })
-

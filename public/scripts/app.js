@@ -29,7 +29,6 @@ const routing = () => {
 };
 
 const changePage = (state, newUrl) => {
-  console.log('newUrl', newUrl);
   history.pushState(state, '', newUrl);
   routing();
 };
