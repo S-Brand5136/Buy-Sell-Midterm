@@ -90,12 +90,9 @@ const submitNewListingEventHandler = function(event) {
       // Clear the form in the modal
       $(this)[0].reset();
 
-      // Hide the modal
-      // const createModal = new bootstrap.Modal(document.getElementById('createDroidModal'), {
-      //   keyboard: false
-      // });
-      // createModal.hide();
+      // Hide modal after submitting the form.
       $('#createDroidModal').modal('hide');
+
       console.log(data);
     })
     .catch((err) => {

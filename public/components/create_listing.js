@@ -12,7 +12,7 @@ const create_listing = () => {
           <input class="form-control" type="text" id="droid-title" name="droid-title">
 
           <label class="form-label" for="droid-description">Description</label>
-          <input class="form-control" type="text" id="droid-description" name="droid-description">
+          <textarea class="form-control" type="text" id="droid-description" name="droid-description"></textarea>
 
           <label class="form-label" for="droid-model">Model</label>
           <input class="form-control" type="text" id="droid-model" name="droid-model">
