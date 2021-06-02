@@ -93,7 +93,8 @@ const submitNewListingEventHandler = function(event) {
       // Hide modal after submitting the form.
       $('#createDroidModal').modal('hide');
 
-      console.log(data);
+      const id = $('#modal-userId-input').attr('value');
+      changePage({id: id}, `/droids/${data.droid_id}`);
     })
     .catch((err) => {
       console.error(err);

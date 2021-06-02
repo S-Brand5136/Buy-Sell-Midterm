@@ -74,34 +74,40 @@ module.exports = (db) => {
   // POST: droid to page if admin
   // RETURN: droid json object
   // ACCESS: private
-  router.post("/", imgUpload.single('droid-image'), (req, res) => {
+  router.post("/", imgUpload.single('image_url'), (req, res) => {
     console.log('req.body:', req.body);
-    const { title, description, price, manufacturer, model, image_url, userId } = req.body;
-    const queryParams = [userId, title, description, price, manufacturer, model];
-    const queryString = `
+    const { title, description, price, manufacturer, model, userId } = req.body;
+    const image_url = `../images/droid_images/${req.imageFileName}`;
+
+    // Query for saving to droids table
+    const queryParamsDroid = [userId, title, description, price, manufacturer, model];
+    const queryStringDroid = `
       INSERT INTO droids (sellers_id, name, description, price, manufacturer, model)
-      VALUES ($1, $2, $3, $4, $5, $6) RETURNING *;`
-      // db.query(queryString, queryParams)
-      //   .then((data) => {
-      //     const newDroid = data.rows[0]
-      //     return newDroid;
-      //   })
-      //   .then((data) => {
-          // const queryParams = [data.id, true, image_url]
-          // const queryString = `
-          // INSERT INTO images (droids_id, is_primary, image_url)
-          // VALUES ($1, $2, $3) RETURNING *;`;
-          // db.query(queryString, queryParams)
-          //   .then((data) => {
-          //     const droid_id = data.rows[0].droids_id;
-          //     return res.status(200).json({droid_id});
-          //   })
-        // })
-        // .catch((err) => {
-        //   console.log(err);
-        //   return res.status(403).json({Error: 'Failed to create new Droid'})
-        // })
-        return res.status(204).json();
+      VALUES ($1, $2, $3, $4, $5, $6) RETURNING *;
+    `;
+
+    // Query for saving to images table
+    const queryParamsImage = [];
+    const queryStringImage = `
+      INSERT INTO images (droids_id, is_primary, image_url)
+      VALUES ($1, true, $2) RETURNING *;
+    `;
+
+    // Insert droid into DB
+    db.query(queryStringDroid, queryParamsDroid)
+      .then((data) => {
+        // Need droid id from inserting droid before inserting image.
+        queryParamsImage.push(data.rows[0].id, image_url);
+        return db.query(queryStringImage, queryParamsImage);
+      })
+      .then((data) => {
+        const droid_id = data.rows[0].droids_id;
+        return res.status(201).json({droid_id});
+      })
+      .catch((err) => {
+        console.log(err);
+        return res.status(403).json({Error: 'Failed to create new Droid'})
+      });
   });
 
   router.get("/:id", (req, res) => {

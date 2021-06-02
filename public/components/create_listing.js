@@ -9,24 +9,24 @@ const create_listing = () => {
       <div class="modal-body">
         <form id="create-listing" enctype="multipart/form-data" method="POST">
           <label class="form-label" for="droid-title">Title</label>
-          <input class="form-control" type="text" id="droid-title" name="droid-title">
+          <input class="form-control" type="text" id="droid-title" name="title" required>
 
           <label class="form-label" for="droid-description">Description</label>
-          <textarea class="form-control" type="text" id="droid-description" name="droid-description"></textarea>
+          <textarea class="form-control" type="text" id="description" name="description"></textarea required>
 
           <label class="form-label" for="droid-model">Model</label>
-          <input class="form-control" type="text" id="droid-model" name="droid-model">
+          <input class="form-control" type="text" id="droid-model" name="model" required>
 
           <label class="form-label" for="droid-manufacturer">Manufacturer</label>
-          <input class="form-control" type="text" id="droid-manufacturer" name="droid-manufacturer">
+          <input class="form-control" type="text" id="droid-manufacturer" name="manufacturer" required>
 
           <label class="form-label" for="droid-price">Price</label>
-          <input class="form-control" type="number" id="droid-price" name="droid-price">
+          <input class="form-control" type="number" id="droid-price" name="price" required>
 
           <label class="form-label" for="droid-image">Image</label>
-          <input class="form-control" type="file" id="droid-image" name="droid-image">
+          <input class="form-control" type="file" id="droid-image" name="image_url" required>
 
-          <input id="modal-userId-input" type="hidden" name="userId"></input>
+          <input id="modal-userId-input" type="hidden" name="userId" required></input>
 
           <button type="submit" class="btn btn-primary">Create Listing</button>
         </form>
