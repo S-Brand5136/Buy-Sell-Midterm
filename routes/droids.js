@@ -281,13 +281,15 @@ module.exports = (db) => {
       SET sold_out = $1
       WHERE id = $2 RETURNING *;`;
     const queryParams = [soldOutUpdate, droidId];
+
     db.query(queryString, queryParams)
       .then((data) => {
-        res.status(200).json(data.rows);
+        return res.status(200).json({msg: 'sucessfully updated'})
       })
-      .then((err) => {
-        res.status(403).json({Errpr: err});
-      });
+      .catch((err) => {
+        console.log(err);
+        return res.status(403).json({Error: err})
+      })
 
   });
 
