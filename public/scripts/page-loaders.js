@@ -135,7 +135,7 @@ const loadUserPage = function(userId) {
   // Send user to their own user page if they try to visit someone else's.
   if (user.id !== userId) {
     const state = {notAuthorized: `user ${user.id} not authorized to view page for user ${userId}`};
-    changePage(state, `/users/${user.id}`);
+    return changePage(state, `/user/${user.id}`);
   }
   loadContent(() => loadMainContentUser(user));
 };
