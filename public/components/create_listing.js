@@ -8,23 +8,26 @@ const create_listing = () => {
       </div>
       <div class="modal-body">
         <form id="create-listing" enctype="multipart/form-data" method="POST">
-          <label class="form-label" for="">Title</label>
+          <label class="form-label" for="droid-title">Title</label>
           <input class="form-control" type="text" id="droid-title" name="droid-title">
 
-          <label class="form-label" for="">Description</label>
+          <label class="form-label" for="droid-description">Description</label>
           <input class="form-control" type="text" id="droid-description" name="droid-description">
 
-          <label class="form-label" for="">Model</label>
+          <label class="form-label" for="droid-model">Model</label>
           <input class="form-control" type="text" id="droid-model" name="droid-model">
 
-          <label class="form-label" for="">Manufacturer</label>
+          <label class="form-label" for="droid-manufacturer">Manufacturer</label>
           <input class="form-control" type="text" id="droid-manufacturer" name="droid-manufacturer">
 
-          <label class="form-label" for="">Price</label>
+          <label class="form-label" for="droid-price">Price</label>
           <input class="form-control" type="number" id="droid-price" name="droid-price">
 
-          <label class="form-label" for="">Image</label>
+          <label class="form-label" for="droid-image">Image</label>
           <input class="form-control" type="file" id="droid-image" name="droid-image">
+
+          <input id="modal-userId-input" type="hidden" name="userId"></input>
+
           <button type="submit" class="btn btn-primary">Create Listing</button>
         </form>
       </div>
