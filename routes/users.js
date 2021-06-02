@@ -35,7 +35,7 @@ module.exports = (db) => {
     const userId = req.params.id;
     const queryString = `
     SELECT
-      droids.id,
+      droids.id as droid_id,
       droids.name,
       droids.description,
       droids.price,

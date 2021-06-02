@@ -97,12 +97,16 @@ const appendDroids = (data) => {
     $('#droid-container').html('');
     const droids = data[0].droids;
     const favourites = data[1];
-
     if(droids.length > 0) {
-      for (const index in droids) {
-        const favouriteIndex = favourites[index] ? favourites[index].id : -1;
-        const favourite = droids[index].id === favouriteIndex ? true : false;
-        $('#droid-container').append(droid_card(droids[index], favourite))
+      for (const droid of droids) {
+        let favourite = false;
+        for (const item of favourites) {
+          if(droid['id'] === item['droid_id']) {
+            favourite = true;
+          }
+        }
+        console.log(favourite);
+        $('#droid-container').append(droid_card(droid, favourite))
       }
     } else {
       $('#droid-container').append('<h1>These are not the droids you are looking for.</h1>')
