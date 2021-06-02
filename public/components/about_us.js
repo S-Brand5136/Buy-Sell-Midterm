@@ -3,8 +3,8 @@ const aboutUs = function() {
     <section id="about-us">
       <div>
         <h4>The Future is Friendly</h4>
-        <p>At Droid Reclaimers we have been connecting salvagers and buyers across the galaxy for the past 11 years.
-        From our office on Alderan.</p>
+        <p>Founded and operating from Alderan,
+        at Droid Reclaimers we have been connecting salvagers and buyers across the galaxy for the past 11 years.</p>
       </div>
       <div>
         <h4># 1 Ranked Seller</h4>
