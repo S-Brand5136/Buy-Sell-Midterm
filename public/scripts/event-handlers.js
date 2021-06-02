@@ -21,20 +21,11 @@ const deleteDroidEventHandler = function(id) {
 
 // Get all droids that a user has on their favourites
 const getFavouriteDroidsEventHandler = function(userId) {
-  $.ajax({
+  return $.ajax({
     method: 'GET',
     url: `/api/users/${userId}/favourites`
   })
-    .then((droids) => {
-      $userContent = $('#user-droid-content');
-      $userContent.html('');
-      $('#user-favourites-button').addClass('active');
-      $('#user-purchases-button').removeClass('active');
-      for (const droid of droids) {
-        $userContent.append(userFavouriteContent(droid));
-      }
-    })
-    .catch(err => console.error(err));
+    .then((result) => result);
 };
 
 // Add a droid to a user's favourites
