@@ -75,9 +75,8 @@ module.exports = (db) => {
   // RETURN: droid json object
   // ACCESS: private
   router.post("/", imgUpload.single('droid-image'), (req, res) => {
-    console.log('logging filename from router', req.imageFileName);
-    const { title, description, price, manufacturer, model, image_url } = req.body;
-    const userId = req.params.id;
+    console.log('req.body:', req.body);
+    const { title, description, price, manufacturer, model, image_url, userId } = req.body;
     const queryParams = [userId, title, description, price, manufacturer, model];
     const queryString = `
       INSERT INTO droids (sellers_id, name, description, price, manufacturer, model)

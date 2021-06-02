@@ -77,5 +77,28 @@ const getUsersPurchasesEventHandler = function(userId) {
 
 const submitNewListingEventHandler = function(event) {
   event.preventDefault();
-  console.log(event);
+  $.ajax({
+    method: 'POST',
+    url: '/api/droids',
+    data: new FormData($('#create-listing')[0]),
+    enctype: 'multipart/form-data',
+    processData: false,
+    contentType: false,
+    cache: false
+  })
+    .then((data) => {
+      // Clear the form in the modal
+      $(this)[0].reset();
+
+      // Hide the modal
+      // const createModal = new bootstrap.Modal(document.getElementById('createDroidModal'), {
+      //   keyboard: false
+      // });
+      // createModal.hide();
+      $('#createDroidModal').modal('hide');
+      console.log(data);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
 };
