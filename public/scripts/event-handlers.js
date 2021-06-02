@@ -27,7 +27,6 @@ const getFavouriteDroidsEventHandler = function(userId) {
   })
     .then((result) => {
       // TODO: Handle result / update UI.
-      console.log(result);
       return result
     })
     .catch(err => console.error(err));
@@ -69,7 +68,6 @@ const addDroid = function(droid) {
     data: droid,
   })
     .then((result) => {
-      console.log(result);
       const newUrl = `/droids/${result.droid_id}`;
       changePage({}, newUrl);
     })

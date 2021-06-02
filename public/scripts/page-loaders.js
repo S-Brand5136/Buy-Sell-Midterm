@@ -105,7 +105,6 @@ const appendDroids = (data) => {
             favourite = true;
           }
         }
-        console.log(favourite);
         $('#droid-container').append(droid_card(droid, favourite))
       }
     } else {
