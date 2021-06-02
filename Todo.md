@@ -19,6 +19,7 @@
 
 - Home Page
   - [X] Page created
+    - [ ] Connect search bar
 
 - Droid page
   - [X] Page created
@@ -28,11 +29,13 @@
   - [X] Add to favourites button
     - [X] Link to favourites click handler
   - [ ] Fix bug when going from small to large screen, display settings
+  - [ ] Add Object: fit to droid card images
 
 - User / Admin page
   - [ ] Page created
 
 - add Droid
+  - [ ] Create page
   - [X] Add backend route
     - [ ] Adds droid + image to database
       - Half working, adds image URL
