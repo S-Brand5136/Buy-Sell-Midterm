@@ -278,11 +278,12 @@ module.exports = (db) => {
     const droidId = req.params.id;
     const queryString = `
       UPDATE droids
-      SET sold_out = $1;
-      WHERE id = $2 RETURNING *`;
+      SET sold_out = $1
+      WHERE id = $2 RETURNING *;`;
     const queryParams = [soldOutUpdate, droidId];
     db.query(queryString, queryParams)
       .then((data) => {
+        res.status(200).json(data.rows);
       })
       .then((err) => {
 
