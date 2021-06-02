@@ -101,7 +101,7 @@ module.exports = (db) => {
   router.get("/manufacturer/:manufacturer", (req, res) => {
     let limit = req.body.limit || 10;
     let offset = req.body.offset || 0;
-    const searchTerm = `%${req.params.manufacturer.toLowerCase()}%`;
+    const searchTerm = `%${req.query.manufacturer.toLowerCase()}%`;
     const queryParams = [searchTerm, limit, offset];
     const queryString = `
     SELECT droids.* FROM droids
@@ -128,7 +128,7 @@ module.exports = (db) => {
   router.get("/model/:model", (req, res) => {
     let limit = req.body.limit || 10;
     let offset = req.body.offset || 0;
-    const searchTerm = `%${req.params.model.toLowerCase()}%`;
+    const searchTerm = `%${req.query.model.toLowerCase()}%`;
     const queryParams = [searchTerm, limit, offset];
     const queryString = `
     SELECT droids.* FROM droids
@@ -149,17 +149,40 @@ module.exports = (db) => {
       });
   });
 
+//
+// to do: Image saving. Right now it just
+// takes in a url from online and serves it back
+//
+
   // POST: droid to page if admin
   // RETURN: droid json object
   // ACCESS: private
-
-  // PUT: update droid if owner
-  // RETURN: updated droid json object
-  // ACCESS: private
-
-  // DELETE: droid if owner
-  // RETURN: JSON success message
-  // ACCESS: private
-
+  router.post("/create/:id", (req, res) => {
+    const { name, description, price, manufacturer, model, image_url } = req.body;
+    const userId = req.params.id;
+    const queryParams = [userId, name, description, price, manufacturer, model];
+    const queryString = `
+      INSERT INTO droids (sellers_id, name, description, price, manufacturer, model)
+      VALUES ($1, $2, $3, $4, $5, $6) RETURNING *;`
+      db.query(queryString, queryParams)
+        .then((data) => {
+          const newDroid = data.rows[0]
+          return newDroid;
+        })
+        .then((data) => {
+          const queryParams = [data.id, true, image_url]
+          const queryString = `
+          INSERT INTO images (droids_id, is_primary, image_url)
+          VALUES ($1, $2, $3)`;
+          db.query(queryString, queryParams)
+            .then((data) => {
+              return res.status(200).json({msg: 'Droid listing created'});
+            })
+        })
+        .catch((err) => {
+          console.log(err);
+          return res.status(403).json({Error: 'Failed to create new Droid'})
+        })
+  })
   return router;
 };

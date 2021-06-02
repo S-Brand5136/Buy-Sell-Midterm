@@ -13,8 +13,7 @@ function updateHeader(user) {
       </nav>
     </div>`
     : ` <div class="container-fluid flex-row justify-content-end">
-      <img alt="avatar">
-      <span>Logged in as: ${user.name}</span>
+      <span>Welcome: <a href='user/${user.id}'>${user.name}</a></span>
       <a id="logout">Log out</a>
     </div>
     <div class="container-fluid flex-row justify-content-between">
@@ -24,7 +23,10 @@ function updateHeader(user) {
         <a href="/droids">Droids</a>
         <a href="">Purchased</a>
       </nav>
-      ${user.is_admin ? `<button class="btn btn-primary" id="selling-btn">Create Listing</button>` : ''}
+      ${user.is_admin ? `<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Launch demo modal
+    </button>
+  ` : ''}
     </div>
       `;
 }
