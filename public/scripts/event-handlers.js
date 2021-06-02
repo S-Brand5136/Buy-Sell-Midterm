@@ -28,6 +28,8 @@ const getFavouriteDroidsEventHandler = function(userId) {
     .then((droids) => {
       $userContent = $('#user-droid-content');
       $userContent.html('');
+      $('#user-favourites-button').addClass('active');
+      $('#user-purchases-button').removeClass('active');
       for (const droid of droids) {
         $userContent.append(userFavouriteContent(droid));
       }

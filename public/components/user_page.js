@@ -39,7 +39,7 @@ const userPage = function(user) {
     <nav>
       <ul class="nav nav-tabs">
         <li class="nav-item">
-          <button id="user-favourites-button" class="nav-link active">Favourites</button>
+          <button id="user-favourites-button" class="nav-link">Favourites</button>
         </li>
         <li class="nav-item">
           <button id="user-purchases-button" class="nav-link">Purchases</button>
