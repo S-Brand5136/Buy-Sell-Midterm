@@ -4,18 +4,21 @@
   padding: 3rem 2rem;
   display: flex;
   justify-content: space-around;
-  align-items: center;
+  // align-items: center;
   background-color: $bg-primary-light;
   width: 100%;
   box-sizing: border-box;
   margin: 4rem 0;
 
   > div {
-    border: 1px solid black;
-    padding: .7rem;
-    width: 16rem;
-    height: 16rem;
-    background-color: $bg-general;
+    width: 25rem;
+    color: $bg-general;
+    font-family: $subHeader-font;
+
+    h4 {
+      border-bottom: 2px solid $bg-general;
+      padding-bottom: .3rem;
+    }
   }
 }
 
