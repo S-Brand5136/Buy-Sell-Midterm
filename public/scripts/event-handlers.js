@@ -26,7 +26,6 @@ const getFavouriteDroidsEventHandler = function(userId) {
     url: `/api/users/${userId}/favourites`
   })
     .then((droids) => {
-      console.log(droids);
       $userContent = $('#user-droid-content');
       $userContent.html('');
       for (const droid of droids) {

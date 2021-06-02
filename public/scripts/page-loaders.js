@@ -120,7 +120,6 @@ const appendDroids = (data) => {
 
 const loadMainContentUser = function(user) {
   $('#main-content').append(userPage(user));
-  console.log('user.id', user.id);
   getFavouriteDroidsEventHandler(user.id);
   $('#user-favourites-button').click(() => getFavouriteDroidsEventHandler(user.id));
 };
@@ -131,6 +130,12 @@ const loadUserPage = function(userId) {
     return changePage({userId}, '/');
   }
   const user = JSON.parse(userString);
+
+  // Send user to their own user page if they try to visit someone else's.
+  if (user.id !== userId) {
+    const state = {notAuthorized: `user ${user.id} not authorized to view page for user ${userId}`};
+    changePage(state, `/users/${user.id}`);
+  }
   loadContent(() => loadMainContentUser(user));
 };
 
