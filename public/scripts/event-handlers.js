@@ -126,6 +126,7 @@ const submitNewListingEventHandler = function(event) {
       // Hide modal after submitting the form.
       $('#createDroidModal').modal('hide');
 
+      // User id for history.state
       const id = $('#modal-userId-input').attr('value');
       changePage({id: id}, `/droids/${data.droid_id}`);
     })

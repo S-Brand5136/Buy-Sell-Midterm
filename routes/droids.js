@@ -75,12 +75,17 @@ module.exports = (db) => {
   // RETURN: droid json object
   // ACCESS: private
   router.post("/", imgUpload.single('image_url'), (req, res) => {
-    console.log('req.body:', req.body);
     const { title, description, price, manufacturer, model, userId } = req.body;
     const image_url = `../images/droid_images/${req.imageFileName}`;
 
     // Query for saving to droids table
     const queryParamsDroid = [userId, title, description, price, manufacturer, model];
+
+    // Throw error if any required params are empty
+    if([...queryParamsDroid, image_url].every(x => !x)) {
+      throw 'Input fields cannot be empty';
+    }
+
     const queryStringDroid = `
       INSERT INTO droids (sellers_id, name, description, price, manufacturer, model)
       VALUES ($1, $2, $3, $4, $5, $6) RETURNING *;
