@@ -81,7 +81,7 @@
 
 Admin
   - [ ] add droid NOT YET
-  - [X] Remove Droid
+  - [ ] Remove Droid
   - [ ] Mark droids as sold
   - [X] Message back
 

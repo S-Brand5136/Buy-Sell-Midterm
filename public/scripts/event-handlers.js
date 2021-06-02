@@ -63,8 +63,9 @@ const getUsersPurchasesEventHandler = function(userId) {
     .then((droids) => {
       $userContent = $('#user-droid-content');
       $userContent.html('');
-      $('#user-favourites-button').removeClass('active');
       $('#user-purchases-button').addClass('active');
+      $('#user-favourites-button').removeClass('active');
+      $('#user-listings-button').removeClass('active');
       for (const droid of droids) {
         $userContent.append(userPurchasedContent(droid));
       }
@@ -73,3 +74,35 @@ const getUsersPurchasesEventHandler = function(userId) {
       console.error(err);
     });
 };
+
+// Pulled out of event handler and then chained to it.
+const onClickFavourites = (userId) => {
+  getFavouriteDroidsEventHandler(userId)
+    .then((droids) => {
+      $userContent = $('#user-droid-content');
+      $userContent.html('');
+      $('#user-favourites-button').addClass('active');
+      $('#user-purchases-button').removeClass('active');
+      $('#user-listings-button').removeClass('active');
+      for (const droid of droids) {
+        $userContent.append(userFavouriteContent(droid));
+      }
+    })
+    .catch((err) => console.error(err));
+};
+
+const getUsersListings = (userId) => {
+  $.ajax({
+    method: 'GET',
+    url: `/api/droids/admin/${userId}`
+  }).then((droids) => {
+    $userContent = $('#user-droid-content');
+    $userContent.html('');
+    $('#user-purchases-button').removeClass('active');
+    $('#user-favourites-button').removeClass('active');
+    $('#user-listings-button').addClass('active');
+    for (const droid of droids) {
+      $userContent.append(userFavouriteContent(droid));
+    }
+  })
+}
