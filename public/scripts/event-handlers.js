@@ -55,6 +55,7 @@ const removeDroidFromFavouritesEventHandler = function(userId, droidId) {
     .catch(err => console.error(err));
 };
 
+// Get a list of droids purchased by user and load into user page.
 const getUsersPurchasesEventHandler = function(userId) {
   $.ajax({
     method: 'GET',
@@ -107,3 +108,30 @@ const getUsersListings = (userId) => {
     }
   })
 }
+
+const submitNewListingEventHandler = function(event) {
+  event.preventDefault();
+  $.ajax({
+    method: 'POST',
+    url: '/api/droids',
+    data: new FormData($('#create-listing')[0]),
+    enctype: 'multipart/form-data',
+    processData: false,
+    contentType: false,
+    cache: false
+  })
+    .then((data) => {
+      // Clear the form in the modal
+      $(this)[0].reset();
+
+      // Hide modal after submitting the form.
+      $('#createDroidModal').modal('hide');
+
+      // User id for history.state
+      const id = $('#modal-userId-input').attr('value');
+      changePage({id: id}, `/droids/${data.droid_id}`);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+};
