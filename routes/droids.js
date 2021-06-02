@@ -208,5 +208,18 @@ module.exports = (db) => {
           return res.status(403).json({Error: 'Failed to create new Droid'})
         })
   })
+
+  // PUT: Update a droids sold_out value
+  // RETURN: droid json Object
+  // ACCESS: private
+  router.put("/update/:id", (req, res) => {
+    const soldOutUpdate = req.body.sold_out;
+    const droidId = req.params.id;
+    console.log(soldOutUpdate);
+    console.log(droidId);
+    return res.status(200).json({msg: 'call made'});
+  })
+
+
   return router;
 };

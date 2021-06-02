@@ -91,6 +91,7 @@ const onClickFavourites = (userId) => {
     .catch((err) => console.error(err));
 };
 
+// Add an Admins listing to user tab element on user page
 const getUsersListings = (userId) => {
   $.ajax({
     method: 'GET',
