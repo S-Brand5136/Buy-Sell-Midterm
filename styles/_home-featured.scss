@@ -46,8 +46,13 @@
 .main-content-title {
   font-family: $subHeader-font;
   font-size: 2.7rem;
-  color: $bg-general-dark;
+  color: $bg-primary-dark;
   margin-bottom: 1.2rem;
+}
+
+.card-title {
+  font-family: $header-font, serif;
+  margin-bottom: 1.5rem;
 }
 
 
