@@ -32,12 +32,15 @@
     span {
       font-size: 32px;
       margin-right: 1rem;
+
+      i {
+        color: inherit;
+      }
     }
 
     .un-favourite {
-      i {
         color: $bg-primary-dark;
-      }
+
 
       i:hover {
         color: $heart-highlight;
@@ -47,11 +50,11 @@
 
     .favourite {
       i {
-        color: $bg-primary-dark;
+        color: $heart-highlight;
       }
 
       i:hover {
-        color: $heart-highlight;
+        color: $bg-primary-dark;
         cursor: pointer;
       }
     }
