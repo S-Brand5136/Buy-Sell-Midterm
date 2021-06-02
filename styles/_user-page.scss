@@ -48,7 +48,6 @@
   button i {
     margin-right: .8rem;
   }
-
 }
 
 h2.user-page-title {
@@ -100,10 +99,6 @@ h2.user-page-title {
     flex-direction: column;
     height: auto;
 
-    p {
-      margin-bottom: .5rem;
-    }
-
     > img {
       max-height: 20rem;
       min-width: auto;
@@ -125,7 +120,11 @@ h2.user-page-title {
     }
 
     button {
-      margin: 0 0 1rem 0;
+      margin-right: .8rem;
+    }
+
+    a i {
+      margin-left: .5rem;
     }
   }
 }
@@ -151,7 +150,6 @@ h2.user-page-title {
     > li {
       flex-direction: row;
       height: 15rem;
-
 
       > img {
         height: 100%;

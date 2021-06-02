@@ -21,7 +21,9 @@ const userPage = function(user) {
     userString += `
       <div>
         <button class="btn btn-danger type="button onClick="deleteEverything">
-          <i class="fas fa-exclamation-triangle"></i>Delete All Droid Listings!
+          <i class="fas fa-exclamation-triangle"></i>
+          Delete All Droid Listings!
+          <i class="fas fa-bomb"></i>
         </button>
       </div>`;
   }
@@ -51,6 +53,7 @@ const userPage = function(user) {
 };
 
 const userFavouriteContent = (droid) => {
+  console.log(droid);
   return `
     <li>
       <img src="../${droid.image_url}">
@@ -75,7 +78,8 @@ const userFavouriteContent = (droid) => {
             <strong class="text-primary list-label">Seller's Email: </strong> ${droid.sellers_email}
           </li>
         </ul>
-        <button class="btn btn-primary" data-id='${droid.droid_id}' id='remove-btn'>Remove From Favourites</button>
+        <button class="btn btn-warning" data-id='${droid.droid_id}' id='remove-btn'>Remove From Favourites</button>
+        <a href='/droids/${droid.droid_id}' class="btn btn-primary">View <i class="fas fa-robot"></i><a>
       </div>
     </li>
   `;
