@@ -55,7 +55,7 @@ const userFavouriteContent = (droid) => {
     <li>
       <img src="../${droid.image_url}">
       <div>
-        <h4>${droid.name}</h4>
+        <h4><a href='/droids/${droid.droid_id}'>${droid.name}</a></h4>
         <small>Date Posted: ${new Date(droid.date_posted).toLocaleDateString()}</small>
         <ul>
           <li>
@@ -74,7 +74,7 @@ const userFavouriteContent = (droid) => {
             <strong class="text-primary list-label">Seller's Email: </strong> ${droid.sellers_email}
           </li>
         </ul>
-        <button class="btn btn-primary">Remove From Favourites</button>
+        <button class="btn btn-primary" data-id='${droid.droid_id}' id='remove-btn'>Remove From Favourites</button>
       </div>
     </li>
   `;
@@ -85,7 +85,7 @@ const userPurchasedContent = (droid) => {
     <li>
       <img src="../${droid.image_url}">
       <div>
-        <h4>${droid.name}</h4>
+      <h4><a href='/droids/${droid.droid_id}'>${droid.name}</a></h4>
         <small>Date Purchased: ${new Date(droid.sold_on).toLocaleDateString()}</small>
         <ul>
           <li>
@@ -114,7 +114,7 @@ const userPurchasedContent = (droid) => {
     <li>
       <img src="../${droid.image_url}">
       <div>
-        <h4>${droid.name}</h4>
+      <h4><a href='/droids/${droid.id}'>${droid.name}</a></h4>
         <small>Date Posted: ${new Date(droid.date_posted).toLocaleDateString()}</small>
         <ul>
           <li>
@@ -133,8 +133,30 @@ const userPurchasedContent = (droid) => {
             <strong class="text-primary list-label">Seller's Email: </strong> ${droid.sellers_email}
           </li>
         </ul>
-        <button class="btn btn-primary">Remove From Listings</button>
+        <button class="btn btn-primary" data-id='${droid.id}' id='listings-btn'>Mark as Sold</button>
       </div>
     </li>
   `;
 };
+
+// to do: Add rest of funtion
+$('body').on('click', '#listings-btn', function() {
+  const droidId = $(this).data('id');
+  const user = getUserFromStorage();
+
+  // if(!$(this).hasClass('un-favourite')) {
+  //   removeDroidFromFavouritesEventHandler(user.id, droidId)
+  //   $(this).removeClass('favourite').addClass("un-favourite");
+  // } else {
+  //   addToFavouritesEventHandler(user.id, droidId)
+  //   $(this).removeClass('un-favourite').addClass('favourite')
+  // }
+})
+
+$('body').on('click', '#remove-btn', function() {
+  const droidId = $(this).data('id');
+  const user = getUserFromStorage();
+
+  removeDroidFromFavouritesEventHandler(user.id, droidId)
+  onClickFavourites(user.id)
+})

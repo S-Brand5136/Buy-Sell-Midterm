@@ -102,7 +102,7 @@ const getUsersListings = (userId) => {
     $('#user-favourites-button').removeClass('active');
     $('#user-listings-button').addClass('active');
     for (const droid of droids) {
-      $userContent.append(userFavouriteContent(droid));
+      $userContent.append(userListings(droid));
     }
   })
 }
