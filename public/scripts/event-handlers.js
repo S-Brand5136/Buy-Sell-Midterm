@@ -92,6 +92,7 @@ const onClickFavourites = (userId) => {
     .catch((err) => console.error(err));
 };
 
+// Add an Admins listing to user tab element on user page
 const getUsersListings = (userId) => {
   $.ajax({
     method: 'GET',
@@ -103,8 +104,22 @@ const getUsersListings = (userId) => {
     $('#user-favourites-button').removeClass('active');
     $('#user-listings-button').addClass('active');
     for (const droid of droids) {
-      $userContent.append(userFavouriteContent(droid));
+      $userContent.append(userListings(droid));
     }
+  });
+};
+
+const markAsSold = (droidId, isSoldOut, userId) => {
+  $.ajax({
+    method: 'PUT',
+    url: `/api/droids/update/${droidId}`,
+    data: { isSoldOut },
+  })
+  .then(() => {
+    getUsersListings(userId);
+  })
+  .catch((err) => {
+    console.log(err);
   })
 }
 

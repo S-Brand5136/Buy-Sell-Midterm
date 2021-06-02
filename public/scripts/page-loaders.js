@@ -15,7 +15,7 @@ const loadCreateModal = function() {
   $('body').prepend(create_listing());
   $('#modal-userId-input').attr('value', user.id);
   $('#create-listing').submit(submitNewListingEventHandler);
-}
+};
 
 const loadHeader = function() {
   const user = getUserFromStorage();
@@ -41,15 +41,15 @@ const loadHomePage = function() {
     method: "GET",
     url: "/api/droids/featured",
   })
-  .then((droids) => {
-    loadContent(() => loadMainContentHome(droids));
-  })
-  .then(() => {
+    .then((droids) => {
+      loadContent(() => loadMainContentHome(droids));
+    })
+    .then(() => {
     // Start carousel.
-    const myCarousel = document.querySelector('#featuredCarousel');
-    const carousel = new bootstrap.Carousel(myCarousel);
-  })
-  .catch(err => console.error(err));
+      const myCarousel = document.querySelector('#featuredCarousel');
+      const carousel = new bootstrap.Carousel(myCarousel);
+    })
+    .catch(err => console.error(err));
 };
 
 //
@@ -62,7 +62,7 @@ const loadMainContentDroid = function(droid) {
   // Add event listeners
   $('.droid-secondary img').click(imageSwapClickHandler);
   $('#delete-droid').click(() => deleteDroidEventHandler(droid.id));
-}
+};
 
 const loadDroidPage = function(id) {
   $.ajax({
@@ -75,7 +75,7 @@ const loadDroidPage = function(id) {
         return changePage({id, error: 404}, '/404');
       }
       loadContent(() => loadMainContentDroid(droid));
-    })
+    });
 };
 
 //
@@ -84,9 +84,9 @@ const loadDroidPage = function(id) {
 
 const loadDroidsPage = function(id) {
   return loadContent(() => {
-    $('#main-content').append(droid_search())
-    $('#droid-search').prepend(filter_options())
-    appendDroids()
+    $('#main-content').append(droid_search());
+    $('#droid-search').prepend(filter_options());
+    appendDroids();
   });
 };
 
@@ -101,26 +101,26 @@ const appendDroids = (data) => {
     url: `/api/droids`,
     data
   }), getFavouriteDroidsEventHandler(userId)])
-  .then(data => {
-    $('#droid-container').html('');
-    const droids = data[0].droids;
-    console.log(data);
-    const favourites = data[1];
-    if(droids.length > 0) {
-      for (const droid of droids) {
-        let favourite = false;
-        for (const item of favourites) {
-          if(droid['id'] === item['droid_id']) {
-            favourite = true;
+    .then(data => {
+      $('#droid-container').html('');
+      const droids = data[0].droids;
+      console.log(data);
+      const favourites = data[1];
+      if (droids.length > 0) {
+        for (const droid of droids) {
+          let favourite = false;
+          for (const item of favourites) {
+            if (droid['id'] === item['droid_id']) {
+              favourite = true;
+            }
           }
+          $('#droid-container').append(droid_card(droid, favourite));
         }
-        $('#droid-container').append(droid_card(droid, favourite))
+      } else {
+        $('#droid-container').append('<h1>These are not the droids you are looking for.</h1>');
       }
-    } else {
-      $('#droid-container').append('<h1>These are not the droids you are looking for.</h1>')
-    }
-  })
-}
+    });
+};
 
 //
 // User Detail Page Functions
@@ -155,7 +155,7 @@ const loadUserPage = function(userId) {
 
 const loadMainContentPageNotFound = function() {
   $('#main-content').append('<h1>These are not the droids you are looking for.</h1>');
-}
+};
 
 const loadPageNotFound = function() {
   loadContent(loadMainContentPageNotFound);

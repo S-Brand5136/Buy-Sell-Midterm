@@ -42,12 +42,12 @@ $('body').on('click', '#login-btn', function(event) {
     const newUrl = `/user/${data.id}`;
     changePage(data, newUrl);
   })
-  .catch ((err) => {
-    alert(err.message)
-  })
-})
+    .catch((err) => {
+      alert(err.message);
+    });
+});
 
 $('body').on('click', '#logout', function(event) {
   localStorage.removeItem('user');
   changePage({}, '/');
-})
+});

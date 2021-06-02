@@ -32,7 +32,7 @@ module.exports = (db) => {
     LEFT OUTER JOIN purchases ON purchases.droid_id = droids.id
     WHERE purchases.droid_id IS NULL `;
 
-    if(req.query.keyword) {
+    if (req.query.keyword) {
       queryParams.push(`%${req.query.keyword.toLowerCase()}%`);
       queryString += `AND LOWER(description) LIKE $${queryParams.length} `;
     }
@@ -82,7 +82,7 @@ module.exports = (db) => {
     const queryParamsDroid = [userId, title, description, price, manufacturer, model];
 
     // Throw error if any required params are empty
-    if([...queryParamsDroid, image_url].every(x => !x)) {
+    if ([...queryParamsDroid, image_url].every(x => !x)) {
       throw 'Input fields cannot be empty';
     }
 
@@ -111,7 +111,7 @@ module.exports = (db) => {
       })
       .catch((err) => {
         console.log(err);
-        return res.status(403).json({Error: 'Failed to create new Droid'})
+        return res.status(403).json({Error: 'Failed to create new Droid'});
       });
   });
 
@@ -137,8 +137,8 @@ module.exports = (db) => {
         if (!data || !data[0] || data[0].rows.length === 0) {
           return res.json({ error: `There is no droid with id ${id}`});
         }
-        const result = { ...data[0].rows[0] }
-        result.images = data[1].rows
+        const result = { ...data[0].rows[0] };
+        result.images = data[1].rows;
         return res.json(result);
       })
       .catch(err => console.error(err));
@@ -166,15 +166,15 @@ module.exports = (db) => {
     FROM droids
     JOIN images ON droids_id = droids.id
     JOIN users ON droids.sellers_id = users.id
-    WHERE droids.sellers_id = $1 AND images.is_primary = TRUE;`
-    const queryParams = [id]
+    WHERE droids.sellers_id = $1 AND images.is_primary = TRUE;`;
+    const queryParams = [id];
 
     db.query(queryString, queryParams)
       .then((data) => {
-        res.status(200).send(data.rows)
+        res.status(200).send(data.rows);
       })
       .catch((err) => {
-        res.status(404).send({Error: err})
+        res.status(404).send({Error: err});
       });
   });
 
@@ -232,10 +232,66 @@ module.exports = (db) => {
       });
   });
 
-//
-// to do: Image saving. Right now it just
-// takes in a url from online and serves it back
-//
+  //
+  // to do: Image saving. Right now it just
+  // takes in a url from online and serves it back
+  //
+
+  // POST: droid to page if admin
+  // RETURN: droid json object
+  // ACCESS: private
+  router.post("/create/:id", (req, res) => {
+    console.log(req.body);
+    const { title, description, price, manufacturer, model, image_url } = req.body;
+    const userId = req.params.id;
+    const queryParams = [userId, title, description, price, manufacturer, model];
+    const queryString = `
+      INSERT INTO droids (sellers_id, name, description, price, manufacturer, model)
+      VALUES ($1, $2, $3, $4, $5, $6) RETURNING *;`;
+    db.query(queryString, queryParams)
+      .then((data) => {
+        const newDroid = data.rows[0];
+        return newDroid;
+      })
+      .then((data) => {
+        const queryParams = [data.id, true, image_url];
+        const queryString = `
+          INSERT INTO images (droids_id, is_primary, image_url)
+          VALUES ($1, $2, $3) RETURNING *;`;
+        db.query(queryString, queryParams)
+          .then((data) => {
+            const droid_id = data.rows[0].droids_id;
+            return res.status(200).json({droid_id});
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+        return res.status(403).json({Error: 'Failed to create new Droid'});
+      });
+  });
+
+  // PUT: Update a droids sold_out value
+  // RETURN: droid json Object
+  // ACCESS: private
+  router.put("/update/:id", (req, res) => {
+    const soldOutUpdate = req.body.isSoldOut;
+    const droidId = req.params.id;
+    const queryString = `
+      UPDATE droids
+      SET sold_out = $1
+      WHERE id = $2 RETURNING *;`;
+    const queryParams = [soldOutUpdate, droidId];
+
+    db.query(queryString, queryParams)
+      .then((data) => {
+        return res.status(200).json({msg: 'sucessfully updated'})
+      })
+      .catch((err) => {
+        console.log(err);
+        return res.status(403).json({Error: err})
+      })
+
+  });
 
 
   return router;

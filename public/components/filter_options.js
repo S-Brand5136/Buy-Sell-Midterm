@@ -23,18 +23,18 @@ const filter_options = () => {
       <input type="submit" value="Submit" class="btn btn-outline-primary">
     </form>
   </div>`;
-}
+};
 
 $('body').on('click', '#filter-btn', () => {
-  if($('#filter-options').is(":hidden")) {
-   return $('#filter-options').slideDown();
+  if ($('#filter-options').is(":hidden")) {
+    return $('#filter-options').slideDown();
   } else {
     return $('#filter-options').slideUp();
   }
-})
+});
 
 $('body').on('submit', '#filter-form', function(event) {
   event.preventDefault();
   const data = $(this).serialize();
   appendDroids(data);
-})
+});

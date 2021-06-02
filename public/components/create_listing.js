@@ -37,5 +37,5 @@ const create_listing = () => {
     </div>
   </div>
 </div>
-`
+`;
 };
