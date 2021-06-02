@@ -70,13 +70,13 @@ module.exports = (db) => {
     const userId = req.params.id;
     const queryString = 'INSERT INTO favourites (droid_id, user_id) VALUES ($1, $2) RETURNING *;';
     db.query(queryString, [droidId, userId])
-    .then((result) => {
-      return res.status(201).json(result.rows[0]);
-    })
-    .catch((err) => {
-      console.error(err);
-      return res.status(500).json({error: 'Internal server error'});
-    });
+      .then((result) => {
+        return res.status(201).json(result.rows[0]);
+      })
+      .catch((err) => {
+        console.error(err);
+        return res.status(500).json({error: 'Internal server error'});
+      });
   });
 
   // Remove the droid with did from favourites list for user with id

@@ -23,7 +23,7 @@ const userPage = function(user) {
         <button class="btn btn-danger type="button onClick="deleteEverything">
           <i class="fas fa-exclamation-triangle"></i>Delete All Droid Listings!
         </button>
-      </div>`
+      </div>`;
   }
 
   userString += `
@@ -109,8 +109,8 @@ const userPurchasedContent = (droid) => {
   `;
 };
 
-  const userListings = (droid) => {
-    return `
+const userListings = (droid) => {
+  return `
     <li>
       <img src="../${droid.image_url}">
       <div>
@@ -151,12 +151,12 @@ $('body').on('click', '#listings-btn', function() {
   //   addToFavouritesEventHandler(user.id, droidId)
   //   $(this).removeClass('un-favourite').addClass('favourite')
   // }
-})
+});
 
 $('body').on('click', '#remove-btn', function() {
   const droidId = $(this).data('id');
   const user = getUserFromStorage();
 
-  removeDroidFromFavouritesEventHandler(user.id, droidId)
-  onClickFavourites(user.id)
-})
+  removeDroidFromFavouritesEventHandler(user.id, droidId);
+  onClickFavourites(user.id);
+});

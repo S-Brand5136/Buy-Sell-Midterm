@@ -26,18 +26,18 @@ const droid_card = (droid, favourite) => {
   </div>
   </div>
   </div>`;
-}
+};
 
 
 $('body').on('click', '#favourite-btn', function() {
   const droidId = $(this).next().attr('href').slice(8);
   const user = getUserFromStorage();
 
-  if(!$(this).hasClass('un-favourite')) {
-    removeDroidFromFavouritesEventHandler(user.id, droidId)
+  if (!$(this).hasClass('un-favourite')) {
+    removeDroidFromFavouritesEventHandler(user.id, droidId);
     $(this).removeClass('favourite').addClass("un-favourite");
   } else {
-    addToFavouritesEventHandler(user.id, droidId)
-    $(this).removeClass('un-favourite').addClass('favourite')
+    addToFavouritesEventHandler(user.id, droidId);
+    $(this).removeClass('un-favourite').addClass('favourite');
   }
-})
+});

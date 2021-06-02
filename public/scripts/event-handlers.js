@@ -106,8 +106,8 @@ const getUsersListings = (userId) => {
     for (const droid of droids) {
       $userContent.append(userListings(droid));
     }
-  })
-}
+  });
+};
 
 const submitNewListingEventHandler = function(event) {
   event.preventDefault();
