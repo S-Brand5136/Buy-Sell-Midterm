@@ -23,7 +23,7 @@ function updateHeader(user) {
         <a href="/droids">Droids</a>
         <a href="">Purchased</a>
       </nav>
-      ${user.is_admin ? `<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      ${user.is_admin ? `<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createDroidMOdal">
       Create Listing
     </button>
   ` : ''}

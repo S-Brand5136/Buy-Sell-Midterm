@@ -1,5 +1,5 @@
 const create_listing = () => {
-  return `<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  return `<div class="modal fade" id="createDroidMOdal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -37,9 +37,9 @@ const create_listing = () => {
 `
 }
 
-$('body').on('click', '#create-listing', function(event) {
-  console.log('here');
-  event.preventDefault();
-  const data = $(this).serialize();
-  addDroid(data)
-});
+// $('body').on('click', '#create-listing', function(event) {
+//   console.log('here');
+//   event.preventDefault();
+//   const data = $(this).serialize();
+//   addDroid(data)
+// });
