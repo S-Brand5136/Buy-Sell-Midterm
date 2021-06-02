@@ -149,6 +149,11 @@ module.exports = (db) => {
       });
   });
 
+//
+// to do: Image saving. Right now it just
+// takes in a url from online and serves it back
+//
+
   // POST: droid to page if admin
   // RETURN: droid json object
   // ACCESS: private
