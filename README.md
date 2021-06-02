@@ -134,7 +134,7 @@ Featured Table |
 | auth      | post      | /api/logout                   | Logout current user                        |
 | images    | get       | /api/droids/:id/images        | Get all images for droid with id           |
 | images    | get       | /api/droids/:id/images/:imgid | Get image with imgid for droid with id     |
-| images    | post      | api/droids/:id/images         | Add new image for droid with id            |
-| images    | delete    | api/droids/:id/images/:imgid  | Delete image with imgid for droid with id  |
-| purchased | get       | /api/droids/purchased         | Get a list of all purchased droids         |
-| purchased | post      | /api/droids/:id/purchased     | Add a droid with id to the purchased table |
+| images    | post      | /api/droids/:id/images        | Add new image for droid with id            |
+| images    | delete    | /api/droids/:id/images/:imgid | Delete image with imgid for droid with id  |
+| purchased | get       | /api/purchased                | Get a list of all purchased droids         |
+| purchased | post      | /api/purchased                | Add a droid with id to the purchased table |
