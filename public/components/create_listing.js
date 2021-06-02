@@ -7,7 +7,7 @@ const create_listing = () => {
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="/droids/" id="create-listing" method="POST">
+        <form id="create-listing" enctype="multipart/form-data" method="POST">
           <label class="form-label" for="">Title</label>
           <input class="form-control" type="text" id="droid-title" name="droid-title">
 

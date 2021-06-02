@@ -5,6 +5,7 @@
 // main is the function to run for loading main conent
 const loadContent = function(main) {
   $('body').prepend(create_listing());
+  $('#create-listing').submit(submitNewListingEventHandler);
   loadHeader();
   main();
   loadFooter();
