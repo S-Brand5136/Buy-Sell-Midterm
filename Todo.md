@@ -80,7 +80,7 @@
 - As a user I want to send messages to the user that is listing that item
 
 Admin
-  - [Y] Modal to add droid
+  - [ ] add droid NOT YET
   - [X] Remove Droid
   - [ ] Mark droids as sold
   - [X] Message back
