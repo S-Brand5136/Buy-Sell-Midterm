@@ -47,9 +47,9 @@ module.exports = (db) => {
       sold_price,
       users.name as sellers_name,
       email as sellers_email
-    FROM droids
+    FROM favourites
+    INNER JOIN droids ON droids.id = favourites.droid_id
     LEFT JOIN purchases ON droids.id = purchases.droid_id
-    INNER JOIN favourites ON droids.id = favourites.droid_id
     INNER JOIN users ON users.id = droids.sellers_id
     INNER JOIN images ON droids.id = images.droids_id AND images.is_primary = true
     WHERE favourites.user_id = $1;
