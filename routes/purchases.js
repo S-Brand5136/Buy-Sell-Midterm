@@ -10,7 +10,7 @@ module.exports = (db) => {
     FROM purchases
     INNER JOIN droids ON droid_id = droids.id
     INNER JOIN users ON users.id = purchases.seller_id
-    INNER JOIN images ON images.droids_id = droids.id
+    INNER JOIN images ON images.droids_id = droids.id AND is_primary = true
     `;
 
     if (buyerId) {
