@@ -122,6 +122,7 @@ const loadMainContentUser = function(user) {
   $('#main-content').append(userPage(user));
   getFavouriteDroidsEventHandler(user.id);
   $('#user-favourites-button').click(() => getFavouriteDroidsEventHandler(user.id));
+  $('#user-purchases-button').click(() => getUsersPurchasesEventHandler(user.id));
 };
 
 const loadUserPage = function(userId) {

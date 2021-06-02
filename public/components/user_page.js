@@ -5,7 +5,7 @@ const userPage = function(user) {
       <div>
         <h2 class="user-page-title">
           ${user.name}
-          ${user.is_admin && '<span class="badge rounded-pill bg-primary">Administrator</span>'}
+          ${user.is_admin && '<span class="badge rounded-pill bg-success">Administrator</span>'}
         </h2>
         <img src="../${user.avatar_url}">
       </div>
@@ -79,6 +79,35 @@ const userFavouriteContent = (droid) => {
           </li>
         </ul>
         <button class="btn btn-primary">Remove From Favourites</button>
+      </div>
+    </li>
+  `;
+};
+
+const userPurchasedContent = (droid) => {
+  return `
+    <li>
+      <img src="../${droid.image_url}">
+      <div>
+        <h4>${droid.name}</h4>
+        <small>Date PUrchased: ${new Date(droid.sold_on).toLocaleDateString()}</small>
+        <ul>
+          <li>
+            <strong class="text-primary list-label">Manufacturer:</strong> ${droid.manufacturer}
+          </li>
+          <li>
+            <strong class="text-primary list-label">Model:</strong> ${droid.model}
+          </li>
+          <li>
+            <strong class="text-primary list-label">Price</strong> ${droid.sold_price && '$'}${droid.sold_price || 'SOLD'}
+          </li>
+          <li>
+            <strong class="text-primary list-label">Seller:</strong> ${droid.sellers_name}
+          </li>
+          <li>
+            <strong class="text-primary list-label">Seller's Email: </strong> ${droid.sellers_email}
+          </li>
+        </ul>
       </div>
     </li>
   `;
