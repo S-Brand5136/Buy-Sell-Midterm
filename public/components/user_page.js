@@ -111,6 +111,7 @@ const userPurchasedContent = (droid) => {
             <strong class="text-primary list-label">Seller's Email: </strong> ${droid.email}
           </li>
         </ul>
+        <a href='/droids/${droid.droid_id}' class="btn btn-primary">View <i class="fas fa-robot"></i><a>
       </div>
     </li>
   `;
@@ -143,6 +144,7 @@ const userListings = (droid) => {
           </li>
         </ul>
         <button class="btn btn-primary" data-sold='${droid.sold_out}' data-id='${droid.id}' id='listings-btn'>Mark as Sold</button>
+        <a href='/droids/${droid.droid_id}' class="btn btn-primary">View <i class="fas fa-robot"></i><a>
       </div>
     </li>
   `;
