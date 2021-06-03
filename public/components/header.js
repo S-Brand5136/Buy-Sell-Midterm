@@ -12,7 +12,6 @@ function updateHeader(user) {
       <ul class="nav justify-content-center align-items-center">
         <li class='nav-item me-5'>
           <a href="/droids">Shop for Droids</a>
-
         </li>
         <li class='nav-item'>
         ${user && user.is_admin ? `<button class="btn btn-primary nav-item" data-bs-toggle="modal" data-bs-target="#createDroidModal">
@@ -27,7 +26,7 @@ function updateHeader(user) {
 $('body').on('click', '#login-btn', function(event) {
   $.ajax({
     type: 'GET',
-    url: '/api/auth/6'
+    url: '/api/auth/2'
   }).then((data) => {
     // Stringify user and add it to localstorage
     const userJson = JSON.stringify(data);
