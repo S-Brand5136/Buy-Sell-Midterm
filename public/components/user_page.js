@@ -5,7 +5,7 @@ const userPage = function(user) {
       <div>
         <h2 class="user-page-title">
           ${user.name}
-          ${user.is_admin && '<span class="badge rounded-pill bg-success">Administrator</span>'}
+          ${user.is_admin ? '<span class="badge rounded-pill bg-success">Administrator</span>' : ''}
         </h2>
         <img src="../${user.avatar_url}">
       </div>
