@@ -8,7 +8,8 @@ const droid_card = (droid, favourite, userId) => {
     <div class="col-md-8">
       <div class="card-body">
         <h5 class="card-title">${droid.name}</h5>
-        <p class="card-text"><small class="text-muted">Date Posted: ${droid.date_posted.slice(0,10)}</small></p>
+        <p class="card-text"><small class="text-muted">Date Posted:
+        ${new Date(droid.date_posted).toLocaleDateString()}</small></p>
         <p class="card-text">${droid.description}</p>
         <div class="d-flex justify-content-center flex-column button-group">
           <p><strong class='text-primary list-label'>Manufacturer:</strong> ${droid.manufacturer}</p>
