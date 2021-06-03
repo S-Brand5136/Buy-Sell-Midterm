@@ -68,7 +68,7 @@ const getUsersPurchasesEventHandler = function(userId) {
       for (const droid of droids) {
         $userContent.append(userPurchasedContent(droid));
       }
-      $('a.links').click(links);
+      $('#user-droid-content a.links').click(links);
     })
     .catch((err) => {
       console.error(err);
@@ -106,7 +106,7 @@ const getUsersListings = (userId) => {
     for (const droid of droids) {
       $userContent.append(userListings(droid));
     }
-    $('a.links').click(links);
+    $('#user-droid-content a.links').click(links);
   })
 };
 
@@ -170,5 +170,5 @@ const nukeSite = function(event) {
 const links = function(event) {
   event.preventDefault();
   const destination = $(this).attr('data-destination');
-  changePage({}, destination);
+  return changePage({}, destination);
 };

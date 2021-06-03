@@ -12,11 +12,13 @@ const loadContent = function(main) {
 };
 
 const loadCreateModal = function() {
-  const user = getUserFromStorage();
-  const userId = user ? user.id : -1;
-  $('body').prepend(create_listing());
-  $('#modal-userId-input').attr('value', userId);
-  $('#create-listing').submit(submitNewListingEventHandler);
+  if (Object.keys($('#createDroidModal')).length === 0) {
+    const user = getUserFromStorage();
+    const userId = user ? user.id : -1;
+    $('body').prepend(create_listing());
+    $('#modal-userId-input').attr('value', userId);
+    $('#create-listing').submit(submitNewListingEventHandler);
+  }
 };
 
 const loadHeader = function() {
@@ -120,7 +122,7 @@ const appendDroids = (data) => {
           }
           $('#droid-container').append(droid_card(droid, favourite, userId));
         }
-        $('a.links').click(links);
+        $('#droid-container a.links').click(links);
       } else {
         $('#droid-container').append('<h1>These are not the droids you are looking for.</h1>');
       }

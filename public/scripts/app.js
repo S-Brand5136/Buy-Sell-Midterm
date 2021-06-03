@@ -30,7 +30,7 @@ const routing = () => {
 
 const changePage = (state, newUrl) => {
   history.pushState(state, '', newUrl);
-  routing();
+  return routing();
 };
 
 window.onload = () => {
