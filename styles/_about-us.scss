@@ -7,13 +7,15 @@
   background-color: $bg-primary-light;
   width: 100%;
   box-sizing: border-box;
-  margin: 4rem 0 0 0;
+  margin: 4rem 0 10rem 0;
+  // clip-path: polygon(0 0, 100% 27%, 100% 100%, 0 76%);
+  clip-path: polygon(0 17%, 100% 0, 100% 100%, 0 86%);
 
   > div {
     width: 25rem;
     color: $bg-general;
     font-family: $subHeader-font;
-    padding: 4rem 0;
+    padding: 6rem 0 4rem 0;
 
     @media screen and (max-width: 1300px) {
       width: 18rem;
