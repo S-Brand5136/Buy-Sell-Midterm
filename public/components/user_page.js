@@ -68,7 +68,7 @@ const userFavouriteContent = (droid) => {
           </li>
           <li>
             <strong class="text-primary list-label">Price</strong>
-             ${droid.sold_out ? 'SOLD OUT' : '$' + droid.price}
+             ${droid.sold_out ? `<span class='sold-out'>SOLD OUT</span` : '$' + droid.price}
           </li>
           <li>
             <strong class="text-primary list-label">Seller:</strong> ${droid.sellers_name}
@@ -100,7 +100,7 @@ const userPurchasedContent = (droid) => {
           </li>
           <li>
             <strong class="text-primary list-label">Price</strong>
-             ${droid.sold_out ? 'SOLD OUT' : '$' + droid.sold_price}
+             ${droid.sold_out ? `<span class='sold-out'>SOLD OUT</span` : '$' + droid.sold_price}
           </li>
           <li>
             <strong class="text-primary list-label">Seller:</strong> ${droid.sellers_name}
@@ -131,7 +131,7 @@ const userListings = (droid) => {
           </li>
           <li>
             <strong class="text-primary list-label">Price</strong>
-            ${droid.sold_out ? 'SOLD OUT' : '$' + droid.price}
+            ${droid.sold_out ? `<span class='sold-out'>SOLD OUT</span` : '$' + droid.price}
 
           </li>
           <li>
