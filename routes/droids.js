@@ -185,14 +185,14 @@ module.exports = (db) => {
         const urlPromises = [];
 
         for (let i = 0; i < imageUrls.length; i++) {
-          urlPromises[i] = fs.unlink(`./public/${imageUrls[i]}`);
+          let img = imageUrls[i].split('../').splice(-1)[0];
+          urlPromises[i] = fs.unlink(`./public/${img}`);
         }
 
         // Delete droid from database.
-        urlPromises.push(db.query(queryStringDelete, [id]));
-        return Promise.all(urlPromises);
+        return db.query(queryStringDelete, [id]);
       })
-      .then((result) => {
+      .then(() => {
         // All good, return No Content
         return res.status(204).json();
       })

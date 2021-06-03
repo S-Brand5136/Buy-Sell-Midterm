@@ -13,8 +13,8 @@ const deleteDroidEventHandler = function(id) {
     method: 'DELETE',
     url: `/api/droids/${id}`
   })
-    .then(result => {
-      changePage({ droidId: id }, '/');
+    .then(() => {
+      return changePage({ droidId: id }, '/droids');
     })
     .catch(err => console.error(err));
 };
