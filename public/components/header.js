@@ -21,22 +21,6 @@ function updateHeader(user) {
         </li>
         </ul>
      </div>`;
-
-  //    `<div class="container-fluid flex-row justify-content-end">
-  //     <span>Welcome: <a href='/user/${user.id}'>${user.name}</a></span>
-  //     <a id="logout">Log out</a>
-  //   </div>
-  //   <div class="container-fluid flex-row justify-content-between">
-  //   <h3><a href='/'>Droid Reclaimers</a></h3>
-  //     <nav class="nav-links">
-  //       <a href="/droids">Droids</a>
-  //     </nav>
-  //     ${user.is_admin ? `<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createDroidModal">
-  //     Create Listing
-  //   </button>
-  // ` : ''}
-  //   </div>
-  //     `;
 }
 
 $('body').on('click', '#login-btn', function(event) {
