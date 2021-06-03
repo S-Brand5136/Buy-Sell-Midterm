@@ -29,5 +29,28 @@ module.exports = (db) => {
       });
   });
 
+    // GET: droid by date, limit 4
+  // RETURN: json object
+  // ACCESS: public
+  router.get("/new", (req, res) => {
+    const queryString = `
+    SELECT droids.* FROM droids
+    LEFT OUTER JOIN purchases ON purchases.droid_id = droids.id
+    JOIN images ON droids.id = images.droids_id
+    WHERE purchases.droid_id IS NULL
+    ORDER BY date_posted
+    LIMIT 4;
+    `;
+    db.query(queryString)
+      .then((data) => {
+        const droids = data.rows;
+        res.status(200).json(droids);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(404).json({ error: "Droids not found" });
+      });
+  });
+
   return router;
 };

@@ -38,6 +38,14 @@ const loadMainContentHome = function(droids) {
   $("#main-content").append(heroSection());
   $("#main-content").append(featuredDroids(droids));
   $('#main-content').append(aboutUs());
+  $('#main-content').append(`
+  <section id='newly-reclaimed'>
+  <h2>Newly Reclaimed</h2>
+  <div id='droid-container'>
+  </div>
+  </section>
+  `);
+  loadNewlyReclaimed();
 };
 
 const loadHomePage = function() {
@@ -45,16 +53,28 @@ const loadHomePage = function() {
     method: "GET",
     url: "/api/droids/featured",
   })
-    .then((droids) => {
-      loadContent(() => loadMainContentHome(droids));
-    })
-    .then(() => {
+  .then((droids) => {
+    loadContent(() => loadMainContentHome(droids));
+  })
+  .then(() => {
     // Start carousel.
-      const myCarousel = document.querySelector('#featuredCarousel');
-      const carousel = new bootstrap.Carousel(myCarousel);
-    })
-    .catch(err => console.error(err));
+    const myCarousel = document.querySelector('#featuredCarousel');
+    const carousel = new bootstrap.Carousel(myCarousel);
+  })
+  .catch(err => console.error(err));
 };
+
+const loadNewlyReclaimed = function() {
+  $.ajax({
+    method: 'GET',
+    url: "/api/droids/featured/new"
+  })
+  .then((droids) => {
+    for (const droid of droids) {
+      $("#droid-container").append(newlyReclaimed(droid));
+    }
+  })
+}
 
 //
 // Droid Page Functions
