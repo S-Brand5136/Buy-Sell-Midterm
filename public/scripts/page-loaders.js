@@ -11,9 +11,10 @@ const loadContent = function(main) {
 };
 
 const loadCreateModal = function() {
-  const user = JSON.parse(localStorage.getItem('user'));
+  const user = getUserFromStorage();
+  const userId = user ? user.id : -1;
   $('body').prepend(create_listing());
-  $('#modal-userId-input').attr('value', user.id);
+  $('#modal-userId-input').attr('value', userId);
   $('#create-listing').submit(submitNewListingEventHandler);
 };
 
@@ -104,8 +105,10 @@ const appendDroids = (data) => {
     .then(data => {
       $('#droid-container').html('');
       const droids = data[0].droids;
-      console.log(data);
       const favourites = data[1];
+
+      // Check for droids, If none show message saying there was none
+      // If there is droids, check to see if its in the users favourites
       if (droids.length > 0) {
         for (const droid of droids) {
           let favourite = false;

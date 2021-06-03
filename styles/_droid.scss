@@ -1,4 +1,5 @@
 @import "variables";
+@import "droid-container";
 
 #show-droid {
   h2 {
@@ -85,6 +86,32 @@
         box-shadow: 1px 1px 2px $bg-primary-dark;
       }
     }
+  }
+}
+
+span.un-favourite {
+  font-size: 32px;
+
+  i {
+    color: $bg-primary-dark;
+  }
+
+  i:hover {
+    color: $heart-highlight;
+    cursor: pointer;
+  }
+}
+
+span.favourite {
+  font-size: 32px;
+
+  i {
+    color: $heart-highlight;
+  }
+
+  i:hover {
+    color: $bg-primary-dark;
+    cursor: pointer;
   }
 }
 

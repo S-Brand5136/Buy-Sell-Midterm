@@ -32,12 +32,11 @@ const getFavouriteDroidsEventHandler = function(userId) {
 const addToFavouritesEventHandler = function(userId, droidId) {
   return $.ajax({
     method: 'POST',
-    url: `/api/users/${userId}/favourites/`,
+    url: `/api/users/${userId}/favourites`,
     data: { droidId }
   })
     .then((result) => {
       // TODO: Update UI to show that droid has been added to favourites.
-      console.log(result);
     })
     .catch(err => console.error(err));
 };
@@ -50,7 +49,6 @@ const removeDroidFromFavouritesEventHandler = function(userId, droidId) {
   })
     .then((result) => {
       // TODO: Handl the return value, result.
-      console.log(result);
     })
     .catch(err => console.error(err));
 };

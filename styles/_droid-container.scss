@@ -24,24 +24,16 @@
       font-family: $header-font;
     }
   }
-
-  .button-group {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 0.5rem;
-
+  div {
     span {
-      font-size: 32px;
       margin-right: 1rem;
+    }
+    span.un-favourite {
+      font-size: 32px;
 
       i {
-        color: inherit;
+        color: $bg-primary-dark;
       }
-    }
-
-    .un-favourite {
-      color: $bg-primary-dark;
 
       i:hover {
         color: $heart-highlight;
@@ -49,7 +41,9 @@
       }
     }
 
-    .favourite {
+    span.favourite {
+      font-size: 32px;
+
       i {
         color: $heart-highlight;
       }
@@ -61,6 +55,7 @@
     }
   }
 }
+
 
 @media screen and (min-width: 1024px) {
   #droid-container {

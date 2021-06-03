@@ -119,15 +119,16 @@ module.exports = (db) => {
   router.get("/:id", (req, res) => {
     const id = req.params.id;
     const queryString1 = `
-    SELECT droids.*, users.name as sellers_name, email
+    SELECT droids.*, users.name as sellers_name, email, favourites.id as fav_id
     FROM droids
-    INNER JOIN users ON users.id = sellers_id
+    JOIN users ON users.id = sellers_id
+    JOIN favourites ON favourites.user_id = users.id
     WHERE droids.id = $1;
     `;
     const queryString2 = `
     SELECT image_url, is_primary, images.id
     FROM images
-    INNER JOIN droids ON droids.id = droids_id
+    JOIN droids ON droids.id = droids_id
     WHERE droids.id = $1;
     `;
     const droid = db.query(queryString1, [id]);
