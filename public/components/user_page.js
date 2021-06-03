@@ -57,7 +57,7 @@ const userFavouriteContent = (droid) => {
     <li>
       <img src="../${droid.image_url}">
       <div>
-        <h4><a href='/droids/${droid.droid_id}'>${droid.name}</a></h4>
+        <h4><a href="#" class="links" data-destination='/droids/${droid.droid_id}'>${droid.name}</a></h4>
         <small>Date Posted: ${new Date(droid.date_posted).toLocaleDateString()}</small>
         <ul>
           <li>
@@ -78,7 +78,7 @@ const userFavouriteContent = (droid) => {
           </li>
         </ul>
         <button class="btn btn-warning" data-id='${droid.droid_id}' id='remove-btn'>Remove From Favourites</button>
-        <a href='/droids/${droid.droid_id}' class="btn btn-primary">View <i class="fas fa-robot"></i><a>
+        <a data-destination='/droids/${droid.droid_id}' href="#" class="links btn btn-primary">View <i class="fas fa-robot"></i><a>
       </div>
     </li>
   `;
@@ -89,7 +89,7 @@ const userPurchasedContent = (droid) => {
     <li>
       <img src="../${droid.image_url}">
       <div>
-      <h4><a href='/droids/${droid.droid_id}'>${droid.name}</a></h4>
+      <h4><a href="#" class="links" data-destination='/droids/${droid.droid_id}'>${droid.name}</a></h4>
         <small>Date Purchased: ${new Date(droid.sold_on).toLocaleDateString()}</small>
         <ul>
           <li>
@@ -109,7 +109,7 @@ const userPurchasedContent = (droid) => {
             <strong class="text-primary list-label">Seller's Email: </strong> ${droid.email}
           </li>
         </ul>
-        <a href='/droids/${droid.droid_id}' class="btn btn-primary">View <i class="fas fa-robot"></i><a>
+        <a href="#" data-destination='/droids/${droid.droid_id}' class="links btn btn-primary">View <i class="fas fa-robot"></i><a>
       </div>
     </li>
   `;
@@ -120,7 +120,7 @@ const userListings = (droid) => {
     <li>
       <img src="../${droid.image_url}">
       <div>
-      <h4><a href='/droids/${droid.id}'>${droid.name}</a></h4>
+      <h4><a href="#" class="links" data-destination='/droids/${droid.id}'>${droid.name}</a></h4>
         <small>Date Posted: ${new Date(droid.date_posted).toLocaleDateString()}</small>
         <ul>
           <li>
@@ -142,7 +142,7 @@ const userListings = (droid) => {
           </li>
         </ul>
         <button class="btn btn-primary" data-sold='${droid.sold_out}' data-id='${droid.id}' id='listings-btn'>Mark as Sold</button>
-        <a href='/droids/${droid.id}' class="btn btn-primary">View <i class="fas fa-robot"></i><a>
+        <a href="#" data-destination='/droids/${droid.id}' class="links btn btn-primary">View <i class="fas fa-robot"></i><a>
       </div>
     </li>
   `;

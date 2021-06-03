@@ -8,6 +8,7 @@ const loadContent = function(main) {
   loadHeader();
   main();
   loadFooter();
+  $('a.links').click(links);
 };
 
 const loadCreateModal = function() {
@@ -20,7 +21,7 @@ const loadCreateModal = function() {
 
 const loadHeader = function() {
   const user = getUserFromStorage();
-  return $("#page-header").append(updateHeader(user));
+  $("#page-header").append(updateHeader(user));
 };
 
 const loadFooter = function() {
