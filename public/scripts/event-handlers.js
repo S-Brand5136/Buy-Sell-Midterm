@@ -149,14 +149,17 @@ const submitNewListingEventHandler = function(event) {
 };
 
 const nukeSite = function(event) {
-  $.ajax({
-    method: 'DELETE',
-    url: '/api/droids'
-  })
+  const message = 'This will permanently delete all droids related data and cannot be undone.  Are you sure you wish to procede?';
+  if (confirm(message)) {
+    $.ajax({
+      method: 'DELETE',
+      url: '/api/droids'
+    })
     .then(() => {
-      changePage({}, '/');
+      return changePage({}, '/');
     })
     .catch((err) => {
       console.error(error);
     });
+  }
 };
