@@ -24,9 +24,10 @@ const individualDroid = function(droid) {
         <h3>Description</h3>
         <p>${droid.description}</p>
         <ul>
-          <li><strong>Manufactured by:</strong> ${droid.manufacturer}</li>
-          <li><strong>Model:</strong> ${droid.model}</li>
-          <li><strong>Seller:</strong> ${droid.sellers_name}.  Email: <a href="mailto:${droid.email}">${droid.email}</a></li>
+          <li><strong class='text-primary list-label'>Manufactured by:</strong> ${droid.manufacturer}</li>
+          <li><strong class='text-primary list-label'>Model:</strong> ${droid.model}</li>
+          <li><strong class='text-primary list-label'>Seller:</strong> ${droid.sellers_name}</li>
+          <li><strong class='text-primary list-label'>Email: <a href="mailto:${droid.email}">${droid.email}</a></strong></li>
         </ul>
         <button id="delete-droid" class="btn btn-danger">Delete Droid</button>
       </article>
