@@ -1,4 +1,5 @@
 const routing = () => {
+  console.log('routing called.');
   const path = location.pathname;
   // Clear existing content
   $('#main-content').html('');
@@ -10,6 +11,7 @@ const routing = () => {
 
   switch (path) {
   case '/':
+    console.log('case home page');
     loadHomePage();
     break;
   case `/droids/${pathArr[pathArr.length - 1]}`:
@@ -30,7 +32,7 @@ const routing = () => {
 
 const changePage = (state, newUrl) => {
   history.pushState(state, '', newUrl);
-  routing();
+  return routing();
 };
 
 window.onload = () => {
