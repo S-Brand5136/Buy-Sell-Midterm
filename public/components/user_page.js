@@ -53,7 +53,6 @@ const userPage = function(user) {
 };
 
 const userFavouriteContent = (droid) => {
-  console.log(droid);
   return `
     <li>
       <img src="../${droid.image_url}">
@@ -86,7 +85,6 @@ const userFavouriteContent = (droid) => {
 };
 
 const userPurchasedContent = (droid) => {
-  console.log(droid);
   return `
     <li>
       <img src="../${droid.image_url}">
