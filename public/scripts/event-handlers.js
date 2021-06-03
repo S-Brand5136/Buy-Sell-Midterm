@@ -147,3 +147,16 @@ const submitNewListingEventHandler = function(event) {
       console.error(err);
     });
 };
+
+const nukeSite = function(event) {
+  $.ajax({
+    method: 'DELETE',
+    url: '/api/droids'
+  })
+    .then(() => {
+      changePage({}, '/');
+    })
+    .catch((err) => {
+      console.error(error);
+    });
+};

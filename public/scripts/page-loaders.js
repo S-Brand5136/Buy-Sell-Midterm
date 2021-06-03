@@ -135,6 +135,9 @@ const loadMainContentUser = function(user) {
   $('#user-favourites-button').click(() => onClickFavourites(user.id));
   $('#user-purchases-button').click(() => getUsersPurchasesEventHandler(user.id));
   $('#user-listings-button').click(() => getUsersListings(user.id));
+
+  // DANGER! This is the big red button that wipes all droids and cascades.
+  $('#nuke').click(nukeSite);
 };
 
 const loadUserPage = function(userId) {
