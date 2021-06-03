@@ -117,6 +117,24 @@ module.exports = (db) => {
       });
   });
 
+  router.delete('/', (req, res) => {
+    db.query('TRUNCATE droids CASCADE;')
+      .then((result) => {
+        return fs.readdir('./public/images/droid_images/');
+      })
+      .then((fileArr) => {
+        for (const file of fileArr) {
+          // Fire and forget - not waiting for promises to resolve beore returning as db is wiped and no calls for images will be made.
+          fs.unlink(`./public/images/droid_images/${file}`);
+        }
+        return res.status(204).json();
+      })
+      .catch((err) => {
+        console.error(err);
+        return res.status(204).json();
+      });
+  });
+
   router.get("/:id", (req, res) => {
     const id = req.params.id;
     const queryString1 = `

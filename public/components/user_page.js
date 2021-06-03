@@ -20,7 +20,7 @@ const userPage = function(user) {
   if (user.is_admin) {
     userString += `
       <div>
-        <button class="btn btn-danger type="button onClick="deleteEverything">
+        <button class="btn btn-danger type="button>
           <i class="fas fa-exclamation-triangle"></i>
           Delete All Droid Listings!
           <i class="fas fa-bomb"></i>
