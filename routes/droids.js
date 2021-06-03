@@ -30,7 +30,8 @@ module.exports = (db) => {
     SELECT droids.*, images.image_url FROM droids
     JOIN images ON droids.id = images.droids_id
     LEFT OUTER JOIN purchases ON purchases.droid_id = droids.id
-    WHERE purchases.droid_id IS NULL `;
+    WHERE purchases.droid_id IS NULL
+    AND sold_out = false `;
 
     if (req.query.keyword) {
       queryParams.push(`%${req.query.keyword.toLowerCase()}%`);
