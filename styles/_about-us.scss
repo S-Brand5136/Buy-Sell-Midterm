@@ -4,16 +4,20 @@
   padding: 3rem 2rem;
   display: flex;
   justify-content: space-around;
-  // align-items: center;
   background-color: $bg-primary-light;
   width: 100%;
   box-sizing: border-box;
-  margin: 4rem 0;
+  margin: 4rem 0 0 0;
 
   > div {
     width: 25rem;
     color: $bg-general;
     font-family: $subHeader-font;
+    padding: 4rem 0;
+
+    @media screen and (max-width: 1300px) {
+      width: 18rem;
+    }
 
     h4 {
       border-bottom: 2px solid $bg-general;
@@ -30,7 +34,7 @@
 
     > div {
       width: 100%;
-      height: auto;
+      // height: auto;
       margin: 1rem 0;
     }
   }
