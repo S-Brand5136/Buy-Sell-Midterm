@@ -13,10 +13,6 @@
     text-shadow: 2px 2px 5px $bg-primary-light;
   }
 
-  button {
-    margin-top: 1rem;
-  }
-
   div.container {
     display: flex;
     justify-content: center;
@@ -46,6 +42,15 @@
       color: $price;
       font-weight: 800;
       font-size: 2rem;
+    }
+
+    article > div {
+      display: flex;
+      align-items: center;
+
+      span {
+        margin-right: 1rem;
+      }
     }
   }
 
