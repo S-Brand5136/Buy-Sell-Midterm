@@ -2,22 +2,46 @@
 
 /* Header styles */
 header#page-header {
-  background-color: #e5e5ec;
+  background-color: #00236D;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: center;
-  height: 8.75rem;
+  height: 8rem;
   width: 100%;
   position: sticky;
   top: 0;
   z-index: 2;
+  color: white;
+
+  ul {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    li {
+      margin-right: 1rem;
+    }
+  }
+
+
+  a {
+    color: white;
+  }
+
+  a:hover {
+    color: #454545;
+  }
 
   h3 {
     font-family: $header-font;
     font-weight: 600;
     margin: 0;
     padding: 0;
+
+    a > img {
+      height: 3rem;
+      object-fit: contain;
+    }
   }
 }
 
@@ -40,9 +64,10 @@ header#page-header {
   cursor: pointer;
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1000px) {
   header#page-header {
     flex-direction: row;
     padding: 0 10rem 0 10rem;
   }
 }
+
