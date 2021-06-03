@@ -120,6 +120,7 @@ const appendDroids = (data) => {
           }
           $('#droid-container').append(droid_card(droid, favourite, userId));
         }
+        $('a.links').click(links);
       } else {
         $('#droid-container').append('<h1>These are not the droids you are looking for.</h1>');
       }
