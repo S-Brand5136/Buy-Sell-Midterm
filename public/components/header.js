@@ -1,34 +1,43 @@
 function updateHeader(user) {
-  return !user
-    ? `
+  return`
       <div class="container-fluid flex-row justify-content-end">
-      <a class="me-3" id='login-btn'>Log in</a>
-    </div>
-    <div class="container-fluid flex-row justify-content-between">
-      <h3><a href='/'>Droid Reclaimers</a></h3>
-      <nav class="nav-links">
-        <a href="">Favourites</a>
-        <a href="/droids">Droids</a>
-        <a href="">Purchased</a>
-      </nav>
-    </div>`
-    : ` <div class="container-fluid flex-row justify-content-end">
+      ${user ? `
       <span>Welcome: <a href='/user/${user.id}'>${user.name}</a></span>
-      <a id="logout">Log out</a>
-    </div>
-    <div class="container-fluid flex-row justify-content-between">
-    <h3><a href='/'>Droid Reclaimers</a></h3>
-      <nav class="nav-links">
-        <a href="">Favourites</a>
-        <a href="/droids">Droids</a>
-        <a href="">Purchased</a>
-      </nav>
-      ${user.is_admin ? `<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createDroidModal">
-      Create Listing
-    </button>
-  ` : ''}
-    </div>
-      `;
+      <a id="logout">Log out</a>`
+       :
+       `<a class="me-3" id='login-btn'>Log in</a>`}
+      </div>
+      <div class="container-fluid flex-row justify-content-between">
+      <h3><a href='/'>Droid Reclaimers</a></h3>
+      <ul class="nav justify-content-center align-items-center">
+        <li class='nav-item me-5'>
+          <a href="/droids">Shop for Droids</a>
+
+        </li>
+        <li class='nav-item'>
+        ${user && user.is_admin ? `<button class="btn btn-primary nav-item" data-bs-toggle="modal" data-bs-target="#createDroidModal">
+        Create Listing
+      </button>
+    ` : ''}
+        </li>
+        </ul>
+     </div>`;
+
+  //    `<div class="container-fluid flex-row justify-content-end">
+  //     <span>Welcome: <a href='/user/${user.id}'>${user.name}</a></span>
+  //     <a id="logout">Log out</a>
+  //   </div>
+  //   <div class="container-fluid flex-row justify-content-between">
+  //   <h3><a href='/'>Droid Reclaimers</a></h3>
+  //     <nav class="nav-links">
+  //       <a href="/droids">Droids</a>
+  //     </nav>
+  //     ${user.is_admin ? `<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createDroidModal">
+  //     Create Listing
+  //   </button>
+  // ` : ''}
+  //   </div>
+  //     `;
 }
 
 $('body').on('click', '#login-btn', function(event) {

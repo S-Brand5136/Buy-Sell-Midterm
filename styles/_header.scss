@@ -23,16 +23,8 @@ header#page-header {
 
 .nav-links {
   width: 250px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
   font-family: $subHeader-font;
   letter-spacing: 1px;
-
-  a:not(:last-child) {
-    padding-right: 1rem;
-  }
 }
 
 #login-btn{
