@@ -223,65 +223,6 @@ module.exports = (db) => {
       });
   });
 
-  // // GET: droid by manufacturer
-  // // RETURN: json object
-  // // ACCESS: public
-  // router.get("/manufacturer/:manufacturer", (req, res) => {
-  //   let limit = req.body.limit || 10;
-  //   let offset = req.body.offset || 0;
-  //   const searchTerm = `%${req.query.manufacturer.toLowerCase()}%`;
-  //   const queryParams = [searchTerm, limit, offset];
-  //   const queryString = `
-  //   SELECT droids.* FROM droids
-  //   LEFT OUTER JOIN purchases ON droid_id = droids.id
-  //   WHERE droid_id IS NULL
-  //   AND LOWER(manufacturer) LIKE $1
-  //   LIMIT $2
-  //   OFFSET $3;
-  //   `;
-  //   db.query(queryString, queryParams)
-  //     .then((data) => {
-  //       const droids = data.rows;
-  //       res.json({ droids });
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //       res.status(404).json({ error: "Droids not found" });
-  //     });
-  // });
-
-  // // GET: droid by model
-  // // RETURN: json object
-  // // ACCESS: public
-  // router.get("/model/:model", (req, res) => {
-  //   let limit = req.body.limit || 10;
-  //   let offset = req.body.offset || 0;
-  //   const searchTerm = `%${req.query.model.toLowerCase()}%`;
-  //   const queryParams = [searchTerm, limit, offset];
-  //   const queryString = `
-  //   SELECT droids.* FROM droids
-  //   LEFT OUTER JOIN purchases ON droid_id = droids.id
-  //   WHERE droid_id IS NULL
-  //   AND LOWER(model) LIKE $1
-  //   LIMIT $2
-  //   OFFSET $3;
-  //   `;
-  //   db.query(queryString, queryParams)
-  //     .then((data) => {
-  //       const droids = data.rows;
-  //       res.json({ droids });
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //       res.status(404).json({ error: "Droids not found" });
-  //     });
-  // });
-
-  //
-  // to do: Image saving. Right now it just
-  // takes in a url from online and serves it back
-  //
-
   // POST: droid to page if admin
   // RETURN: droid json object
   // ACCESS: private
