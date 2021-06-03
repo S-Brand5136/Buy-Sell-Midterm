@@ -2,7 +2,7 @@ const individualDroid = function(droid) {
   const primaryImage = droid.images.filter(img => img.is_primary)[0];
   const otherImages = droid.images.filter(img => !img.is_primary);
   const user = getUserFromStorage();
-  const userId = user ? user.id : -1;
+  const userId = user ? user.id : 0;
 
   let secondaryImages = '';
   for (const img of otherImages) {
@@ -32,7 +32,7 @@ const individualDroid = function(droid) {
           <li><strong class='text-primary list-label'>Email: <a href="mailto:${droid.email}">${droid.email}</a></strong></li>
         </ul>
         <div>
-          <span id='favourite-btn' data-id='${droid.id}' class="${droid.fav_id ? "favourite" : "un-favourite"}"><i class="fas fa-heart"></i></span>
+          ${userId ? `<span id='favourite-btn' data-id='${droid.id}' class="${droid.fav_id ? "favourite" : "un-favourite"}"><i class="fas fa-heart"></i></span>` : ''}
           ${userId === droid.sellers_id ? `<button id="delete-droid" class="btn btn-danger">Delete Droid</button> ` : ''}
         </div>
       </article>
