@@ -67,7 +67,6 @@ module.exports = (db) => {
 
   // Add droid with did (droid id) to user with id's favourites list
   router.post('/:id/favourites', (req, res) => {
-    console.log(req.body);
     const { droidId } = req.body;
     const userId = req.params.id;
     const queryString = 'INSERT INTO favourites (droid_id, user_id) VALUES ($1, $2) RETURNING *;';

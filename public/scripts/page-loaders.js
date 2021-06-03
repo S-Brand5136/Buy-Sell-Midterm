@@ -35,14 +35,12 @@ const loadFooter = function() {
 //
 
 const loadMainContentHome = function(droids) {
-  console.log('loadMainContentHome called');
   $("#main-content").append(heroSection());
   $("#main-content").append(featuredDroids(droids));
   $('#main-content').append(aboutUs());
 };
 
 const loadHomePage = function() {
-  console.log('loadHomePage called');
   $.ajax({
     method: "GET",
     url: "/api/droids/featured",

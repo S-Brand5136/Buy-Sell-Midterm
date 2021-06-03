@@ -168,7 +168,6 @@ const nukeSite = function(event) {
 };
 
 const links = function(event) {
-  console.log('links called');
   event.preventDefault();
   const destination = $(this).attr('data-destination');
   return changePage({}, destination);
