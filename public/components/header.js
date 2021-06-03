@@ -12,7 +12,6 @@ function updateHeader(user) {
       <ul class="nav justify-content-center align-items-center">
         <li class='nav-item me-5'>
           <a href="/droids">Shop for Droids</a>
-
         </li>
         <li class='nav-item'>
         ${user && user.is_admin ? `<button class="btn btn-primary nav-item" data-bs-toggle="modal" data-bs-target="#createDroidModal">

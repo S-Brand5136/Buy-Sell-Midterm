@@ -4,6 +4,8 @@ const individualDroid = function(droid) {
   const user = getUserFromStorage();
   const userId = user ? user.id : 0;
 
+  console.log(droid);
+
   let secondaryImages = '';
   for (const img of otherImages) {
     secondaryImages += `<img src="../${img.image_url}" class="droid-secondary" alt="droid: ${droid.name}" data-imageId="${img.id}">`;
