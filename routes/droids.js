@@ -1,3 +1,4 @@
+const fs = require('fs').promises;
 const express = require("express");
 const multer = require("multer");
 const { v4 } = require("uuid");
@@ -146,11 +147,35 @@ module.exports = (db) => {
       .catch(err => console.error(err));
   });
 
+  // Delete a droid from db, and delete its images from file storage.
   router.delete("/:id", (req, res) => {
     const id = req.params.id;
-    const queryString = 'DELETE FROM droids WHERE id = $1';
-    db.query(queryString, [id])
+    const queryStringGetImageUrl = `
+      SELECT *
+      FROM images
+      JOIN droids ON droids.id = droids_id
+      WHERE droids.id = $1;
+    `;
+    const queryStringDelete = 'DELETE FROM droids WHERE id = $1';
+
+    db.query(queryStringGetImageUrl, [id])
+      .then((data) => {
+        if (!data.rows) {
+          return 'No images';
+        }
+        const imageUrls = data.rows.map(x => x.image_url);
+        const urlPromises = [];
+
+        for (let i = 0; i < imageUrls.length; i++) {
+          urlPromises[i] = fs.unlink(`./public/${imageUrls[i]}`);
+        }
+
+        // Delete droid from database.
+        urlPromises.push(db.query(queryStringDelete, [id]));
+        return Promise.all(urlPromises);
+      })
       .then((result) => {
+        // All good, return No Content
         return res.status(204).json();
       })
       .catch((err) => {
