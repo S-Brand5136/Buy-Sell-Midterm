@@ -95,7 +95,7 @@ const loadDroidsPage = function(id) {
 // Appends droids to droid-container
 const appendDroids = (data) => {
   const user = getUserFromStorage();
-  const userId = user ? user.id : -1;
+  const userId = user ? user.id : 0;
 
   Promise.all([$.ajax({
     type: 'GET',
@@ -117,7 +117,7 @@ const appendDroids = (data) => {
               favourite = true;
             }
           }
-          $('#droid-container').append(droid_card(droid, favourite));
+          $('#droid-container').append(droid_card(droid, favourite, userId));
         }
       } else {
         $('#droid-container').append('<h1>These are not the droids you are looking for.</h1>');
