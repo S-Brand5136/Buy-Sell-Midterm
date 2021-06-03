@@ -13,7 +13,7 @@ const droid_card = (droid, favourite) => {
         <div class="d-flex justify-content-center flex-column button-group">
           <p><strong class='text-primary list-label'>Manufacturer:</strong> ${droid.manufacturer}</p>
           <p><strong class='text-primary list-label'>Model:</strong> ${droid.model}</p>
-          <p><strong class='text-primary list-label'>Price:</strong> ${droid.price} credits</p>
+          <p><strong class='text-primary list-label'>Price:</strong> $${droid.price}</p>
           <div class='d-flex'>
             <span id='favourite-btn' data-id='${droid.id}' class="${favourite ? "favourite" : "un-favourite"}"><i class="fas fa-heart"></i></span>
             <a href='/droids/${droid.id}' class="btn btn-primary btn-lg">View <i class="fas fa-robot"></i><a>
