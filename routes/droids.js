@@ -189,11 +189,11 @@ module.exports = (db) => {
   router.get("/admin/:id", (req, res) => {
     const id = req.params.id;
     const queryString = `
-    SELECT DISTINCT droids.*, images.*, users.email as sellers_email, users.name as sellers_name
+    SELECT droids.*, images.droids_id, image_url, users.email as sellers_email, users.name as sellers_name
     FROM droids
-    JOIN images ON droids_id = droids.id
+    JOIN images ON images.droids_id = droids.id AND images.is_primary = TRUE
     JOIN users ON droids.sellers_id = users.id
-    WHERE droids.sellers_id = $1 AND images.is_primary = TRUE;`;
+    WHERE droids.sellers_id = $1;`;
     const queryParams = [id];
 
     db.query(queryString, queryParams)
