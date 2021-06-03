@@ -14,7 +14,7 @@ const aboutUs = function() {
       <div>
         <h4>Legal Droids</h4>
         <p>All of our droids are verified legally sourced so you do not need to worry about any
-        <q>Emperial entanglements</q>.</p>
+        <q>Imperial entanglements</q>.</p>
       </div>
     </section>
   `;
