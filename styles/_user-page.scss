@@ -131,7 +131,7 @@ h2.user-page-title {
 
 @media screen and (min-width: 1024px) {
     div#user-content {
-      align-items: baseline;
+      align-items: flex-start;
       flex-direction: row;
 
       section {
