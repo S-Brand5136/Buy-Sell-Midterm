@@ -41,7 +41,7 @@ const loadMainContentHome = function(droids) {
   $('#main-content').append(`
   <section id='newly-reclaimed'>
   <h2>Newly Reclaimed</h2>
-  <div id='droid-container'>
+  <div id='home-droid-container'>
   </div>
   </section>
   `);
@@ -71,7 +71,7 @@ const loadNewlyReclaimed = function() {
   })
   .then((droids) => {
     for (const droid of droids) {
-      $("#droid-container").append(newlyReclaimed(droid));
+      $("#home-droid-container").append(newlyReclaimed(droid));
     }
   })
 }

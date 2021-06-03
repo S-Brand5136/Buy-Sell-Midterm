@@ -87,7 +87,7 @@ const onClickFavourites = (userId) => {
       for (const droid of droids) {
         $userContent.append(userFavouriteContent(droid));
       }
-      $('a.links').click(links);
+      $('#user-droid-content a.links').click(links);
     })
     .catch((err) => console.error(err));
 };

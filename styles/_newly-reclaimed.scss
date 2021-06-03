@@ -10,7 +10,7 @@
     color: $bg-primary-dark;
   }
 
-  div#droid-container {
+  div#home-droid-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -34,7 +34,7 @@
   section#newly-reclaimed {
     padding: 0 10rem 0 10rem;
 
-    div#droid-container {
+    div#home-droid-container {
 
       div.card {
         margin-right: 1rem;
@@ -45,7 +45,7 @@
 
 @media screen and (min-width: 1500px) {
   section#newly-reclaimed {
-    div#droid-container {
+    div#home-droid-container {
       flex-wrap: nowrap;
     }
   }
@@ -55,7 +55,7 @@
     #newly-reclaimed {
       padding: 0 1.5rem 0 1.5rem;
 
-      div#droid-container {
+      div#home-droid-container {
         justify-content: center;
         align-items: center;
         flex-direction: row;
@@ -69,4 +69,3 @@
 
     }
 }
-
