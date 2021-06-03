@@ -15,4 +15,3 @@ VALUES
 (12, true, 'images/droid_images/BX-series_droid_commando.webp'),
 (13, true, 'images/droid_images/super-battle-droid.webp'),
 (14, true, 'images/droid_images/OOM_command_droid.webp');
-

@@ -34,7 +34,7 @@ module.exports = (db) => {
   // ACCESS: public
   router.get("/new", (req, res) => {
     const queryString = `
-    SELECT droids.* FROM droids
+    SELECT droids.*, images.image_url as image_url FROM droids
     LEFT OUTER JOIN purchases ON purchases.droid_id = droids.id
     JOIN images ON droids.id = images.droids_id
     WHERE purchases.droid_id IS NULL
