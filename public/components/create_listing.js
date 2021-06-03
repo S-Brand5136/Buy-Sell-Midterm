@@ -28,7 +28,7 @@ const create_listing = () => {
 
           <input id="modal-userId-input" type="hidden" name="userId" required></input>
 
-          <button type="submit" class="btn btn-primary">Create Listing</button>
+          <button type="submit" class="btn btn-primary mt-3">Create Listing</button>
         </form>
       </div>
       <div class="modal-footer">
