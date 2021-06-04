@@ -136,7 +136,7 @@ module.exports = (db) => {
     SELECT droids.*, users.name as sellers_name, email, favourites.id as fav_id
     FROM droids
     JOIN users ON users.id = sellers_id
-    LEFT JOIN favourites ON favourites.droid_id = droids.id
+    LEFT JOIN favourites ON favourites.droid_id = droids.id AND users.id = favourites.user_id
     WHERE droids.id = $1;
     `;
     const queryString2 = `
