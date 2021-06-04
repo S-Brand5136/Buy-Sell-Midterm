@@ -9,7 +9,7 @@ const newlyReclaimed = (droid) => {
     <p class="card-text">${droid.description}</p>
     <p><strong class='text-primary list-label'>Manufacturer:</strong> ${droid.manufacturer}</p>    <p><strong class='text-primary list-label'>Model:</strong> ${droid.model}</p>
     <p><strong class='text-primary list-label'>Price:</strong> $${droid.price}</p>
-    <a href="#" data-destination='/droids/${droid.id}' class="links btn btn-primary btn-lg">View <i class="fas fa-robot"></i><a>
+    <a href="/droids/${droid.id}" class="links btn btn-primary btn-lg">View <i class="fas fa-robot"></i><a>
     </div>
 </div>
   `

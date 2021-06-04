@@ -18,7 +18,7 @@ const droid_card = (droid, favourite, userId) => {
           <div class='d-flex'>
           ${userId ? `<span id='favourite-btn' data-id='${droid.id}' class="${favourite ? "favourite" : "un-favourite"}"><i class="fas fa-heart"></i></span>
         ` : ' '}
-            <a href="#" data-destination='/droids/${droid.id}' class="links btn btn-primary btn-lg">View <i class="fas fa-robot"></i><a>
+            <a href='/droids/${droid.id}' class="links btn btn-primary btn-lg">View <i class="fas fa-robot"></i><a>
           </div>
         </div>
       <div>

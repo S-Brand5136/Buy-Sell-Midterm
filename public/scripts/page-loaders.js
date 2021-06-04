@@ -73,6 +73,7 @@ const loadNewlyReclaimed = function() {
     for (const droid of droids) {
       $("#home-droid-container").append(newlyReclaimed(droid));
     }
+    $('#newly-reclaimed a.links').click(links);
   })
 }
 
