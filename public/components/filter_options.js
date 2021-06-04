@@ -17,8 +17,6 @@ const filter_options = () => {
       <div></div>
       <label for="model">Model</label>
       <input type="text" name="model" class="form-control" placeholder="Repair">
-      <div></div>
-      <label for="limit">Droids Displayed</label>
       <input type="submit" value="Submit" class="btn btn-outline-primary">
     </form>
   </div>`;
