@@ -24,9 +24,7 @@ module.exports = (db) => {
   // RETURN: json object
   // ACCCESS: public
   router.get("/", (req, res) => {
-    const limit = req.query.limit || 10;
-    const offset = req.query.offset || 0;
-    const queryParams = [limit, offset];
+    const queryParams = [];
     let queryString = `
     SELECT droids.*, images.image_url FROM droids
     JOIN images ON droids.id = images.droids_id
@@ -58,9 +56,6 @@ module.exports = (db) => {
       queryParams.push(req.query.maximum_price);
       queryString += `AND price <= $${queryParams.length} `;
     }
-
-    queryString += `LIMIT $1
-    OFFSET $2;`;
 
     db.query(queryString, queryParams)
       .then((data) => {
