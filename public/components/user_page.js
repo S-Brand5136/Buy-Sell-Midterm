@@ -141,7 +141,7 @@ const userListings = (droid) => {
             <strong class="text-primary list-label">Seller's Email: </strong> ${droid.sellers_email}
           </li>
         </ul>
-        <button class="btn btn-primary" data-sold='${droid.sold_out}' data-id='${droid.id}' id='listings-btn'>Mark as Sold</button>
+        <button class="btn btn-primary" data-sold='${droid.sold_out}' data-id='${droid.id}' id='listings-btn'>${droid.sold_out ? 'Relist' : 'Mark as Sold' }</button>
         <a href='/droids/${droid.id}' class="links btn btn-primary">View <i class="fas fa-robot"></i><a>
       </div>
     </li>

@@ -21,7 +21,7 @@ function updateHeader(user) {
 $('body').on('click', '#login-btn', function(event) {
   $.ajax({
     type: 'GET',
-    url: '/api/auth/2'
+    url: '/api/auth/4'
   }).then((data) => {
     // Stringify user and add it to localstorage
     const userJson = JSON.stringify(data);
