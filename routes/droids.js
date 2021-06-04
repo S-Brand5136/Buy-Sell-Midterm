@@ -132,20 +132,33 @@ module.exports = (db) => {
 
   router.get("/:id", (req, res) => {
     const id = req.params.id;
-    const queryString1 = `
+    const userId = req.query.userid;
+    const queryParams1 = [];
+    let queryString1 = `
     SELECT droids.*, users.name as sellers_name, email, favourites.id as fav_id
     FROM droids
     JOIN users ON users.id = sellers_id
-    LEFT JOIN favourites ON favourites.droid_id = droids.id AND users.id = favourites.user_id
-    WHERE droids.id = $1;
-    `;
+    LEFT JOIN favourites ON favourites.droid_id = droids.id `;
+
+    queryParams1.push(id);
+    queryString1 += `WHERE droids.id = $${queryParams1.length}`;
+
+    if (userId) {
+      queryParams1.push(userId);
+      queryString1 += ` AND user_id = $${queryParams1.length}`;
+    }
+
+    queryString1 += ';';
+
     const queryString2 = `
     SELECT image_url, is_primary, images.id
     FROM images
     JOIN droids ON droids.id = droids_id
     WHERE droids.id = $1;
     `;
-    const droid = db.query(queryString1, [id]);
+    console.log(queryString1);
+    console.log('params', queryParams1);
+    const droid = db.query(queryString1, queryParams1);
     const images = db.query(queryString2, [id]);
 
     Promise.all([droid, images])
