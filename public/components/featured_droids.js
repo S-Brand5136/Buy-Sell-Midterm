@@ -24,18 +24,23 @@ const featuredDroids = function({droids}) {
       featuredString += '<div class="carousel-item">';
     }
 
+    console.log(droids[i]);
+
     featuredString += `
       <div>
         <img src="../${droids[i].image_url}" class="d-block" alt="A droid named ${droids[i].name}">
-        <div class="card text-light m-0 border-0">
+        <div class="card m-0 border-0">
           <div class="card-body">
-            <h4 class="card-title"><span>${droids[i].droid_name}</span> - $${droids[i].price}</h4>
+            <h4 class="card-title"><span>${droids[i].droid_name}</span></h4>
+            <p class="card-text"><small class="text-muted">Date Posted:
+            ${new Date(droids[i].date_posted).toLocaleDateString()}</small></p>
             <p class="card-text">${droids[i].description}</p>
             <h5>Details</h5>
             <ul>
-              <li>Manufacturer: ${droids[i].manufacturer}</li>
-              <li>Model: ${droids[i].model}</li>
-              <li>Seller: ${droids[i].seller}</li>
+              <li><strong class='text-primary list-label'>Manufacturer:</strong> ${droids[i].manufacturer}</li>
+              <li><strong class='text-primary list-label'>Model:</strong> ${droids[i].model}</li>
+              <li><strong class='text-primary list-label'>Seller:</strong>: ${droids[i].seller}</li>
+              <li><strong class='text-primary list-label'>Price:</strong> $${droids[i].price}</li>
             </ul>
           </div>
         </div>

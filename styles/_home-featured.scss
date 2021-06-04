@@ -3,13 +3,12 @@
 // The carousel container
 #featuredCarousel {
   height: 40rem;
-  background-color: $bg-general-dark;
 }
 
 // Has .carousel-inner class (container for droids)
 #featuredDroids {
   height: 100%;
-  border: 3px solid black;
+  box-shadow: 0 3px .5rem .5rem lightgrey;
 
   // Individual droid / slide in carousel
   .carousel-item {
@@ -19,6 +18,15 @@
       height: 100%;
       display: flex;
 
+      ul {
+        list-style: none;
+      }
+
+      h5 {
+        border-bottom: 1px solid lightgrey;
+        padding-bottom: .5rem;
+      }
+
       > img {
         object-fit: cover;
         flex-basis: 50%;
@@ -26,7 +34,7 @@
       }
 
       > div {
-        background-color: $bg-general-dark;
+        // background-color: $bg-general-dark;
         font-size: 1.2rem;
         flex-basis: 50%;
 
@@ -37,6 +45,9 @@
         h4 span {
           border-bottom: 2px solid #bbb;
           font-weight: 600;
+          text-transform: uppercase;
+          font-family: $header-font;
+          color: $bg-primary-dark;
         }
       }
     }
@@ -44,7 +55,7 @@
 }
 
 .main-content-title {
-  font-family: $subHeader-font;
+  font-family: $header-font;
   font-size: 2.7rem;
   color: $bg-primary-dark;
   margin-bottom: 1.2rem;

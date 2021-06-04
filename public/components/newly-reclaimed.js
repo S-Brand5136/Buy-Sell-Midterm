@@ -1,5 +1,4 @@
 const newlyReclaimed = (droid) => {
-  console.log(droid);
   return `
   <div class="card">
   <img src="../${droid.image_url}" class="card-img-top" alt="...">
