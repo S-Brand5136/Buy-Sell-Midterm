@@ -24,8 +24,6 @@ const featuredDroids = function({droids}) {
       featuredString += '<div class="carousel-item">';
     }
 
-    console.log(droids[i]);
-
     featuredString += `
       <div>
         <img src="../${droids[i].image_url}" class="d-block" alt="A droid named ${droids[i].name}">
