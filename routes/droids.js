@@ -222,7 +222,6 @@ module.exports = (db) => {
   // RETURN: droid json object
   // ACCESS: private
   router.post("/create/:id", (req, res) => {
-    console.log(req.body);
     const { title, description, price, manufacturer, model, image_url } = req.body;
     const userId = req.params.id;
     const queryParams = [userId, title, description, price, manufacturer, model];
