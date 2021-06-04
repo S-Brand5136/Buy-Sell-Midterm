@@ -41,3 +41,9 @@ const getUserFromStorage = () => {
   const userDetails = localStorage.getItem('user');
   return JSON.parse(userDetails);
 };
+
+$(window).on('popstate', function() {
+  setTimeout(() => {
+    return routing();
+  }, 0);
+});
