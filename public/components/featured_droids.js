@@ -39,8 +39,8 @@ const featuredDroids = function({droids}) {
             <ul>
               <li><strong class='text-primary list-label'>Manufacturer:</strong> ${droids[i].manufacturer}</li>
               <li><strong class='text-primary list-label'>Model:</strong> ${droids[i].model}</li>
+              <li><strong class="text-primary list-label">Price:</strong>${droids[i].sold_out ? `<span class='sold-out'> SOLD OUT</span` : '$' + droids[i].price}</li>
               <li><strong class='text-primary list-label'>Seller:</strong>: ${droids[i].seller}</li>
-              <li><strong class='text-primary list-label'>Price:</strong> $${droids[i].price}</li>
             </ul>
           </div>
         </div>

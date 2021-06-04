@@ -11,7 +11,7 @@ const router  = express.Router();
 module.exports = (db) => {
   router.get("/", (req, res) => {
     const queryString = `
-    SELECT droids.id, droids.name droid_name, date_posted, description, price, manufacturer, model, start_date, end_date, image_url, users.name as seller
+    SELECT droids.id, droids.name droid_name, date_posted, description, price, sold_out, manufacturer, model, start_date, end_date, image_url, users.name as seller
     FROM featured_droids
     INNER JOIN droids ON droids.id = featured_droids.droid_id
     INNER JOIN images ON droids.id = images.droids_id AND images.is_primary = true
